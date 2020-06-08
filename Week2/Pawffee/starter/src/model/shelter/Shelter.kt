@@ -1,5 +1,7 @@
 package model.shelter
 
+import model.animals.Cat
+
 /**
  * NB: Pawffee has partnered with two different local animal shelters.
  * Each shelter will contain a collection of cats
