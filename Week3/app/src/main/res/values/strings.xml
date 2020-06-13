@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Business Card</string>
+    <string name="phone_no">0727345567</string>
+    <string name="email">flonsie17@gmail.com</string>
+    <string name="website">www.florencenjeri.com</string>
+    <string name="location">TextView</string>
 
 </resources>
