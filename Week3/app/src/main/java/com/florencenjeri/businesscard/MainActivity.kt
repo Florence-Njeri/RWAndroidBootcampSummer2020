@@ -1,31 +1,47 @@
 package com.florencenjeri.businesscard
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
+import com.raywenderlich.airlock.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    enum class DarkModeConfig{
-        YES,
-        NO,
-        FOLLOW_SYSTEM
-    }
+    var nightMode = true;
+    lateinit var prefs: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        prefs = this.getSharedPreferences(Constants.PREFS_MODE, Context.MODE_PRIVATE)
+        when (prefs.getInt(Constants.MODE_KEY, 0)) {
+            Mode.LIGHT.ordinal -> switchToMode(AppCompatDelegate.MODE_NIGHT_NO, Mode.LIGHT)
+            Mode.DARK.ordinal -> switchToMode(AppCompatDelegate.MODE_NIGHT_YES, Mode.DARK)
+            else -> switchToMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,Mode.SYSTEM)
+        }
+
         buttonMode.setOnClickListener {
-            shouldEnableDarkMode(DarkModeConfig.NO)
+
+            if (buttonMode.text == getString(R.string.use_dark_mode)) {
+                switchToMode(AppCompatDelegate.MODE_NIGHT_YES, Mode.DARK)
+                buttonMode.text = getString(R.string.use_light_mode)
+                nightMode=true
+
+            } else if (buttonMode.text == getString(R.string.use_light_mode)) {
+                switchToMode(AppCompatDelegate.MODE_NIGHT_NO, Mode.LIGHT)
+                buttonMode.text = getString(R.string.use_dark_mode)
+                nightMode=false
+
+            }
 
         }
+
     }
 
-    fun shouldEnableDarkMode(darkModeConfig: DarkModeConfig){
-        when(darkModeConfig){
-            DarkModeConfig.YES -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            DarkModeConfig.NO -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            DarkModeConfig.FOLLOW_SYSTEM -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-        }
+    private fun switchToMode(nightMode: Int, mode: Mode) {
+        AppCompatDelegate.setDefaultNightMode(nightMode)
+        prefs.edit().putInt(Constants.MODE_KEY, mode.ordinal).apply()
     }
 
 }

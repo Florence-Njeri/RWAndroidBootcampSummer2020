@@ -206,7 +206,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo_white" />
+            app:srcCompat="@drawable/dark_mode_logo" />
 
         <Button
             android:id="@+id/buttonMode"
