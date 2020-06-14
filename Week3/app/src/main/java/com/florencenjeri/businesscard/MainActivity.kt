@@ -9,7 +9,7 @@ import com.raywenderlich.airlock.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    var nightMode = true;
+    ;
     lateinit var prefs: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         when (prefs.getInt(Constants.MODE_KEY, 0)) {
             Mode.LIGHT.ordinal -> switchToMode(AppCompatDelegate.MODE_NIGHT_NO, Mode.LIGHT)
             Mode.DARK.ordinal -> switchToMode(AppCompatDelegate.MODE_NIGHT_YES, Mode.DARK)
-            else -> switchToMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,Mode.SYSTEM)
+            else -> switchToMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, Mode.SYSTEM)
         }
 
         buttonMode.setOnClickListener {
@@ -26,12 +26,11 @@ class MainActivity : AppCompatActivity() {
             if (buttonMode.text == getString(R.string.use_dark_mode)) {
                 switchToMode(AppCompatDelegate.MODE_NIGHT_YES, Mode.DARK)
                 buttonMode.text = getString(R.string.use_light_mode)
-                nightMode=true
+
 
             } else if (buttonMode.text == getString(R.string.use_light_mode)) {
                 switchToMode(AppCompatDelegate.MODE_NIGHT_NO, Mode.LIGHT)
                 buttonMode.text = getString(R.string.use_dark_mode)
-                nightMode=false
 
             }
 

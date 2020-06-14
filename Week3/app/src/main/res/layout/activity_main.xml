@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,12 +15,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/phoneCardView"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:backgroundTint="@color/colorPrimary"
+            style="@style/CardStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/logo">
@@ -33,12 +27,7 @@
 
                 <ImageView
                     android:id="@+id/phoneImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:backgroundTint="@color/white"
+                    style="@style/ImageStyle"
                     android:tint="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -47,14 +36,8 @@
 
                 <TextView
                     android:id="@+id/phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:backgroundTint="@color/white"
-                    android:fontFamily="@font/brandon_grotesque_light"
+                    style="@style/TextStyle"
                     android:text="@string/phone_no"
-                    android:textColor="@color/white"
-                    android:autoLink="phone"
                     app:layout_constraintBottom_toBottomOf="@+id/phoneImageView"
                     app:layout_constraintStart_toEndOf="@+id/phoneImageView"
                     app:layout_constraintTop_toTopOf="@+id/phoneImageView" />
@@ -65,12 +48,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/emailCardView"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:backgroundTint="@color/colorPrimary"
+            style="@style/CardStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/phoneCardView">
@@ -82,10 +60,7 @@
 
                 <ImageView
                     android:id="@+id/emailImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:tint="@color/white"
+                    style="@style/ImageStyle"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -93,13 +68,9 @@
 
                 <TextView
                     android:id="@+id/email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/brandon_grotesque_light"
-                    android:text="@string/email"
-                    android:textColor="@color/white"
+                    style="@style/TextStyle"
                     android:autoLink="email"
+                    android:text="@string/email"
                     app:layout_constraintBottom_toBottomOf="@+id/emailImageView"
                     app:layout_constraintStart_toEndOf="@+id/emailImageView"
                     app:layout_constraintTop_toTopOf="@+id/emailImageView" />
@@ -110,12 +81,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/websiteCardView"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:backgroundTint="@color/colorPrimary"
+            style="@style/CardStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailCardView">
@@ -127,10 +93,7 @@
 
                 <ImageView
                     android:id="@+id/websiteImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:tint="@color/white"
+                    style="@style/ImageStyle"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -138,13 +101,9 @@
 
                 <TextView
                     android:id="@+id/website"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/brandon_grotesque_light"
-                    android:text="@string/website"
-                    android:textColor="@color/white"
+                    style="@style/TextStyle"
                     android:autoLink="web"
+                    android:text="@string/website"
                     app:layout_constraintBottom_toBottomOf="@+id/websiteImageView"
                     app:layout_constraintStart_toEndOf="@+id/websiteImageView"
                     app:layout_constraintTop_toTopOf="@+id/websiteImageView" />
@@ -155,12 +114,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/locationCardView"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:backgroundTint="@color/colorPrimary"
+            style="@style/CardStyle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/websiteCardView">
@@ -171,10 +125,7 @@
 
                 <ImageView
                     android:id="@+id/locationImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:tint="@color/white"
+                    style="@style/ImageStyle"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -182,21 +133,16 @@
 
                 <TextView
                     android:id="@+id/location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/brandon_grotesque_light"
+                    style="@style/TextStyle"
+                    android:autoLink="map"
                     android:text="@string/location"
-                    android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="@+id/locationImageView"
                     app:layout_constraintStart_toEndOf="@+id/locationImageView"
-                    app:layout_constraintTop_toTopOf="@+id/locationImageView"
-                    android:autoLink="map"
-                    android:focusable="true"
-                    android:clickable="true"/>
+                    app:layout_constraintTop_toTopOf="@+id/locationImageView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
+        <!--Business Logo-->
 
         <ImageView
             android:id="@+id/logo"
@@ -208,6 +154,8 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/dark_mode_logo" />
 
+        <!--Button to toggle between dark mode and light mode-->
+
         <Button
             android:id="@+id/buttonMode"
             android:layout_width="wrap_content"
@@ -217,8 +165,8 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/brandon_grotesque_light"
             android:text="@string/use_dark_mode"
-            android:textColor="@color/white"
             android:textAllCaps="false"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/locationCardView" />
