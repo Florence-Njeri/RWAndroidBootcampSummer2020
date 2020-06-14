@@ -2,8 +2,11 @@ package com.florencenjeri.businesscard
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatDelegate
 import com.raywenderlich.airlock.Constants
 import kotlinx.android.synthetic.main.activity_main.*
@@ -22,16 +25,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonMode.setOnClickListener {
-
+            val rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate)
+            it.startAnimation(rotateAnimation)
             if (buttonMode.text == getString(R.string.use_dark_mode)) {
                 switchToMode(AppCompatDelegate.MODE_NIGHT_YES, Mode.DARK)
                 buttonMode.text = getString(R.string.use_light_mode)
 
-
             } else if (buttonMode.text == getString(R.string.use_light_mode)) {
                 switchToMode(AppCompatDelegate.MODE_NIGHT_NO, Mode.LIGHT)
                 buttonMode.text = getString(R.string.use_dark_mode)
-
             }
 
         }
