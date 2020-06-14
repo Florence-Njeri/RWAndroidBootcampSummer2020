@@ -1,12 +1,16 @@
 package com.florencenjeri.businesscard
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import com.raywenderlich.airlock.Constants
 import kotlinx.android.synthetic.main.activity_main.*
@@ -45,4 +49,36 @@ class MainActivity : AppCompatActivity() {
         prefs.edit().putInt(Constants.MODE_KEY, mode.ordinal).apply()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.share) {
+            shareWithFriends()
+        } else if (item.itemId == R.id.about) {
+            showInfo()
+        }
+        return true
+    }
+
+    private fun showInfo() {
+        val dialogTitle = getString(R.string.aboutTitle)
+        val dialogMessage = getString(R.string.aboutMessage)
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(dialogTitle)
+        builder.setMessage(dialogMessage)
+        builder.create().show()
+    }
+
+    private fun shareWithFriends() {
+        val shareIntent = Intent()
+        shareIntent.action = Intent.ACTION_SEND
+        shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.stringExtra))
+        shareIntent.type = "text/plain"
+        startActivity(shareIntent)
+
+    }
 }

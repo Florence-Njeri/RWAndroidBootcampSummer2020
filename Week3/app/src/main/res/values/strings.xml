@@ -6,5 +6,8 @@
     <string name="location">https://www.google.com/maps/dir//-1.417606,34.990769</string>
     <string name="use_dark_mode">Use Dark Mode</string>
     <string name="use_light_mode">Set Light Mode</string>
+    <string name="aboutTitle">Developed By:</string>
+    <string name="aboutMessage">Florence Njeri</string>
+    <string name="stringExtra">Check out this business card by Florence Njeri</string>
 
 </resources>
