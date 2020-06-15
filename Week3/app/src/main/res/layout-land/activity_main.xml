@@ -40,6 +40,7 @@
                     android:id="@+id/phone"
                     style="@style/TextStyle"
                     android:text="@string/phone_no"
+                    android:autoLink="phone"
                     app:layout_constraintBottom_toBottomOf="@+id/phoneImageView"
                     app:layout_constraintStart_toEndOf="@+id/phoneImageView"
                     app:layout_constraintTop_toTopOf="@+id/phoneImageView" />
