@@ -3,9 +3,10 @@
     <string name="phone_no">+254727098766</string>
     <string name="email">flocodes@mail.com</string>
     <string name="website">www.florencenjeri.com</string>
-    <string name="location">https://www.google.com/maps/dir//-1.417606,34.990769</string>
+    <string name="location">1600 Amphitheatre Parkway, Mountain View, CA 94043</string>
     <string name="use_dark_mode">Use Dark Mode</string>
-    <string name="use_light_mode">Set Light Mode</string>
+    <string name="use_light_mode">Use Light Mode</string>
+    <string name="use_system_mode">Set System Mode</string>
     <string name="aboutTitle">Developed By:</string>
     <string name="aboutMessage">Florence Njeri</string>
     <string name="stringExtra">Check out this business card by Florence Njeri</string>

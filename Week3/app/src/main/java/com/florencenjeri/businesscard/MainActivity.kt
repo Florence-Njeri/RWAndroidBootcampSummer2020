@@ -3,20 +3,18 @@ package com.florencenjeri.businesscard
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.res.Configuration
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.raywenderlich.airlock.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    ;
+
     lateinit var prefs: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,6 +36,9 @@ class MainActivity : AppCompatActivity() {
             } else if (buttonMode.text == getString(R.string.use_light_mode)) {
                 switchToMode(AppCompatDelegate.MODE_NIGHT_NO, Mode.LIGHT)
                 buttonMode.text = getString(R.string.use_dark_mode)
+            } else {
+                switchToMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, Mode.SYSTEM)
+                buttonMode.text = getString(R.string.use_system_mode)
             }
 
         }
