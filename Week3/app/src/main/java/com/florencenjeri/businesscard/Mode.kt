@@ -1,6 +1,6 @@
 package com.florencenjeri.businesscard
 
-enum class Mode{
+enum class Mode {
     LIGHT,
     DARK,
     SYSTEM

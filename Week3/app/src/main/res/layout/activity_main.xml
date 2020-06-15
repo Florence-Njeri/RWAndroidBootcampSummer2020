@@ -38,8 +38,8 @@
                 <TextView
                     android:id="@+id/phone"
                     style="@style/TextStyle"
-                    android:text="@string/phone_no"
                     android:autoLink="phone"
+                    android:text="@string/phone_no"
                     app:layout_constraintBottom_toBottomOf="@+id/phoneImageView"
                     app:layout_constraintStart_toEndOf="@+id/phoneImageView"
                     app:layout_constraintTop_toTopOf="@+id/phoneImageView" />
@@ -132,6 +132,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_location" />
+
                 <TextView
                     android:id="@+id/location"
                     style="@style/TextStyle"

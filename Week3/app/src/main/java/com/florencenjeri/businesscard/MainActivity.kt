@@ -29,16 +29,19 @@ class MainActivity : AppCompatActivity() {
         buttonMode.setOnClickListener {
             val rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate)
             it.startAnimation(rotateAnimation)
-            if (buttonMode.text == getString(R.string.use_dark_mode)) {
-                switchToMode(AppCompatDelegate.MODE_NIGHT_YES, Mode.DARK)
-                buttonMode.text = getString(R.string.use_light_mode)
-
-            } else if (buttonMode.text == getString(R.string.use_light_mode)) {
-                switchToMode(AppCompatDelegate.MODE_NIGHT_NO, Mode.LIGHT)
-                buttonMode.text = getString(R.string.use_dark_mode)
-            } else {
-                switchToMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, Mode.SYSTEM)
-                buttonMode.text = getString(R.string.use_system_mode)
+            when (buttonMode.text) {
+                getString(R.string.use_dark_mode) -> {
+                    switchToMode(AppCompatDelegate.MODE_NIGHT_YES, Mode.DARK)
+                    buttonMode.text = getString(R.string.use_light_mode)
+                }
+                getString(R.string.use_light_mode) -> {
+                    switchToMode(AppCompatDelegate.MODE_NIGHT_NO, Mode.LIGHT)
+                    buttonMode.text = getString(R.string.use_dark_mode)
+                }
+                else -> {
+                    switchToMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, Mode.SYSTEM)
+                    buttonMode.text = getString(R.string.use_system_mode)
+                }
             }
 
         }
