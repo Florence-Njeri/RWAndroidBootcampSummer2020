@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="cardHeight">54dp</dimen>
+    <dimen name="buttonHeight">48dp</dimen>
+
+</resources>
