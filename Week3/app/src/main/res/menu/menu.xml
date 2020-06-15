@@ -4,12 +4,14 @@
 
     <item
         android:id="@+id/share"
-        android:icon="@android:drawable/ic_menu_share"
-        android:title="Share"
+        android:icon="@drawable/ic_share"
+        android:title="@string/share"
+        android:iconTint="@color/white"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/about"
-        android:icon="@android:drawable/ic_menu_info_details"
-        android:title="About"
+        android:icon="@drawable/ic_info"
+        android:iconTint="@color/white"
+        android:title="@string/about"
         app:showAsAction="ifRoom" />
 </menu>

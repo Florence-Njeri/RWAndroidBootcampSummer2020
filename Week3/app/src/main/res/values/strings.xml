@@ -10,5 +10,7 @@
     <string name="aboutTitle">Developed By:</string>
     <string name="aboutMessage">Florence Njeri</string>
     <string name="stringExtra">Check out this business card by Florence Njeri</string>
+    <string name="share">Share</string>
+    <string name="about">About</string>
 
 </resources>

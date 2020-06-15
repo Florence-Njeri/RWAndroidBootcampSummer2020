@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        tools:context=".MainActivity">
+
+        <!--    Phone CardView-->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/phoneCardView"
+            style="@style/CardStyle"
+            android:layout_width="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/phoneImageView"
+                    style="@style/ImageStyle"
+                    android:tint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_phone" />
+
+                <TextView
+                    android:id="@+id/phone"
+                    style="@style/TextStyle"
+                    android:text="@string/phone_no"
+                    app:layout_constraintBottom_toBottomOf="@+id/phoneImageView"
+                    app:layout_constraintStart_toEndOf="@+id/phoneImageView"
+                    app:layout_constraintTop_toTopOf="@+id/phoneImageView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!--    Email CardView-->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/emailCardView"
+            style="@style/CardStyle"
+            android:layout_width="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintTop_toBottomOf="@+id/phoneCardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/emailImageView"
+                    style="@style/ImageStyle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_email" />
+
+                <TextView
+                    android:id="@+id/email"
+                    style="@style/TextStyle"
+                    android:autoLink="email"
+                    android:text="@string/email"
+                    app:layout_constraintBottom_toBottomOf="@+id/emailImageView"
+                    app:layout_constraintStart_toEndOf="@+id/emailImageView"
+                    app:layout_constraintTop_toTopOf="@+id/emailImageView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!--   Website CardView-->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/websiteCardView"
+            style="@style/CardStyle"
+            android:layout_width="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintTop_toBottomOf="@+id/emailCardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/websiteImageView"
+                    style="@style/ImageStyle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_internet" />
+
+                <TextView
+                    android:id="@+id/website"
+                    style="@style/TextStyle"
+                    android:autoLink="web"
+                    android:text="@string/website"
+                    app:layout_constraintBottom_toBottomOf="@+id/websiteImageView"
+                    app:layout_constraintStart_toEndOf="@+id/websiteImageView"
+                    app:layout_constraintTop_toTopOf="@+id/websiteImageView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!--   Location CardView-->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/locationCardView"
+            style="@style/CardStyle"
+            android:layout_width="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintTop_toBottomOf="@+id/websiteCardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/locationImageView"
+                    style="@style/ImageStyle"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/location"
+                    style="@style/TextStyle"
+                    android:autoLink="map"
+                    android:text="@string/location"
+                    app:layout_constraintBottom_toBottomOf="@+id/locationImageView"
+                    app:layout_constraintStart_toEndOf="@+id/locationImageView"
+                    app:layout_constraintTop_toTopOf="@+id/locationImageView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!--Business Logo-->
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="262dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttonMode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/dark_mode_logo" />
+
+        <!--Button to toggle between dark mode and light mode-->
+
+        <Button
+            android:id="@+id/buttonMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/brandon_grotesque_light"
+            android:text="@string/use_dark_mode"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locationCardView"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
