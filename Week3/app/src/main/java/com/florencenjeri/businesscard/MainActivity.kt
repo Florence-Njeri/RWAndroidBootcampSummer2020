@@ -2,7 +2,6 @@ package com.florencenjeri.businesscard
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -15,16 +14,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var prefs: SharedPreferences
+    private val prefs by lazy {
+        applicationContext.getSharedPreferences(
+            Constants.PREFS_MODE,
+            Context.MODE_PRIVATE
+        )
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        prefs = this.getSharedPreferences(Constants.PREFS_MODE, Context.MODE_PRIVATE)
-        when (prefs.getInt(Constants.MODE_KEY, 0)) {
-            Mode.LIGHT.ordinal -> switchToMode(AppCompatDelegate.MODE_NIGHT_NO, Mode.LIGHT)
-            Mode.DARK.ordinal -> switchToMode(AppCompatDelegate.MODE_NIGHT_YES, Mode.DARK)
-            else -> switchToMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, Mode.SYSTEM)
-        }
+        checkUserModePreference()
 
         buttonMode.setOnClickListener {
             val rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.rotate)
@@ -46,6 +46,14 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun checkUserModePreference() {
+        when (prefs.getInt(Constants.MODE_KEY, 0)) {
+            Mode.LIGHT.ordinal -> switchToMode(AppCompatDelegate.MODE_NIGHT_NO, Mode.LIGHT)
+            Mode.DARK.ordinal -> switchToMode(AppCompatDelegate.MODE_NIGHT_YES, Mode.DARK)
+            else -> switchToMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM, Mode.SYSTEM)
+        }
     }
 
     private fun switchToMode(nightMode: Int, mode: Mode) {
@@ -78,10 +86,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun shareWithFriends() {
-        val shareIntent = Intent()
-        shareIntent.action = Intent.ACTION_SEND
-        shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.stringExtra))
-        shareIntent.type = "text/plain"
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, getString(R.string.stringExtra))
+            type = "text/plain"
+        }
+
         startActivity(shareIntent)
 
     }
