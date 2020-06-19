@@ -17,9 +17,10 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/phoneCardView"
             style="@style/CardStyle"
+            android:layout_width="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logo">
+            app:layout_constraintStart_toEndOf="@+id/logo"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -51,8 +52,9 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/emailCardView"
             style="@style/CardStyle"
+            android:layout_width="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/logo"
             app:layout_constraintTop_toBottomOf="@+id/phoneCardView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -84,8 +86,9 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/websiteCardView"
             style="@style/CardStyle"
+            android:layout_width="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/logo"
             app:layout_constraintTop_toBottomOf="@+id/emailCardView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -117,8 +120,9 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/locationCardView"
             style="@style/CardStyle"
+            android:layout_width="0dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/logo"
             app:layout_constraintTop_toBottomOf="@+id/websiteCardView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -150,8 +154,7 @@
             android:id="@+id/logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/buttonMode"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/dark_mode_logo" />
@@ -163,13 +166,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
+            android:layout_marginBottom="@dimen/margin"
             android:fontFamily="@font/brandon_grotesque_light"
             android:text="@string/use_dark_mode"
             android:textAllCaps="false"
             android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/locationCardView" />
+            app:layout_constraintTop_toBottomOf="@+id/locationCardView"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
