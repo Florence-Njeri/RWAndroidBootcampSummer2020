@@ -1,12 +1,24 @@
 package com.florencenjeri.readinglist.model
 
 import com.florencenjeri.readinglist.R
+val authors = listOf(
+    Author("Tayari Jones","American"),
+    Author(" Rachel Hollis","American"),
+    Author("Chimamanda Ngozi Adichie","Nigerian"),
+    Author("Oyinkan Braithwaite","Nigerian"),
+    Author("Ayọ̀bámi Adébáyọ̀ ","Nigerian "),
+    Author("Nicola Yoon","American-Jamaican "),
+    Author("Chinelo Okparanta","American-Nigerian"),
+    Author("Gabrielle Union","American"),
+    Author("NoViolet Bulawayo","Zimbabwean"),
+    Author("Iyanla Vanzant","American")
+)
 
 val booksRead = setOf(
     Books(
         R.drawable.an_american_marriage,
         "An American Marriage",
-        "by Tayari Jones",
+        authors[0],
         "February 6th 2018",
         "304",
         "Newlyweds, Celestial and Roy, are the embodiment of both the American Dream and the New South. He is a young executive and she is artist on the brink of an exciting career. They are settling into the routine of their life together, when they are ripped apart by circumstances neither could have imagined. Roy is arrested and sentenced to twelve years for a crime Celestial knows he didn’t commit. Though fiercely independent, Celestial finds herself bereft and unmoored, taking comfort in Andre, her childhood friend, and best man at their wedding. As Roy’s time in prison passes, she is unable to hold on to the love that has been her center. After five years, Roy’s conviction is suddenly overturned, and he returns to Atlanta ready to resume their life together.\n" +
@@ -15,7 +27,7 @@ val booksRead = setOf(
     ), Books(
         R.drawable.girl_wash_your_face,
         "Girl, Wash Your Face",
-        "by Rachel Hollis ",
+        authors[1],
         "February 6th 2018",
         "240",
         "Each chapter of Girl, Wash Your Face begins with a specific lie Hollis once believed that left her feeling overwhelmed, unworthy, or ready to give up. As a working mother, a former foster parent, and a woman who has dealt with insecurities about her body and relationships, she speaks with the insight and kindness of a BFF, helping women unpack the limiting mind-sets that destroy their self-confidence and keep them from moving forward.\n" +
@@ -25,7 +37,7 @@ val booksRead = setOf(
     ), Books(
         R.drawable.half_of_a_yellow_sun,
         "Half of a Yellow Sun",
-        "by Chimamanda Ngozi Adichie",
+        authors[2],
         "September 12th 2006",
         "433",
         "A masterly, haunting new novel from a writer heralded by The Washington Post Book World as “the 21st-century daughter of Chinua Achebe,” Half of a Yellow Sun re-creates a seminal moment in modern African history: Biafra’s impassioned struggle to establish an independent republic in Nigeria in the 1960s, and the chilling violence that followed.\n" +
@@ -37,7 +49,7 @@ val booksRead = setOf(
     ), Books(
         R.drawable.my_sister_the_serial_killer,
         "My Sister, the Serial Killer",
-        "by Oyinkan Braithwaite",
+        authors[3],
         " November 20th 2018 ",
         "226",
         "When Korede's dinner is interrupted one night by a distress call from her sister, Ayoola, she knows what's expected of her: bleach, rubber gloves, nerves of steel and a strong stomach. This'll be the third boyfriend Ayoola's dispatched in, quote, self-defence and the third mess that her lethal little sibling has left Korede to clear away. She should probably go to the police for the good of the menfolk of Nigeria, but she loves her sister and, as they say, family always comes first. Until, that is, Ayoola starts dating the doctor where Korede works as a nurse. Korede's long been in love with him, and isn't prepared to see him wind up with a knife in his back: but to save one would mean sacrificing the other...\n" +
@@ -47,7 +59,7 @@ val booksRead = setOf(
     ), Books(
         R.drawable.stay_with_me,
         "Stay with Me",
-        "by Ayọ̀bámi Adébáyọ̀ ",
+        authors[4],
         "August 22nd 2017 ",
         "260",
         "This celebrated, unforgettable first novel, shortlisted for the prestigious Women's Prize for Fiction and set in Nigeria, gives voice to both husband and wife as they tell the story of their marriage--and the forces that threaten to tear it apart.\n" +
@@ -57,7 +69,7 @@ val booksRead = setOf(
     ), Books(
         R.drawable.the_sun_is_also_a_star,
         "The Sun Is Also a Star",
-        "by Nicola Yoon",
+        authors[5],
         "February 6th 2018",
         "384",
         "Natasha: I’m a girl who believes in science and facts. Not fate. Not destiny. Or dreams that will never come true. I’m definitely not the kind of girl who meets a cute boy on a crowded New York City street and falls in love with him. Not when my family is twelve hours away from being deported to Jamaica. Falling in love with him won’t be my story.\n" +
@@ -69,7 +81,7 @@ val booksRead = setOf(
     ), Books(
         R.drawable.under_the_udala_trees,
         "Under the Udala Trees",
-        "by Chinelo Okparanta",
+        authors[6],
         "September 22nd 2015",
         "328",
         "Inspired by Nigeria's folktales and its war, Under the Udala Trees is a deeply searching, powerful debut about the dangers of living and loving openly.\n" +
@@ -83,7 +95,7 @@ val booksRead = setOf(
     ), Books(
         R.drawable.we_are_going_to_need_more_wine,
         "We're Going to Need More Wine",
-        "by Gabrielle Union",
+        authors[7],
         "October 17th 2017",
         "272",
         "A powerful collection of essays about gender, sexuality, race, beauty, Hollywood, and what it means to be a modern woman.\n" +
@@ -95,7 +107,7 @@ val booksRead = setOf(
     ), Books(
         R.drawable.we_need_new_names,
         "We Need New Names",
-        "by NoViolet Bulawayo",
+        authors[8],
         "May 21st 2013",
         "298",
         "An exciting literary debut: the unflinching and powerful story of a young girl's journey out of Zimbabwe and to America.\n" +
@@ -107,7 +119,7 @@ val booksRead = setOf(
     ), Books(
         R.drawable.yesterday_i_cried,
         "Yesterday, I Cried",
-        "by Iyanla Vanzant",
+        authors[9],
         "March 2nd 2000",
         "304",
         "What is the lesson in abuse, neglect, abandonment, rejection? What is the lesson when you lose someone you really love? Just what are the lessons of life's hard times?\n" +
@@ -116,3 +128,4 @@ val booksRead = setOf(
         "SelfHelp / Spirituality"
     )
 )
+
