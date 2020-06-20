@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.florencenjeri.readinglist.model.Books
 
 class BooksAdapter(private val books: Array<Books>) :
@@ -31,7 +32,10 @@ class BooksAdapter(private val books: Array<Books>) :
 
         fun bindPhoto(books: Books) {
             //TODO: Use Glide for book cover  image loading
-
+            Glide.with(itemView)
+                .load(books.image)
+                .centerCrop()
+                .into(bookCover) //8
             bookTitle.text = books.title
             author.text = books.author.name
             publicationDate.text = books.publicationDate
