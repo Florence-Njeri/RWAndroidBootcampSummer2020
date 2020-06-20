@@ -23,7 +23,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/avenir_next_pro"
         android:text="Girl, Wash Your Face"
+        android:textColor="@color/primary_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
@@ -32,7 +36,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/avenir_next_pro"
         android:text="by Rachel Hollis"
+        android:textColor="@color/secondary_text"
         app:layout_constraintEnd_toEndOf="@+id/book_title"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/book_title"
@@ -43,7 +49,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/avenir_next_pro"
         android:text="240 pages"
+        android:textColor="@color/secondary_text"
         app:layout_constraintEnd_toEndOf="@+id/author"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/publication_date"
@@ -54,18 +62,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:fontFamily="@font/avenir_next_pro"
         android:text="February 6th 2018"
+        android:textColor="@color/secondary_text"
         app:layout_constraintEnd_toEndOf="@+id/author"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/author"
         app:layout_constraintTop_toBottomOf="@+id/author" />
 
-    <TextView
+    <Button
         android:id="@+id/genre"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_blue_background"
+        android:fontFamily="@font/avenir_next_pro"
         android:text="Self Help"
+        android:textAllCaps="false"
+        android:textColor="@color/icons"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/num_pages"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/num_pages" />
 </androidx.constraintlayout.widget.ConstraintLayout>
