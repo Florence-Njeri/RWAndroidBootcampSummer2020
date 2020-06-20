@@ -7,13 +7,14 @@
     tools:context=".BooksFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/books_list"
         android:layout_width="409dp"
         android:layout_height="729dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:itemCount="5"
         tools:listitem="@layout/book_list_item" />
 </androidx.constraintlayout.widget.ConstraintLayout>
