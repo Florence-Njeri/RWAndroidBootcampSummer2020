@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="@+id/cover" />
 
     <TextView
-        android:id="@+id/author"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -57,7 +57,7 @@
         android:fontFamily="@font/avenir_next_pro"
         android:text="240 pages"
         android:textColor="@color/secondary_text"
-        app:layout_constraintEnd_toEndOf="@+id/author"
+        app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/publication_date"
         app:layout_constraintTop_toBottomOf="@+id/publication_date" />
@@ -70,10 +70,10 @@
         android:fontFamily="@font/avenir_next_pro"
         android:text="February 6th 2018"
         android:textColor="@color/secondary_text"
-        app:layout_constraintEnd_toEndOf="@+id/author"
+        app:layout_constraintEnd_toEndOf="@+id/name"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/author"
-        app:layout_constraintTop_toBottomOf="@+id/author" />
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <Button
         android:id="@+id/genre"

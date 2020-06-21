@@ -3,26 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/BooksFragment">
 
     <fragment
-        android:id="@+id/FirstFragment"
+        android:id="@+id/BookDetailsFragment"
+        android:name="com.florencenjeri.readinglist.BooksDetailsFragment"
+        android:label="@string/book_details_fragment_label"
+        tools:layout="@layout/books_details_fragment">
+
+
+        <argument
+            android:name="book"
+            app:argType="com.florencenjeri.readinglist.model.Books" />
+    </fragment>
+    <fragment
+        android:id="@+id/BooksFragment"
         android:name="com.florencenjeri.readinglist.BooksFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/books_fragment"
         tools:layout="@layout/books_fragment">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.florencenjeri.readinglist.BooksDetailsFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/books_details_fragment">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_BooksFragment_to_BookDetailsFragment"
+            app:destination="@id/BookDetailsFragment" />
     </fragment>
 </navigation>

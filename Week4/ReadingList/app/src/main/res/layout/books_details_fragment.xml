@@ -36,10 +36,12 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/book_details_content" />
+    <include
+        android:id="@+id/book_details_content"
+        layout="@layout/book_details_content" />
 
     <ImageView
-        android:id="@+id/shareFab"
+        android:id="@+id/bookCover"
         android:layout_width="82dp"
         android:layout_height="112dp"
         android:layout_margin="@dimen/fab_margin"
