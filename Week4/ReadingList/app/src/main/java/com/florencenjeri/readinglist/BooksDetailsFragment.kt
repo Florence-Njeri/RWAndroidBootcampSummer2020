@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.book_details_content.view.*
 import kotlinx.android.synthetic.main.book_list_item.view.book_title
 import kotlinx.android.synthetic.main.book_list_item.view.publication_date
@@ -33,6 +34,7 @@ class BooksDetailsFragment : Fragment() {
             book_details_content.book_title.text = safeArgs.book.title
             book_details_content.publication_date.text = safeArgs.book.publicationDate
             book_details_content.pages.text = safeArgs.book.pages
+            book_details_content.genre.text = safeArgs.book.genre
 
             //Author
             book_details_content.name.text = safeArgs.book.author.name
@@ -40,11 +42,10 @@ class BooksDetailsFragment : Fragment() {
 
             //Synopsis
             book_details_content.synopsis_textview.text = safeArgs.book.synopsis
-
-
-
-
-            Log.d("SafeArgs:", safeArgs.toString())
+            activity?.let{
+                it.toolbar.title = safeArgs.book.title
+            }
         }
+
     }
 }
