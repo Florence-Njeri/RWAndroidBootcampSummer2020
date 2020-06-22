@@ -8,13 +8,17 @@
     <fragment
         android:id="@+id/BookDetailsFragment"
         android:name="com.florencenjeri.readinglist.BooksDetailsFragment"
-        android:label="@string/book_details_fragment_label"
+        android:label="{book.title}"
         tools:layout="@layout/books_details_fragment">
 
 
         <argument
             android:name="book"
             app:argType="com.florencenjeri.readinglist.model.Books" />
+        <action
+            android:id="@+id/action_BookDetailsFragment_to_BooksFragment"
+            app:destination="@id/BooksFragment"
+            app:popUpTo="@id/BooksFragment" />
     </fragment>
     <fragment
         android:id="@+id/BooksFragment"

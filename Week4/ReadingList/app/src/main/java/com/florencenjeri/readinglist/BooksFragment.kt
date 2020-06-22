@@ -27,7 +27,8 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         super.onViewCreated(view, savedInstanceState)
         val bookRecyclerView = view.findViewById<RecyclerView>(R.id.books_list)
         bookRecyclerView.adapter = BooksAdapter(booksList.toTypedArray(), this)
-
+        postponeEnterTransition()
+        startPostponedEnterTransition()
     }
 
     override fun listItemClicked(books: Books) {

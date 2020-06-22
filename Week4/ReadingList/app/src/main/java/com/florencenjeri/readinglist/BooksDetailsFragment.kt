@@ -1,12 +1,11 @@
 package com.florencenjeri.readinglist
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.fragment.app.Fragment
+import androidx.transition.TransitionInflater
 import kotlinx.android.synthetic.main.book_details_content.view.*
 import kotlinx.android.synthetic.main.book_list_item.view.book_title
 import kotlinx.android.synthetic.main.book_list_item.view.publication_date
@@ -27,6 +26,7 @@ class BooksDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setCardTransitionOnEnter()
         arguments?.let {
             val safeArgs = BooksDetailsFragmentArgs.fromBundle(it)
             itemImageView.setImageResource(safeArgs.book.image)
@@ -42,10 +42,13 @@ class BooksDetailsFragment : Fragment() {
 
             //Synopsis
             book_details_content.synopsis_textview.text = safeArgs.book.synopsis
-            activity?.let{
-                it.toolbar.title = safeArgs.book.title
-            }
+
         }
 
+    }
+
+    private fun setCardTransitionOnEnter() {
+        sharedElementEnterTransition = TransitionInflater.from(context)
+            .inflateTransition(R.transition.card_transition)
     }
 }
