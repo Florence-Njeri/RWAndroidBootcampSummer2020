@@ -7,7 +7,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="154dp"
+        android:layout_height="@dimen/app_bar_height"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -40,9 +40,8 @@
 
     <ImageView
         android:id="@+id/bookCover"
-        android:layout_width="82dp"
-        android:layout_height="112dp"
-        android:layout_margin="@dimen/fab_margin"
+        android:layout_width="@dimen/small_image_width"
+        android:layout_height="@dimen/small_image_height"
         android:src="@drawable/girl_wash_your_face"
         app:layout_anchor="@+id/appBar"
         app:layout_anchorGravity="bottom|left" />

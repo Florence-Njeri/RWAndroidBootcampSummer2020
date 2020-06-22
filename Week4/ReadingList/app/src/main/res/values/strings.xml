@@ -8,4 +8,14 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="book_title">Half of a yellow Sun</string>
+    <string name="text_nationality">American</string>
+    <string name="text_pub_date">22 Nov 2018</string>
+    <string name="author">Author:</string>
+    <string name="text_author">Rachel Hollis</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="text_synopsis">TextView</string>
+    <string name="text_pages">240</string>
+    <string name="text_genre">Self Help</string>
+    <string name="nationality">Nationality:</string>
 </resources>

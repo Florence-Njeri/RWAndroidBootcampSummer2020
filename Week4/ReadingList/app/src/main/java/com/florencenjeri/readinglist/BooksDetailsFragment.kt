@@ -48,9 +48,6 @@ class BooksDetailsFragment : Fragment() {
 
         }
         activity?.toolbar?.title = book_title.text
-
-        Log.i("Title:", "${book_title.text}")
-
     }
 
     private fun setCardTransitionOnEnter() {
