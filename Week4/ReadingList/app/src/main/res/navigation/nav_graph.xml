@@ -8,6 +8,7 @@
     <fragment
         android:id="@+id/BookDetailsFragment"
         android:name="com.florencenjeri.readinglist.BooksDetailsFragment"
+        android:label="@string/book_details_fragment_label"
         tools:layout="@layout/books_details_fragment">
 
 

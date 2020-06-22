@@ -1,12 +1,15 @@
 package com.florencenjeri.readinglist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.transition.TransitionInflater
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.book_details_content.view.*
+import kotlinx.android.synthetic.main.book_list_item.*
 import kotlinx.android.synthetic.main.book_list_item.view.book_title
 import kotlinx.android.synthetic.main.book_list_item.view.publication_date
 import kotlinx.android.synthetic.main.books_details_fragment.*
@@ -44,6 +47,9 @@ class BooksDetailsFragment : Fragment() {
             book_details_content.synopsis_textview.text = safeArgs.book.synopsis
 
         }
+        activity?.toolbar?.title = book_title.text
+
+        Log.i("Title:", "${book_title.text}")
 
     }
 

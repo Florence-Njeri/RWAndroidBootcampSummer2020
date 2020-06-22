@@ -9,6 +9,7 @@ import android.view.MenuItem
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.books_details_fragment.*
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +28,12 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         NavigationUI.setupActionBarWithNavController(this,navController)
+
+        // setting title according to fragment
+        navController.addOnDestinationChangedListener {
+                controller, destination, arguments ->
+            toolbar.title = navController.currentDestination?.label
+        }
 
     }
 
