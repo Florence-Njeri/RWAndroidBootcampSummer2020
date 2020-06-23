@@ -16,7 +16,7 @@
                 android:checkableBehavior="single">
                 <item
                     android:id="@+id/action_fiction"
-                    android:checked="true"
+                    android:checked="false"
                     android:title="@string/fiction" />
                 <item
                     android:id="@+id/action_self_help"
