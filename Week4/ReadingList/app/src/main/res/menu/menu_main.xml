@@ -3,8 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.florencenjeri.readinglist.MainActivity">
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/action_sort"
+        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:title="@string/sort"
+        app:showAsAction="ifRoom">
+
+        <!--    Genre submenu-->
+
+        <menu>
+            <group
+                android:id="@+id/menu_sort_group"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/action_fiction"
+                    android:checked="true"
+                    android:title="@string/fiction" />
+                <item
+                    android:id="@+id/action_self_help"
+
+                    android:title="@string/self_help" />
+            </group>
+        </menu>
+    </item>
+
 </menu>

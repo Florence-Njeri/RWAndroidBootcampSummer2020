@@ -15,6 +15,7 @@ import com.florencenjeri.readinglist.model.BooksData
  */
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     val booksList = BooksData.booksRead
+    lateinit var booksRecyclerView: RecyclerView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,10 +26,17 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bookRecyclerView = view.findViewById<RecyclerView>(R.id.books_list)
-        bookRecyclerView.adapter = BooksAdapter(booksList.toTypedArray(), this)
+        booksRecyclerView = view.findViewById(R.id.books_list)
+        booksRecyclerView.adapter = BooksAdapter(booksList.toTypedArray(), this)
         postponeEnterTransition()
         startPostponedEnterTransition()
+    }
+
+    fun sortList(genre: String) {
+        val filteredList = booksList.filter { it.genre == genre }
+        booksRecyclerView.adapter = BooksAdapter(filteredList.toTypedArray(), this)
+
+
     }
 
     override fun listItemClicked(books: Books) {

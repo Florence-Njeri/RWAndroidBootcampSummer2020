@@ -18,4 +18,7 @@
     <string name="text_pages">240</string>
     <string name="text_genre">Self Help</string>
     <string name="nationality">Nationality:</string>
+    <string name="sort">Sort</string>
+    <string name="fiction">Fiction</string>
+    <string name="self_help">Self Help</string>
 </resources>
