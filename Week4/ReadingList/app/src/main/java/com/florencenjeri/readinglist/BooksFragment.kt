@@ -47,11 +47,6 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_main, menu)
 
-//        if (BooksFilter.FICTION) {
-//            menu.findItem(R.id.action_fiction).isChecked = true
-//        } else {
-//            menu.findItem(R.id.action_self_help).isChecked = true
-//        }
 
     }
 
