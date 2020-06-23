@@ -4,7 +4,7 @@
     tools:context="com.florencenjeri.readinglist.MainActivity">
     <item
         android:id="@+id/action_sort"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
+        android:icon="@drawable/ic__sort"
         android:title="@string/sort"
         app:showAsAction="ifRoom">
 
@@ -20,7 +20,6 @@
                     android:title="@string/fiction" />
                 <item
                     android:id="@+id/action_self_help"
-
                     android:title="@string/self_help" />
             </group>
         </menu>
