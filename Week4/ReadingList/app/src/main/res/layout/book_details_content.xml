@@ -165,7 +165,7 @@
             android:fontFamily="@font/avenir_next_pro"
             android:text="@string/text_genre"
             android:textAllCaps="false"
-            android:textColor="@color/icons"
+            android:textColor="@color/white"
             android:textSize="@dimen/button_text"
             app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"

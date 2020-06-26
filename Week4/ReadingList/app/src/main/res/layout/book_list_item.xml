@@ -86,7 +86,7 @@
         android:paddingRight="@dimen/margin"
         android:paddingLeft="@dimen/margin"
         android:textAllCaps="false"
-        android:textColor="@color/icons"
+        android:textColor="@color/white"
         android:textSize="@dimen/button_text"
         app:layout_constraintBottom_toBottomOf="@+id/num_pages"
         app:layout_constraintEnd_toEndOf="parent"

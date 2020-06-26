@@ -21,4 +21,6 @@
     <string name="sort">Sort</string>
     <string name="fiction">Fiction</string>
     <string name="self_help">Self Help</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
