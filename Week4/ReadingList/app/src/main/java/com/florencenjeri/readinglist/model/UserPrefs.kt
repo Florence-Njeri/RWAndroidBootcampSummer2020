@@ -10,11 +10,15 @@ object UserPrefs {
     private fun sharedPrefs() =
         PreferenceManager.getDefaultSharedPreferences(ReadingListApplication.getAppContext())
 
-    fun userIsLoggedIn(email: String, password: String) {
+    fun logInUser(email: String, password: String) {
         val editor = sharedPrefs().edit()
         editor.putString(EMAIL, email)
         editor.putString(PASSWORD, password)
     }
 
-    fun getUserCredentials(): String = sharedPrefs().getString(EMAIL, "flonjeri@mail.com")!!
+    fun isUserLoggedIn(): Boolean {
+        val email = sharedPrefs().getString(EMAIL, "flonjeri@mail.com")
+        val password = sharedPrefs().getString(PASSWORD, "flonjeri")
+        return email.isNullOrBlank() || password.isNullOrBlank()
+    }
 }
