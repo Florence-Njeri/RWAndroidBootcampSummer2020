@@ -18,13 +18,13 @@
         <ImageView
             android:id="@+id/image_name"
             style="@style/ImageStyle"
-            android:contentDescription="Email Icon"
+            android:contentDescription="@string/email_icon"
             app:srcCompat="@drawable/ic_email" />
 
         <EditText
             android:id="@+id/editTextEmail"
             style="@style/EditText"
-            android:hint="Email"
+            android:hint="@string/email"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
             app:errorEnabled="true" />
@@ -37,13 +37,13 @@
         <ImageView
             android:id="@+id/password_icon"
             style="@style/ImageStyle"
-            android:contentDescription="Email Icon"
-            app:srcCompat="@drawable/ic_email" />
+            android:contentDescription="@string/password_icon"
+            app:srcCompat="@drawable/ic_password" />
 
         <EditText
             android:id="@+id/editTextPassword"
             style="@style/EditText"
-            android:hint="Email"
+            android:hint="@string/password"
             android:imeOptions="actionNext"
             android:inputType="textPassword"
             app:errorEnabled="true" />

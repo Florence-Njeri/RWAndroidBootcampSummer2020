@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.florencenjeri.readinglist.model.Books
 import com.florencenjeri.readinglist.model.BooksData
+import com.florencenjeri.readinglist.model.UserPrefs
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -25,6 +26,13 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //Check if the user is logged in
+        if (!UserPrefs.isUserLoggedIn()) {
+            findNavController().navigate(BooksFragmentDirections.actionBooksFragmentToLogInFragment())
+        }
+
+
         booksRecyclerView = view.findViewById(R.id.books_list)
         booksRecyclerView.adapter = BooksAdapter(booksList.toTypedArray(), this)
         postponeEnterTransition()
