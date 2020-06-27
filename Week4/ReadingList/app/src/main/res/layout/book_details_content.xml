@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/book_title"
+            android:id="@+id/bookTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
@@ -48,16 +48,16 @@
             app:layout_constraintTop_toTopOf="@+id/textView" />
 
         <TextView
-            android:id="@+id/publication_date"
+            android:id="@+id/publicationDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
             android:fontFamily="@font/avenir_next_pro"
             android:text="@string/text_pub_date"
-            app:layout_constraintEnd_toEndOf="@+id/book_title"
+            app:layout_constraintEnd_toEndOf="@+id/bookTitle"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/book_title"
-            app:layout_constraintTop_toBottomOf="@+id/book_title" />
+            app:layout_constraintStart_toStartOf="@+id/bookTitle"
+            app:layout_constraintTop_toBottomOf="@+id/bookTitle" />
 
         <TextView
             android:id="@+id/author_section"
@@ -72,7 +72,7 @@
             app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/avenir_next_pro"
@@ -97,7 +97,7 @@
             app:layout_constraintTop_toBottomOf="@+id/authorDivider" />
 
         <TextView
-            android:id="@+id/synopsis_textview"
+            android:id="@+id/synopsis"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
@@ -147,10 +147,10 @@
             android:layout_marginTop="@dimen/margin"
             android:fontFamily="@font/avenir_next_pro"
             android:text="@string/text_pages"
-            app:layout_constraintEnd_toEndOf="@+id/publication_date"
+            app:layout_constraintEnd_toEndOf="@+id/publicationDate"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/publication_date"
-            app:layout_constraintTop_toBottomOf="@+id/publication_date" />
+            app:layout_constraintStart_toStartOf="@+id/publicationDate"
+            app:layout_constraintTop_toBottomOf="@+id/publicationDate" />
 
         <Button
             android:id="@+id/genre"

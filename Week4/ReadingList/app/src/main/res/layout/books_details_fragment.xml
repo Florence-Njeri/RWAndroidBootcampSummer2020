@@ -35,7 +35,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
-        android:id="@+id/book_details_content"
+        android:id="@+id/bookDetailsContent"
         layout="@layout/book_details_content" />
 
     <ImageView
