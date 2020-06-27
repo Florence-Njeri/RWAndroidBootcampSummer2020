@@ -7,11 +7,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.florencenjeri.readinglist.model.Books
 import com.florencenjeri.readinglist.model.BooksData
-import com.florencenjeri.readinglist.model.UserPrefs
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     val booksList = BooksData.booksRead
     lateinit var booksRecyclerView: RecyclerView
@@ -19,7 +15,7 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        setHasOptionsMenu(true)
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.books_fragment, container, false)
     }
@@ -27,22 +23,15 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Check if the user is logged in
-        if (!UserPrefs.isUserLoggedIn()) {
-            findNavController().navigate(BooksFragmentDirections.actionBooksFragmentToLogInFragment())
-        }
-
-
         booksRecyclerView = view.findViewById(R.id.books_list)
         booksRecyclerView.adapter = BooksAdapter(booksList.toTypedArray(), this)
         postponeEnterTransition()
         startPostponedEnterTransition()
     }
 
-    fun sortList(genre: String) {
+    private fun sortList(genre: String) {
         val filteredList = booksList.filter { it.genre == genre }
         booksRecyclerView.adapter = BooksAdapter(filteredList.toTypedArray(), this)
-
 
     }
 

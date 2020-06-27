@@ -14,11 +14,16 @@ object UserPrefs {
         val editor = sharedPrefs().edit()
         editor.putString(EMAIL, email)
         editor.putString(PASSWORD, password)
+        editor.apply()
     }
 
     fun isUserLoggedIn(): Boolean {
-        val email = sharedPrefs().getString(EMAIL, "flonjeri@mail.com")
-        val password = sharedPrefs().getString(PASSWORD, "flonjeri")
-        return email.isNullOrBlank() || password.isNullOrBlank()
+        var isLoggedIn = false
+        val email = sharedPrefs().getString(EMAIL, "")
+        val password = sharedPrefs().getString(PASSWORD, "")
+        if (!email.isNullOrBlank() && !password.isNullOrBlank()) {
+            isLoggedIn = true
+        }
+        return isLoggedIn
     }
 }

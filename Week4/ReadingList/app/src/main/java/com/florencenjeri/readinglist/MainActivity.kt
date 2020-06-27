@@ -1,16 +1,10 @@
 package com.florencenjeri.readinglist
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.books_details_fragment.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         NavigationUI.setupActionBarWithNavController(this, navController)
+        //Check if the user is logged in
+
 
     }
 
