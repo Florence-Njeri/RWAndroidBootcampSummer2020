@@ -1,3 +1,15 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="app_bar_height">154dp</dimen>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+    <dimen name="corner_radius">4dp</dimen>
+    <dimen name="button_text">12sp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="synopsis_line_spacing">10dp</dimen>
+    <dimen name="button_height">32dp</dimen>
+    <dimen name="book_cover_width">112dp</dimen>
+    <dimen name="book_cover_height">152dp</dimen>
+    <dimen name="small_image_width">82dp</dimen>
+    <dimen name="small_image_height">112dp</dimen>
 </resources>

@@ -2,11 +2,23 @@
     <string name="app_name">Reading List</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="book_details_fragment_label">Book Details Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="book_title">Half of a yellow Sun</string>
+    <string name="text_nationality">American</string>
+    <string name="text_pub_date">22 Nov 2018</string>
+    <string name="author">Author:</string>
+    <string name="text_author">Rachel Hollis</string>
+    <string name="synopsis">Synopsis</string>
+    <string name="text_synopsis">TextView</string>
+    <string name="text_pages">240</string>
+    <string name="text_genre">Self Help</string>
+    <string name="nationality">Nationality:</string>
+    <string name="sort">Sort</string>
+    <string name="fiction">Fiction</string>
+    <string name="self_help">Self Help</string>
 </resources>
