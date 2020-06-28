@@ -4,6 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+/**
+ * Entity to be mapped into the reading_list table
+ */
 @Entity(tableName = "reading_list")
 data class BookEntity(
     @PrimaryKey(autoGenerate = true)
