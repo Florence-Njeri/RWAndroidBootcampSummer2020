@@ -50,10 +50,10 @@ class LogInFragment : Fragment() {
             editTextPassword.requestFocus()
             editTextPassword.error = "Password Required!"
         }
-        if (android.util.Patterns.EMAIL_ADDRESS.matcher(editTextEmail.text.toString().trim())
+        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(editTextEmail.text.toString().trim())
                 .matches()
         ) {
-            isValid = true
+            isValid = false
             editTextEmail.requestFocus()
             editTextEmail.error = "Enter a valid email!"
         }
