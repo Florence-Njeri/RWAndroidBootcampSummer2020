@@ -3,42 +3,42 @@ package com.florencenjeri.readinglist
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.model.Books
-import com.florencenjeri.readinglist.model.BooksDao
-import com.florencenjeri.readinglist.model.BooksData
-import com.florencenjeri.readinglist.model.BooksDatabase
+import com.florencenjeri.readinglist.model.database.BooksDao
+import com.florencenjeri.readinglist.model.database.BooksDatabase
 import kotlinx.android.synthetic.main.books_fragment.view.*
 
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     //    val booksList = BooksData.booksRead
     private lateinit var database: BooksDatabase
     private lateinit var booksDao: BooksDao
+    private lateinit var booksViewModel: BooksViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        booksViewModel = ViewModelProvider(this).get(BooksViewModel::class.java)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.books_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // Set up our database
-        database = ReadingListApplication.database!!
-        booksDao = database.booksDao()
-        if (booksDao.getAll().isEmpty()) {
-            booksDao.putAll(BooksData.booksRead.toTypedArray())
-        }
 
-        view.booksList.adapter = BooksAdapter(booksDao.getAll().toTypedArray(), this)
+        booksViewModel.getReadBooks().observe(viewLifecycleOwner, Observer {
+            view.booksList.adapter = BooksAdapter(it, this)
+        })
+
         postponeEnterTransition()
         startPostponedEnterTransition()
     }
 
     private fun sortList(genre: String) {
-        val filteredList = booksDao.getAll().filter { it.genre == genre }
-        view?.booksList?.adapter = BooksAdapter(filteredList.toTypedArray(), this)
+//        val filteredList = booksDao.getAll().filter { it.genre == genre }genre
+//        view?.booksList?.adapter = BooksAdapter(filteredList.toTypedArray(), this)
     }
 
     override fun listItemClicked(books: Books) {

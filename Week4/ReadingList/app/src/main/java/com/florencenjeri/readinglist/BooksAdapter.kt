@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.florencenjeri.readinglist.model.Books
 
 class BooksAdapter(
-    private val books: Array<Books>,
+    private val books: List<Books>,
     private val clickListener: BooksListClickListener
 ) :
     RecyclerView.Adapter<BooksViewHolder>() {

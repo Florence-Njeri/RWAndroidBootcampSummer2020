@@ -3,7 +3,9 @@ package com.florencenjeri.readinglist
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
-import com.florencenjeri.readinglist.model.BooksDatabase
+import com.florencenjeri.readinglist.model.database.BooksDatabase
+import com.florencenjeri.readinglist.model.database.BooksDatabaseCallback
+import kotlinx.coroutines.GlobalScope
 
 class ReadingListApplication : Application() {
 
@@ -18,8 +20,11 @@ class ReadingListApplication : Application() {
 
     override fun onCreate() {
         instance = this
+
         database =
-            Room.databaseBuilder(this, BooksDatabase::class.java, "reading-list-db").build()
+            Room.databaseBuilder(this, BooksDatabase::class.java, "reading-list-db")
+                .addCallback(BooksDatabaseCallback(GlobalScope))
+                .build()
 
         super.onCreate()
     }
