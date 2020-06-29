@@ -10,9 +10,9 @@ import androidx.room.Query
 @Dao
 interface BooksDao {
     @Query("SELECT * FROM reading_list")
-    fun getAll(): List<BookEntity>
+    fun getAll(): List<Books>
 
     @Insert
-    fun putAll(vararg bookList: BookEntity)
+    fun putAll(vararg bookList: Books)
 
 }
