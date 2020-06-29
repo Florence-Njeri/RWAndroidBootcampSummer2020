@@ -7,14 +7,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.model.Books
-import com.florencenjeri.readinglist.model.database.BooksDao
-import com.florencenjeri.readinglist.model.database.BooksDatabase
 import kotlinx.android.synthetic.main.books_fragment.view.*
 
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
-    //    val booksList = BooksData.booksRead
-    private lateinit var database: BooksDatabase
-    private lateinit var booksDao: BooksDao
+
     private lateinit var booksViewModel: BooksViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,4 +62,5 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
             else -> sortList("Self Help")
         }
     }
+
 }
