@@ -17,6 +17,7 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         booksViewModel = ViewModelProvider(this).get(BooksViewModel::class.java)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.books_fragment, container, false)
@@ -55,8 +56,10 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
             sortBooksById(item.itemId)
             item.isChecked = true
         } else if (item.itemId == R.id.action_logout) {
-            //Log out
+            //Log out and navigate to LogInFragment
             UserPrefs.logOut()
+            val action = BooksFragmentDirections.actionBooksFragmentToLogInFragment()
+            findNavController().navigate(action)
         }
         return super.onOptionsItemSelected(item)
     }
