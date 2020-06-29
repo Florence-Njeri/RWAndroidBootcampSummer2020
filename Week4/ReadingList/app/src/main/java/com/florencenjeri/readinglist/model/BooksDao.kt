@@ -13,6 +13,6 @@ interface BooksDao {
     fun getAll(): List<Books>
 
     @Insert
-    fun putAll(vararg bookList: Books)
+    fun putAll(bookList: Array<Books>)
 
 }

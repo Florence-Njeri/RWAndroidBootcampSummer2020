@@ -5,10 +5,7 @@ import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.florencenjeri.readinglist.model.Author
-import com.florencenjeri.readinglist.model.Books
-import com.florencenjeri.readinglist.model.BooksDao
-import com.florencenjeri.readinglist.model.BooksDatabase
+import com.florencenjeri.readinglist.model.*
 import org.junit.*
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
@@ -51,15 +48,15 @@ class BooksDaoTest {
                     "But Darling has a chance to escape: she has an aunt in America. She travels to this new land in search of America's famous abundance only to find that her options as an immigrant are perilously few. NoViolet Bulawayo's debut calls to mind the great storytellers of displacement and arrival who have come before her--from Junot Diaz to Zadie Smith to J.M. Coetzee--while she tells a vivid, raw story all her own.",
             "Fiction"
         )
-        booksDao.putAll(books)
+        booksDao.putAll(BooksData.booksRead.toTypedArray())
 
         val retrievedBooks = booksDao.getAll()
 
         val sizeDiff = retrievedBooks.size - initialRetrievedBooks.size
 
-        Assert.assertEquals(1, sizeDiff)
+        Assert.assertEquals(10, sizeDiff)
         val getbooks = retrievedBooks.last()
-        Assert.assertEquals("298", getbooks.pages)
+        Assert.assertEquals("304", getbooks.pages)
     }
 
     @After

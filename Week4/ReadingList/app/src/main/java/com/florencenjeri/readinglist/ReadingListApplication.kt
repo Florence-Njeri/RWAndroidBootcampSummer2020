@@ -20,6 +20,7 @@ class ReadingListApplication : Application() {
         instance = this
         database =
             Room.databaseBuilder(this, BooksDatabase::class.java, "reading-list-db").build()
+
         super.onCreate()
     }
 }

@@ -5,11 +5,15 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.model.Books
+import com.florencenjeri.readinglist.model.BooksDao
 import com.florencenjeri.readinglist.model.BooksData
+import com.florencenjeri.readinglist.model.BooksDatabase
 import kotlinx.android.synthetic.main.books_fragment.view.*
 
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
-    val booksList = BooksData.booksRead
+    //    val booksList = BooksData.booksRead
+    private lateinit var database: BooksDatabase
+    private lateinit var booksDao: BooksDao
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,13 +24,20 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.booksList.adapter = BooksAdapter(booksList.toTypedArray(), this)
+        // Set up our database
+        database = ReadingListApplication.database!!
+        booksDao = database.booksDao()
+        if (booksDao.getAll().isEmpty()) {
+            booksDao.putAll(BooksData.booksRead.toTypedArray())
+        }
+
+        view.booksList.adapter = BooksAdapter(booksDao.getAll().toTypedArray(), this)
         postponeEnterTransition()
         startPostponedEnterTransition()
     }
 
     private fun sortList(genre: String) {
-        val filteredList = booksList.filter { it.genre == genre }
+        val filteredList = booksDao.getAll().filter { it.genre == genre }
         view?.booksList?.adapter = BooksAdapter(filteredList.toTypedArray(), this)
     }
 
