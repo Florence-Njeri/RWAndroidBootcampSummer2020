@@ -24,5 +24,10 @@
             </group>
         </menu>
     </item>
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@drawable/ic_log_out"
+        android:title="@string/log_out"
+        app:showAsAction="ifRoom" />
 
 </menu>

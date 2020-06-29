@@ -7,10 +7,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.model.Books
+import com.florencenjeri.readinglist.model.UserPrefs
 import kotlinx.android.synthetic.main.books_fragment.view.*
 
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
-
+    private lateinit var booksList: List<Books>
     private lateinit var booksViewModel: BooksViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +27,7 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
         booksViewModel.getReadBooks().observe(viewLifecycleOwner, Observer {
             view.booksList.adapter = BooksAdapter(it, this)
+            booksList = it
         })
 
         postponeEnterTransition()
@@ -33,8 +35,8 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     }
 
     private fun sortList(genre: String) {
-//        val filteredList = booksDao.getAll().filter { it.genre == genre }genre
-//        view?.booksList?.adapter = BooksAdapter(filteredList.toTypedArray(), this)
+        val filteredList = booksList.filter { it.genre == genre }
+        view?.booksList?.adapter = BooksAdapter(filteredList.toList(), this)
     }
 
     override fun listItemClicked(books: Books) {
@@ -52,6 +54,9 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         if (item.groupId == R.id.menu_sort_group) {
             sortBooksById(item.itemId)
             item.isChecked = true
+        } else if (item.itemId == R.id.action_logout) {
+            //Log out
+            UserPrefs.logOut()
         }
         return super.onOptionsItemSelected(item)
     }

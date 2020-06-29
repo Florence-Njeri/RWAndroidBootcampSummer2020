@@ -26,4 +26,8 @@ object UserPrefs {
         }
         return isLoggedIn
     }
+
+    fun logOut() {
+        sharedPrefs().edit().clear().apply()
+    }
 }
