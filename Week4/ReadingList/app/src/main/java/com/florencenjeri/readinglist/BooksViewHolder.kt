@@ -17,7 +17,7 @@ class BooksViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private var genre: TextView = view.genre
     private var bookCover: ImageView = view.cover
 
-    fun bindPhoto(books: Books) {
+    fun setBookData(books: Books) {
         Glide.with(itemView)
             .load(books.image)
             .centerCrop()

@@ -44,7 +44,7 @@
             android:id="@+id/editTextPassword"
             style="@style/EditText"
             android:hint="@string/password"
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
             android:inputType="textPassword"
             app:errorEnabled="true" />
 

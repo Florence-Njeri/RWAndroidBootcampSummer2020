@@ -16,20 +16,20 @@ class LogInFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        setHasOptionsMenu(false)
-        //Check if the user is logged in
-        if (UserPrefs.isUserLoggedIn()) {
-            findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
-        }
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_log_in, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setHasOptionsMenu(false)
+        //Check if the user is logged in
+        if (UserPrefs.isUserLoggedIn()) {
+            findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
+        }
         buttonLogIn.setOnClickListener {
-            if (isValidated()) {
+            if (validateData()) {
                 UserPrefs.logInUser(editTextEmail.text.toString(), editTextPassword.text.toString())
                 findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
             }
@@ -37,8 +37,7 @@ class LogInFragment : Fragment() {
         }
     }
 
-    fun isValidated(): Boolean {
-
+    private fun validateData(): Boolean {
         var isValid = true
         if (TextUtils.isEmpty(editTextEmail.text.toString())) {
             isValid = false

@@ -31,8 +31,6 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
             booksList = it
         })
 
-        postponeEnterTransition()
-        startPostponedEnterTransition()
     }
 
     private fun sortList(genre: String) {

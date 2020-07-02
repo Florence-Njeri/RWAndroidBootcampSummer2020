@@ -27,7 +27,7 @@ class BooksAdapter(
     override fun onBindViewHolder(holder: BooksViewHolder, position: Int) {
         //Show the right view depending on the users position in scrolling
         val itemBook = books[position]
-        holder.bindPhoto(itemBook)
+        holder.setBookData(itemBook)
         holder.itemView.setOnClickListener {
             clickListener.listItemClicked(itemBook)
         }
