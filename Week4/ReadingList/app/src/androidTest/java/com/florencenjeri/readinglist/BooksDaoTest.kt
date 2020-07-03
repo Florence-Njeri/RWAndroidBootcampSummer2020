@@ -8,6 +8,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.florencenjeri.readinglist.model.BooksData
 import com.florencenjeri.readinglist.model.database.BooksDao
 import com.florencenjeri.readinglist.model.database.BooksDatabase
+import kotlinx.coroutines.runBlocking
 import org.junit.*
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
@@ -34,7 +35,7 @@ class BooksDaoTest {
     }
 
     @Test
-    fun testInsertingAndRetrievingFromDb() {
+    fun testInsertingAndRetrievingFromDb() = runBlocking {
 
         booksDao.putAll(BooksData.booksRead.toList())
 
