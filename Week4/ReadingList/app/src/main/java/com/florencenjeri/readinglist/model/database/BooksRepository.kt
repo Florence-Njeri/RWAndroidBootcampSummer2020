@@ -11,4 +11,8 @@ class BooksRepository(val booksDao: BooksDao) {
     fun getBook(id: Long): LiveData<Books> {
         return booksDao.getBook(id)
     }
+
+    suspend fun deleteBook(book: Books) {
+        return booksDao.deleteBook(book)
+    }
 }

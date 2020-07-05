@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.florencenjeri.readinglist.model.Books
 import com.florencenjeri.readinglist.model.database.BooksDatabase
 import com.florencenjeri.readinglist.model.database.BooksRepository
+import kotlinx.coroutines.launch
 
 /**Communicates between the repository and the UI*/
 class BooksViewModel : ViewModel() {
@@ -24,6 +25,10 @@ class BooksViewModel : ViewModel() {
 
     fun getBook(bookId: Long): LiveData<Books> {
         return booksRepository.getBook(bookId)
+    }
+
+    fun deleteBook(book: Books) = viewModelScope.launch {
+        booksRepository.deleteBook(book)
     }
 
 }
