@@ -19,4 +19,6 @@ interface BooksDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun putAll(bookList: List<Books>)
 
+    @Query("SELECT * FROM reading_list WHERE bookId = :id")
+    fun getBook(id: Long): LiveData<Books>
 }

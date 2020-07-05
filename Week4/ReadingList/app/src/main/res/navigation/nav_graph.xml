@@ -12,13 +12,13 @@
         tools:layout="@layout/books_details_fragment">
 
 
-        <argument
-            android:name="book"
-            app:argType="com.florencenjeri.readinglist.model.Books" />
         <action
             android:id="@+id/action_BookDetailsFragment_to_BooksFragment"
             app:destination="@id/BooksFragment"
             app:popUpTo="@id/BooksFragment" />
+        <argument
+            android:name="bookId"
+            app:argType="long" />
     </fragment>
     <fragment
         android:id="@+id/BooksFragment"

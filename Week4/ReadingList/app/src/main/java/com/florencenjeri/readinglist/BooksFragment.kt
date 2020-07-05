@@ -17,15 +17,14 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        setHasOptionsMenu(true)
-        booksViewModel = ViewModelProvider(this).get(BooksViewModel::class.java)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.books_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setHasOptionsMenu(true)
+        booksViewModel = ViewModelProvider(this).get(BooksViewModel::class.java)
         booksViewModel.getReadBooks().observe(viewLifecycleOwner, Observer {
             view.booksList.adapter = BooksAdapter(it, this)
             booksList = it
@@ -39,7 +38,7 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     }
 
     override fun listItemClicked(books: Books) {
-        val action = BooksFragmentDirections.actionBooksFragmentToBookDetailsFragment(books)
+        val action = BooksFragmentDirections.actionBooksFragmentToBookDetailsFragment(books.bookId)
         findNavController().navigate(action)
     }
 

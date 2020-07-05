@@ -5,14 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.transition.TransitionInflater
+import com.florencenjeri.readinglist.model.Books
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.book_details_content.view.*
 import kotlinx.android.synthetic.main.book_list_item.*
 import kotlinx.android.synthetic.main.books_details_fragment.*
 
 class BooksDetailsFragment : Fragment() {
-
+    private lateinit var booksViewModel: BooksViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,25 +26,38 @@ class BooksDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setCardTransitionOnEnter()
+        booksViewModel = ViewModelProvider(this).get(BooksViewModel::class.java)
+
+
         arguments?.let {
             val safeArgs = BooksDetailsFragmentArgs.fromBundle(it)
-            itemImageView.setImageResource(safeArgs.book.image)
-            bookCover.setImageResource(safeArgs.book.image)
-            bookDetailsContent.bookTitle.text = safeArgs.book.title
-            bookDetailsContent.publicationDate.text = safeArgs.book.publicationDate
-            bookDetailsContent.pages.text = safeArgs.book.pages
-            bookDetailsContent.genre.text = safeArgs.book.genre
+            booksViewModel.getBook(safeArgs.bookId).observe(viewLifecycleOwner, Observer { book ->
 
-            //Author
-            bookDetailsContent.author.text = safeArgs.book.author.name
-            bookDetailsContent.nationality.text = safeArgs.book.author.nationality
-
-            //Synopsis
-            bookDetailsContent.synopsis.text = safeArgs.book.synopsis
+                displayBookDetails(book)
+            })
 
         }
         activity?.toolbar?.title = bookTitle.text
+    }
+
+    private fun displayBookDetails(book: Books) {
+        itemImageView.setImageResource(book.image)
+        bookCover.setImageResource(book.image)
+        bookDetailsContent.bookTitle.text = book.title
+        bookDetailsContent.publicationDate.text = book.publicationDate
+        bookDetailsContent.pages.text = book.pages
+        bookDetailsContent.genre.text = book.genre
+
+        //Author
+        bookDetailsContent.author.text = book.author.name
+        bookDetailsContent.nationality.text = book.author.nationality
+
+        //Synopsis
+        bookDetailsContent.synopsis.text = book.synopsis
+    }
+
+    private fun displayBookDetails() {
+
     }
 
     private fun setCardTransitionOnEnter() {

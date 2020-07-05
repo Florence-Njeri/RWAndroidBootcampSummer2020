@@ -19,7 +19,11 @@ class BooksViewModel : ViewModel() {
     }
 
     fun getReadBooks(): LiveData<List<Books>> {
-        return booksRepository.getAllPlayers()
+        return booksRepository.getAllBooks()
+    }
+
+    fun getBook(bookId: Long): LiveData<Books> {
+        return booksRepository.getBook(bookId)
     }
 
 }
