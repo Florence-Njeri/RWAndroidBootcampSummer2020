@@ -24,7 +24,7 @@ abstract class BooksDatabase : RoomDatabase() {
 
         fun getDatabase(
             context: Context,
-            viewModelScope: CoroutineScope
+            scope: CoroutineScope
         ): BooksDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
@@ -35,7 +35,9 @@ abstract class BooksDatabase : RoomDatabase() {
                     context.applicationContext,
                     BooksDatabase::class.java,
                     BOOK_DB
-                ).build()
+
+                ).addCallback(BooksDatabaseCallback(scope))
+                    .build()
                 INSTANCE = instance
                 return instance
             }
@@ -43,6 +45,8 @@ abstract class BooksDatabase : RoomDatabase() {
 
         const val BOOK_DB = "reading-list-db"
     }
+
+    /**  insert the books data while the database is being created.*/
 
     class BooksDatabaseCallback(
         private val scope: CoroutineScope

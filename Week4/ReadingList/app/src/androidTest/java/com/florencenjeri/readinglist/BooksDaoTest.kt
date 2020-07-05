@@ -33,7 +33,7 @@ class BooksDaoTest {
         }
         booksDao = database.booksDao()
     }
-
+/** runBlocking will block the current thread until the coroutine finishes executing */
     @Test
     fun testInsertingAndRetrievingFromDb() = runBlocking {
 
