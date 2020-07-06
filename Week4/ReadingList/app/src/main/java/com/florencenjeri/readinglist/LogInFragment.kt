@@ -2,6 +2,7 @@ package com.florencenjeri.readinglist
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,6 @@ class LogInFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_log_in, container, false)
     }
@@ -29,40 +29,41 @@ class LogInFragment : Fragment() {
             findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
         }
         buttonLogIn.setOnClickListener {
-            if (validateData()) {
-                UserPrefs.logInUser(editTextEmail.text.toString(), editTextPassword.text.toString())
-                findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
-            }
+            validateData()
+            UserPrefs.logInUser(editTextEmail.text.toString(), editTextPassword.text.toString())
+            findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
+
         }
     }
 
-    private fun validateData(): Boolean {
-        var isValid = true
+    private fun validateData() {
+        isValidEmail()
+        isValidPassword()
+    }
+
+    private fun isValidEmail() {
         if (TextUtils.isEmpty(editTextEmail.text.toString())) {
-            isValid = false
             editTextEmail.requestFocus()
             editTextEmail.error = "Email required!"
         }
-        if (TextUtils.isEmpty(editTextPassword.text.toString())) {
-            isValid = false
-            editTextPassword.requestFocus()
-            editTextPassword.error = "Password Required!"
-        }
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(editTextEmail.text.toString().trim())
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(editTextEmail.text.toString().trim())
                 .matches()
         ) {
-            isValid = false
             editTextEmail.requestFocus()
             editTextEmail.error = "Enter a valid email!"
         }
+    }
+
+    private fun isValidPassword() {
+        if (TextUtils.isEmpty(editTextPassword.text.toString())) {
+            editTextPassword.requestFocus()
+            editTextPassword.error = "Password Required!"
+        }
 
         if (editTextPassword.text.toString().length < 4) {
-            isValid = false
             editTextPassword.requestFocus()
             editTextPassword.error = "Weak password. Password should contain at least 4 characters!"
         }
-
-        return isValid
-
     }
 }

@@ -4,8 +4,6 @@ import android.preference.PreferenceManager
 import com.florencenjeri.readinglist.ReadingListApplication
 
 object UserPrefs {
-    private const val EMAIL = "email"
-    private const val PASSWORD = "password"
 
     private fun sharedPrefs() =
         PreferenceManager.getDefaultSharedPreferences(ReadingListApplication.getAppContext())
@@ -28,4 +26,9 @@ object UserPrefs {
     fun logOut() {
         sharedPrefs().edit().clear().apply()
     }
+
+
+    private const val EMAIL = "email"
+    private const val PASSWORD = "password"
+
 }
