@@ -21,9 +21,7 @@ object UserPrefs {
         var isLoggedIn = false
         val email = sharedPrefs().getString(EMAIL, "")
         val password = sharedPrefs().getString(PASSWORD, "")
-        if (!email.isNullOrBlank() && !password.isNullOrBlank()) {
-            isLoggedIn = true
-        }
+        isLoggedIn = !email.isNullOrBlank() && !password.isNullOrBlank()
         return isLoggedIn
     }
 

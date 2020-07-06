@@ -33,7 +33,6 @@ class LogInFragment : Fragment() {
                 UserPrefs.logInUser(editTextEmail.text.toString(), editTextPassword.text.toString())
                 findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
             }
-
         }
     }
 
