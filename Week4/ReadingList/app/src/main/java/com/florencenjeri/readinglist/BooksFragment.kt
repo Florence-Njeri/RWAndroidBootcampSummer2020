@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.model.Books
-import com.florencenjeri.readinglist.model.UserPrefs
 import com.florencenjeri.readinglist.model.database.BooksDatabase
 import com.florencenjeri.readinglist.model.database.BooksRepository
 import kotlinx.android.synthetic.main.books_fragment.view.*
@@ -16,7 +15,7 @@ import kotlinx.android.synthetic.main.books_fragment.view.*
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
     private lateinit var booksViewModel: BooksViewModel
-    private val userPrefs = UserPrefs()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,7 +64,7 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
             item.isChecked = true
         } else if (item.itemId == R.id.action_logout) {
             //Log out and navigate to LogInFragment
-            userPrefs.logOut()
+            ReadingListApplication.prefsHelper.logOut()
             val action = BooksFragmentDirections.actionBooksFragmentToLogInFragment()
             findNavController().navigate(action)
         }

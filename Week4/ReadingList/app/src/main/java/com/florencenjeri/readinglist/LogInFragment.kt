@@ -8,11 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.florencenjeri.readinglist.model.UserPrefs
 import kotlinx.android.synthetic.main.fragment_log_in.*
 
 class LogInFragment : Fragment() {
-    private val userPrefs = UserPrefs()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,12 +24,16 @@ class LogInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(false)
         //Check if the user is logged in
-        if (userPrefs.isUserLoggedIn()) {
+        if (ReadingListApplication.prefsHelper.isUserLoggedIn()) {
             findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
         }
         buttonLogIn.setOnClickListener {
             validateData()
-            userPrefs.logInUser(editTextEmail.text.toString(), editTextPassword.text.toString())
+
+            ReadingListApplication.prefsHelper.logInUser(
+                editTextEmail.text.toString(),
+                editTextPassword.text.toString()
+            )
             findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
 
         }
@@ -66,4 +69,9 @@ class LogInFragment : Fragment() {
             editTextPassword.error = "Weak password. Password should contain at least 4 characters!"
         }
     }
+}
+
+interface MyListener {
+    // you can define any parameter as per your requirement
+    fun callback(view: View?, result: String?)
 }
