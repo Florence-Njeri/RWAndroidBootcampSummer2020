@@ -4,15 +4,19 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.model.Books
 import com.florencenjeri.readinglist.model.UserPrefs
+import com.florencenjeri.readinglist.model.database.BooksDatabase
+import com.florencenjeri.readinglist.model.database.BooksRepository
 import kotlinx.android.synthetic.main.books_fragment.view.*
 
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     private lateinit var booksList: List<Books>
     private lateinit var booksViewModel: BooksViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,7 +28,14 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        booksViewModel = ViewModelProvider(this).get(BooksViewModel::class.java)
+        val booksDao =
+            BooksDatabase.getDatabase(ReadingListApplication.getAppContext(), lifecycleScope)
+                .booksDao()
+        val booksRepository = BooksRepository(booksDao)
+        booksViewModel =
+            ViewModelProviders.of(this, BooksViewModelFactory(booksRepository))
+                .get(BooksViewModel::class.java)
+
         booksViewModel.getReadBooks().observe(viewLifecycleOwner, Observer {
             view.booksList.adapter = BooksAdapter(it, this)
             booksList = it
