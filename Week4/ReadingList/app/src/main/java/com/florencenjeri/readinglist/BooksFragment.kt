@@ -14,9 +14,9 @@ import com.florencenjeri.readinglist.model.database.BooksRepository
 import kotlinx.android.synthetic.main.books_fragment.view.*
 
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
-    private lateinit var booksList: List<Books>
-    private lateinit var booksViewModel: BooksViewModel
 
+    private lateinit var booksViewModel: BooksViewModel
+    private val userPrefs = UserPrefs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,14 +38,14 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
         booksViewModel.getReadBooks().observe(viewLifecycleOwner, Observer {
             view.booksList.adapter = BooksAdapter(it, this)
-            booksList = it
+
         })
 
     }
 
     private fun sortList(genre: String) {
-        val filteredList = booksList.filter { it.genre == genre }
-        view?.booksList?.adapter = BooksAdapter(filteredList.toList(), this)
+//        val filteredList = booksList.filter { it.genre == genre }
+//        view?.booksList?.adapter = BooksAdapter(filteredList.toList(), this)
     }
 
     override fun listItemClicked(books: Books) {
@@ -65,7 +65,7 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
             item.isChecked = true
         } else if (item.itemId == R.id.action_logout) {
             //Log out and navigate to LogInFragment
-            UserPrefs.logOut()
+            userPrefs.logOut()
             val action = BooksFragmentDirections.actionBooksFragmentToLogInFragment()
             findNavController().navigate(action)
         }

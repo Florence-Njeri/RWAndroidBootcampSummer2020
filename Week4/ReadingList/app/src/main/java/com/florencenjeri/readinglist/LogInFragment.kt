@@ -12,7 +12,7 @@ import com.florencenjeri.readinglist.model.UserPrefs
 import kotlinx.android.synthetic.main.fragment_log_in.*
 
 class LogInFragment : Fragment() {
-
+    private val userPrefs = UserPrefs()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,12 +25,12 @@ class LogInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(false)
         //Check if the user is logged in
-        if (UserPrefs.isUserLoggedIn()) {
+        if (userPrefs.isUserLoggedIn()) {
             findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
         }
         buttonLogIn.setOnClickListener {
             validateData()
-            UserPrefs.logInUser(editTextEmail.text.toString(), editTextPassword.text.toString())
+            userPrefs.logInUser(editTextEmail.text.toString(), editTextPassword.text.toString())
             findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
 
         }
