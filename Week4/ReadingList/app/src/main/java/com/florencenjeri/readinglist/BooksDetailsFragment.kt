@@ -1,11 +1,11 @@
 package com.florencenjeri.readinglist
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.transition.TransitionInflater
 import com.florencenjeri.readinglist.model.Books
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.book_details_content.view.*
@@ -32,6 +32,7 @@ class BooksDetailsFragment : Fragment() {
                 this.book = book
                 displayBookDetails(book)
                 activity?.toolbar?.title = book.title
+
             })
         }
 
@@ -53,11 +54,6 @@ class BooksDetailsFragment : Fragment() {
         bookDetailsContent.synopsis.text = book.synopsis
     }
 
-    private fun setCardTransitionOnEnter() {
-        sharedElementEnterTransition = TransitionInflater.from(context)
-            .inflateTransition(R.transition.card_transition)
-    }
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.delete_book, menu)
@@ -67,11 +63,11 @@ class BooksDetailsFragment : Fragment() {
         if (item.itemId == R.id.delete_book) {
             deleteBook()
         }
-
         return super.onOptionsItemSelected(item)
     }
 
     private fun deleteBook() {
+        Log.d("Books", book.toString())
         booksViewModel.deleteBook(book)
     }
 }
