@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/BooksFragment">
+    app:startDestination="@id/logInFragment">
 
     <fragment
         android:id="@+id/BookDetailsFragment"
@@ -29,5 +29,19 @@
         <action
             android:id="@+id/action_BooksFragment_to_BookDetailsFragment"
             app:destination="@id/BookDetailsFragment" />
+        <action
+            android:id="@+id/action_BooksFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.florencenjeri.readinglist.LogInFragment"
+        android:label="Log In"
+        tools:layout="@layout/fragment_log_in">
+        <action
+            android:id="@+id/action_logInFragment_to_BooksFragment"
+            app:destination="@id/BooksFragment"
+            app:popUpTo="@id/logInFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

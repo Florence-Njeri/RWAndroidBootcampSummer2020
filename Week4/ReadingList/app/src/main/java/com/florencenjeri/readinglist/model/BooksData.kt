@@ -17,6 +17,7 @@ object BooksData {
 
     val booksRead = setOf(
         Books(
+            1,
             R.drawable.an_american_marriage,
             "An American Marriage",
             authors[0],
@@ -26,6 +27,7 @@ object BooksData {
                     "This stirring love story is a deeply insightful look into the hearts and minds of three people who are at once bound and separated by forces beyond their control. An American Marriage is a masterpiece of storytelling, an intimate look into the souls of people who must reckon with the past while moving forward- with hope and pain- into the future. ",
             "Fiction"
         ), Books(
+            2,
             R.drawable.girl_wash_your_face,
             "Girl, Wash Your Face",
             authors[1],
@@ -36,6 +38,7 @@ object BooksData {
                     "From her temporary obsession with marrying Matt Damon to a daydream involving hypnotic iguanas to her son's request that she buy a necklace to \"be like the other moms,\" Hollis holds nothing back. With unflinching faith and tenacity, Hollis spurs other women to live with passion and hustle and to awaken their slumbering goals.",
             "Self Help"
         ), Books(
+            3,
             R.drawable.half_of_a_yellow_sun,
             "Half of a Yellow Sun",
             authors[2],
@@ -48,6 +51,7 @@ object BooksData {
                     "Epic, ambitious, and triumphantly realized, Half of a Yellow Sun is a remarkable novel about moral responsibility, about the end of colonialism, about ethnic allegiances, about class and race—and the ways in which love can complicate them all. Adichie brilliantly evokes the promise and the devastating disappointments that marked this time and place, bringing us one of the most powerful, dramatic, and intensely emotional pictures of modern Africa that we have ever had.",
             "Historical / Historical Fiction"
         ), Books(
+            4,
             R.drawable.my_sister_the_serial_killer,
             "My Sister, the Serial Killer",
             authors[3],
@@ -58,6 +62,7 @@ object BooksData {
                     "My Sister, the Serial Killer is a blackly comic novel about how blood is thicker - and more difficult to get out of the carpet - than water...",
             "Fiction / Thriller"
         ), Books(
+            5,
             R.drawable.stay_with_me,
             "Stay with Me",
             authors[4],
@@ -68,6 +73,7 @@ object BooksData {
                     "Yejide and Akin have been married since they met and fell in love at university. Though many expected Akin to take several wives, he and Yejide have always agreed: polygamy is not for them. But four years into their marriage--after consulting fertility doctors and healers, trying strange teas and unlikely cures--Yejide is still not pregnant. She assumes she still has time--until her family arrives on her doorstep with a young woman they introduce as Akin's second wife. Furious, shocked, and livid with jealousy, Yejide knows the only way to save her marriage is to get pregnant, which, finally, she does--but at a cost far greater than she could have dared to imagine. An electrifying novel of enormous emotional power, Stay With Me asks how much we can sacrifice for the sake of family.",
             "Cultural Fiction"
         ), Books(
+            6,
             R.drawable.the_sun_is_also_a_star,
             "The Sun Is Also a Star",
             authors[5],
@@ -80,6 +86,7 @@ object BooksData {
                     "The Universe: Every moment in our lives has brought us to this single moment. A million futures lie before us. Which one will come true?",
             "Young Adult / Romance"
         ), Books(
+            7,
             R.drawable.under_the_udala_trees,
             "Under the Udala Trees",
             authors[6],
@@ -94,6 +101,7 @@ object BooksData {
                     "As Edwidge Danticat has made personal the legacy of Haiti's political coming of age, Okparanta's Under the Udala Trees uses one woman's lifetime to examine the ways in which Nigerians continue to struggle toward selfhood. Even as their nation contends with and recovers from the effects of war and division, Nigerian lives are also wrecked and lost from taboo and prejudice. This story offers a glimmer of hope — a future where a woman might just be able to shape her life around truth and love. ",
             "Hitorical / Fiction / Cultural"
         ), Books(
+            8,
             R.drawable.we_are_going_to_need_more_wine,
             "We're Going to Need More Wine",
             authors[7],
@@ -106,6 +114,7 @@ object BooksData {
                     "In this moving collection of thought provoking essays infused with her unique wisdom and deep humor, Union uses that same fearlessness to tell astonishingly personal and true stories about power, color, gender, feminism, and fame. Union tackles a range of experiences, including bullying, beauty standards, and competition between women in Hollywood, growing up in white California suburbia and then spending summers with her black relatives in Nebraska, coping with crushes, puberty, and the divorce of her parents. Genuine and perceptive, Union bravely lays herself bare, uncovering a complex and courageous life of self-doubt and self-discovery with incredible poise and brutal honesty. Throughout, she compels us to be ethical and empathetic, and reminds us of the importance of confidence, self-awareness, and the power of sharing truth, laughter, and support.",
             "Autobiography / Memoir"
         ), Books(
+            9,
             R.drawable.we_need_new_names,
             "We Need New Names",
             authors[8],
@@ -118,6 +127,7 @@ object BooksData {
                     "But Darling has a chance to escape: she has an aunt in America. She travels to this new land in search of America's famous abundance only to find that her options as an immigrant are perilously few. NoViolet Bulawayo's debut calls to mind the great storytellers of displacement and arrival who have come before her--from Junot Diaz to Zadie Smith to J.M. Coetzee--while she tells a vivid, raw story all her own.",
             "Fiction"
         ), Books(
+            10,
             R.drawable.yesterday_i_cried,
             "Yesterday, I Cried",
             authors[9],

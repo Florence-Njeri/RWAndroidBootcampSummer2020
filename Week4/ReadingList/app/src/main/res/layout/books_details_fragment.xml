@@ -14,7 +14,7 @@
             android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <ImageView
                 android:id="@+id/itemImageView"
@@ -35,8 +35,9 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include
-        android:id="@+id/book_details_content"
-        layout="@layout/book_details_content" />
+        android:id="@+id/bookDetailsContent"
+        layout="@layout/book_details_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <ImageView
         android:id="@+id/bookCover"
