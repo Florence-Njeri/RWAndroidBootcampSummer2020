@@ -1,8 +1,9 @@
-package com.florencenjeri.readinglist
+package com.florencenjeri.readinglist.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.model.Books
 
 class BooksAdapter(
@@ -33,4 +34,6 @@ class BooksAdapter(
         }
 
     }
+
+
 }

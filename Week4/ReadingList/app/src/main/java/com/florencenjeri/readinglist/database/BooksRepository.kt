@@ -1,4 +1,4 @@
-package com.florencenjeri.readinglist.model.database
+package com.florencenjeri.readinglist.database
 
 import androidx.lifecycle.LiveData
 import com.florencenjeri.readinglist.model.Books

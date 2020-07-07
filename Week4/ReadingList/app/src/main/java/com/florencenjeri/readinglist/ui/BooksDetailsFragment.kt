@@ -1,4 +1,4 @@
-package com.florencenjeri.readinglist
+package com.florencenjeri.readinglist.ui
 
 import android.os.Bundle
 import android.util.Log
@@ -7,9 +7,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
+import com.florencenjeri.readinglist.BooksDetailsFragmentArgs
+import com.florencenjeri.readinglist.R
+import com.florencenjeri.readinglist.ReadingListApplication
+import com.florencenjeri.readinglist.database.BooksDatabase
+import com.florencenjeri.readinglist.database.BooksRepository
 import com.florencenjeri.readinglist.model.Books
-import com.florencenjeri.readinglist.model.database.BooksDatabase
-import com.florencenjeri.readinglist.model.database.BooksRepository
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.book_details_content.view.*
 import kotlinx.android.synthetic.main.books_details_fragment.*
@@ -33,10 +36,18 @@ class BooksDetailsFragment : Fragment() {
                 .booksDao()
         val booksRepository = BooksRepository(booksDao)
         booksViewModel =
-            ViewModelProviders.of(this, BooksViewModelFactory(booksRepository))
+            ViewModelProviders.of(
+                this,
+                BooksViewModelFactory(
+                    booksRepository
+                )
+            )
                 .get(BooksViewModel::class.java)
         arguments?.let {
-            val safeArgs = BooksDetailsFragmentArgs.fromBundle(it)
+            val safeArgs =
+                BooksDetailsFragmentArgs.fromBundle(
+                    it
+                )
             booksViewModel.getBook(safeArgs.bookId).observe(viewLifecycleOwner, Observer { book ->
                 this.book = book
                 displayBookDetails(book)

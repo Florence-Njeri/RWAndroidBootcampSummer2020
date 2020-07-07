@@ -1,8 +1,8 @@
-package com.florencenjeri.readinglist
+package com.florencenjeri.readinglist.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.florencenjeri.readinglist.model.database.BooksRepository
+import com.florencenjeri.readinglist.database.BooksRepository
 
 class BooksViewModelFactory(private val repository: BooksRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

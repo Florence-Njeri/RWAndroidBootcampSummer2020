@@ -1,10 +1,11 @@
-package com.florencenjeri.readinglist
+package com.florencenjeri.readinglist.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import com.florencenjeri.readinglist.R
 
 class MainActivity : AppCompatActivity() {
 

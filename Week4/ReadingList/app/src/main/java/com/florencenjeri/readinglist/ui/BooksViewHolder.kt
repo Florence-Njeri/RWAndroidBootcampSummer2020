@@ -1,4 +1,4 @@
-package com.florencenjeri.readinglist
+package com.florencenjeri.readinglist.ui
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

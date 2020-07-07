@@ -5,9 +5,9 @@ import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.florencenjeri.readinglist.database.BooksDao
+import com.florencenjeri.readinglist.database.BooksDatabase
 import com.florencenjeri.readinglist.model.BooksData
-import com.florencenjeri.readinglist.model.database.BooksDao
-import com.florencenjeri.readinglist.model.database.BooksDatabase
 import kotlinx.coroutines.runBlocking
 import org.junit.*
 import org.junit.rules.TestRule

@@ -1,10 +1,10 @@
-package com.florencenjeri.readinglist
+package com.florencenjeri.readinglist.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.florencenjeri.readinglist.database.BooksRepository
 import com.florencenjeri.readinglist.model.Books
-import com.florencenjeri.readinglist.model.database.BooksRepository
 import kotlinx.coroutines.launch
 
 /**Communicates between the repository and the UI*/

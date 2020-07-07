@@ -1,4 +1,4 @@
-package com.florencenjeri.readinglist.model.database
+package com.florencenjeri.readinglist.database
 
 import android.content.Context
 import androidx.room.Database

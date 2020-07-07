@@ -1,4 +1,4 @@
-package com.florencenjeri.readinglist
+package com.florencenjeri.readinglist.ui
 
 import android.os.Bundle
 import android.view.*
@@ -7,9 +7,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.florencenjeri.readinglist.BooksFragmentDirections
+import com.florencenjeri.readinglist.R
+import com.florencenjeri.readinglist.ReadingListApplication
+import com.florencenjeri.readinglist.database.BooksDatabase
+import com.florencenjeri.readinglist.database.BooksRepository
 import com.florencenjeri.readinglist.model.Books
-import com.florencenjeri.readinglist.model.database.BooksDatabase
-import com.florencenjeri.readinglist.model.database.BooksRepository
+import kotlinx.android.synthetic.main.books_fragment.*
 import kotlinx.android.synthetic.main.books_fragment.view.*
 
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
@@ -32,23 +36,37 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
                 .booksDao()
         val booksRepository = BooksRepository(booksDao)
         booksViewModel =
-            ViewModelProviders.of(this, BooksViewModelFactory(booksRepository))
+            ViewModelProviders.of(
+                this,
+                BooksViewModelFactory(
+                    booksRepository
+                )
+            )
                 .get(BooksViewModel::class.java)
 
         booksViewModel.getReadBooks().observe(viewLifecycleOwner, Observer {
-            view.booksList.adapter = BooksAdapter(it, this)
+            booksList.adapter =
+                BooksAdapter(it, this)
 
         })
 
     }
 
     private fun sortList(genre: String) {
-//        val filteredList = booksList.filter { it.genre == genre }
-//        view?.booksList?.adapter = BooksAdapter(filteredList.toList(), this)
+        booksViewModel.getReadBooks().observe(viewLifecycleOwner, Observer {
+            view?.booksList?.adapter =
+                BooksAdapter(
+                    it.filter { it.genre == genre },
+                    this
+                )
+        })
     }
 
     override fun listItemClicked(books: Books) {
-        val action = BooksFragmentDirections.actionBooksFragmentToBookDetailsFragment(books.bookId)
+        val action =
+            BooksFragmentDirections.actionBooksFragmentToBookDetailsFragment(
+                books.bookId
+            )
         findNavController().navigate(action)
     }
 
@@ -65,7 +83,8 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         } else if (item.itemId == R.id.action_logout) {
             //Log out and navigate to LogInFragment
             ReadingListApplication.prefsHelper.logOut()
-            val action = BooksFragmentDirections.actionBooksFragmentToLogInFragment()
+            val action =
+                BooksFragmentDirections.actionBooksFragmentToLogInFragment()
             findNavController().navigate(action)
         }
         return super.onOptionsItemSelected(item)
