@@ -1,8 +1,8 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="margin">16dp</dimen>
-    <dimen name="card_elevation">8</dimen>
-    <dimen name="corner_radius">4</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+    <dimen name="corner_radius">4dp</dimen>
     <dimen name="news_image_width">112dp</dimen>
     <dimen name="news_image_height">152dp</dimen>
 </resources>

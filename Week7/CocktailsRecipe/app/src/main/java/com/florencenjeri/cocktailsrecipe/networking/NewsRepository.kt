@@ -1,16 +1,13 @@
 package com.florencenjeri.cocktailsrecipe.networking
 
-import com.florencenjeri.cocktailsrecipe.model.Failure
-import com.florencenjeri.cocktailsrecipe.model.LatestNews
-import com.florencenjeri.cocktailsrecipe.model.Result
-import com.florencenjeri.cocktailsrecipe.model.Success
+import com.florencenjeri.cocktailsrecipe.model.*
 
 class NewsRepository(val apiService: ApiService) {
-   suspend fun fetchNews(): Result<LatestNews> = try {
+   suspend fun fetchNews(): Result<List<New>> = try {
 
         val body = apiService.latestNews()
 
-        Success(body)
+        Success(body.news)
     } catch (error: Throwable) {
         Failure(error)
     }

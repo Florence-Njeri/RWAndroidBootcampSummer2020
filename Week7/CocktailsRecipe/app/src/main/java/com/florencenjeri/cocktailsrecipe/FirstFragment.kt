@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
+import com.florencenjeri.cocktailsrecipe.model.Success
+import com.florencenjeri.cocktailsrecipe.ui.NewsAdapter
+import kotlinx.android.synthetic.main.fragment_first.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -28,11 +31,17 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }
+//       newsList.adapter = NewsAdapter( App.newsRepository.fetchNews(), this)
         GlobalScope.launch(Dispatchers.Main) {
-//            Log.d("News", App.newsRepository.fetchNews().toString())
+            val result = App.newsRepository.fetchNews()
+            if (result is Success) {
+
+                newsList.adapter = NewsAdapter( result.data)
+
+            }
+
+            Log.d("News", App.newsRepository.fetchNews().toString())
+
         }
     }
 }
