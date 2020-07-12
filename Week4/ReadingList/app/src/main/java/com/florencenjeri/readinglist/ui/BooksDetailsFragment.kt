@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
-import com.florencenjeri.readinglist.BooksDetailsFragmentArgs
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.ReadingListApplication
 import com.florencenjeri.readinglist.database.BooksDatabase

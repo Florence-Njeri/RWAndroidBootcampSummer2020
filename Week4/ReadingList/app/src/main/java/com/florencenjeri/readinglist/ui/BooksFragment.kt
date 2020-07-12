@@ -1,13 +1,13 @@
 package com.florencenjeri.readinglist.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.florencenjeri.readinglist.BooksFragmentDirections
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.ReadingListApplication
 import com.florencenjeri.readinglist.database.BooksDatabase
@@ -53,14 +53,15 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     }
 
     private fun sortList(genre: String) {
-        booksViewModel.getReadBooks().observe(viewLifecycleOwner, Observer {
-            view?.booksList?.adapter =
-                BooksAdapter(
-                    it.filter { it.genre == genre },
-                    this
-                )
-        })
-    }
+        val filteredList = booksViewModel.sortData(genre)
+
+      filteredList.observe(viewLifecycleOwner, Observer {
+          view?.booksList?.adapter = BooksAdapter(it, this)
+          (view?.booksList?.adapter as BooksAdapter).notifyDataSetChanged()
+      })
+           Log.d("Filtered List : ", filteredList.toString())
+        }
+
 
     override fun listItemClicked(books: Books) {
         val action =
