@@ -32,7 +32,7 @@ class FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         GlobalScope.launch(Dispatchers.Main) {
-            Log.d("News", App.newsRepository.fetchNews().toString())
+//            Log.d("News", App.newsRepository.fetchNews().toString())
         }
     }
 }
