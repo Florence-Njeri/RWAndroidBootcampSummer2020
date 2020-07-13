@@ -1,16 +1,18 @@
 package com.florencenjeri.cocktailsrecipe.model
 
+import androidx.room.ColumnInfo
+import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class New(
-    val author: String,
-    val category: List<String>,
-    val description: String,
-    val id: String,
-    val image: String,
-    val language: String,
-    val published: String,
-    val title: String,
-    val url: String
+    @ColumnInfo(name = "author") val author: String,
+    @ColumnInfo(name = "category") val category: List<String>,
+    @ColumnInfo(name = "description") val description: String,
+    @ColumnInfo(name = "id") @PrimaryKey val id: String,
+    @ColumnInfo(name = "image") val image: String,
+    @ColumnInfo(name = "language") val language: String,
+    @ColumnInfo(name = "published") val published: String,
+    @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "url") val url: String
 )
