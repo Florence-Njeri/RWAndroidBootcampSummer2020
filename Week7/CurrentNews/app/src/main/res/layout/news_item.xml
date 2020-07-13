@@ -18,6 +18,7 @@
             android:id="@+id/image"
             android:layout_width="@dimen/news_image_width"
             android:layout_height="@dimen/news_image_height"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,7 +50,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
+            android:layout_marginBottom="8dp"
             android:text="40"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/author"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/publicationDate"
@@ -66,21 +69,21 @@
             app:layout_constraintStart_toStartOf="@+id/author"
             app:layout_constraintTop_toBottomOf="@+id/author" />
 
-        <!--        <Button-->
-        <!--            android:id="@+id/genre"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="@dimen/button_height"-->
-        <!--            android:layout_marginEnd="@dimen/margin"-->
-        <!--            android:background="@drawable/rounded_blue_background"-->
-        <!--            android:fontFamily="@font/avenir_next_pro"-->
-        <!--            android:text="@string/text_genre"-->
-        <!--            android:paddingRight="@dimen/margin"-->
-        <!--            android:paddingLeft="@dimen/margin"-->
-        <!--            android:textAllCaps="false"-->
-        <!--            android:textColor="@color/white"-->
-        <!--            android:textSize="@dimen/button_text"-->
-        <!--            app:layout_constraintBottom_toBottomOf="@+id/numPages"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="@+id/numPages" />-->
+        <Button
+            android:id="@+id/readMore"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginEnd="@dimen/margin"
+
+            android:background="@drawable/rounded_blue_background"
+            android:paddingLeft="@dimen/margin"
+            android:paddingRight="@dimen/margin"
+            android:text="Read More"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text"
+            app:layout_constraintBottom_toBottomOf="@+id/language"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/language" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

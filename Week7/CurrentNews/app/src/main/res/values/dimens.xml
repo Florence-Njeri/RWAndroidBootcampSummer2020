@@ -5,4 +5,6 @@
     <dimen name="corner_radius">4dp</dimen>
     <dimen name="news_image_width">112dp</dimen>
     <dimen name="news_image_height">152dp</dimen>
+    <dimen name="button_height">32dp</dimen>
+    <dimen name="button_text">12sp</dimen>
 </resources>
