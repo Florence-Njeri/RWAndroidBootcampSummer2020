@@ -13,12 +13,12 @@ import com.florencenjeri.cocktailsrecipe.model.database.NewsRepository
 import com.florencenjeri.cocktailsrecipe.ui.NewsAdapter
 import com.florencenjeri.cocktailsrecipe.ui.NewsViewModel
 import com.florencenjeri.cocktailsrecipe.ui.NewsViewModelFactory
-import kotlinx.android.synthetic.main.fragment_first.*
+import kotlinx.android.synthetic.main.fragment_news.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class FirstFragment : Fragment() {
+class NewsFragment : Fragment() {
     val newsRepository by lazy { NewsRepository() }
     private val viewModel by lazy {
         ViewModelProvider(
@@ -35,7 +35,7 @@ class FirstFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        return inflater.inflate(R.layout.fragment_news, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
