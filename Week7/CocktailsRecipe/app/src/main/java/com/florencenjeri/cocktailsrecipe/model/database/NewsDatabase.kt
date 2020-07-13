@@ -4,9 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.florencenjeri.cocktailsrecipe.model.LatestNews
 import com.florencenjeri.cocktailsrecipe.model.New
-import kotlinx.coroutines.CoroutineScope
 
 @Database(entities = [(New::class)], version = 1)
 abstract class NewsDatabase : RoomDatabase() {
@@ -31,7 +29,7 @@ abstract class NewsDatabase : RoomDatabase() {
                     NewsDatabase::class.java,
                     NEWS_DB
 
-                ).allowMainThreadQueries()
+                )
                     .build()
                 INSTANCE = instance
                 return instance
