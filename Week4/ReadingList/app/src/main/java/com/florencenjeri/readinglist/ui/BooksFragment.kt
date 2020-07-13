@@ -15,6 +15,7 @@ import com.florencenjeri.readinglist.database.BooksRepository
 import com.florencenjeri.readinglist.model.Books
 import kotlinx.android.synthetic.main.books_fragment.*
 import kotlinx.android.synthetic.main.books_fragment.view.*
+import kotlinx.coroutines.launch
 
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
@@ -54,13 +55,15 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
     private fun sortList(genre: String) {
         val filteredList = booksViewModel.sortData(genre)
-
-      filteredList.observe(viewLifecycleOwner, Observer {
-          view?.booksList?.adapter = BooksAdapter(it, this)
-          (view?.booksList?.adapter as BooksAdapter).notifyDataSetChanged()
-      })
-           Log.d("Filtered List : ", filteredList.toString())
+        lifecycleScope.launch {
+            filteredList.observe(viewLifecycleOwner, Observer {
+                view?.booksList?.adapter = BooksAdapter(it, this)
+                (view?.booksList?.adapter as BooksAdapter).notifyDataSetChanged()
+            })
         }
+
+        Log.d("Filtered List : ", filteredList.toString())
+    }
 
 
     override fun listItemClicked(books: Books) {
