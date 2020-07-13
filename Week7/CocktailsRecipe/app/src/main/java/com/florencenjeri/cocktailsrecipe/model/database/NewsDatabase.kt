@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.florencenjeri.cocktailsrecipe.model.LatestNews
+import com.florencenjeri.cocktailsrecipe.model.New
 import kotlinx.coroutines.CoroutineScope
 
-@Database(entities = [(LatestNews::class)], version = 1)
+@Database(entities = [(New::class)], version = 1)
 abstract class NewsDatabase : RoomDatabase() {
     abstract fun newsDao(): NewsDao
 
@@ -18,8 +19,7 @@ abstract class NewsDatabase : RoomDatabase() {
         private var INSTANCE: NewsDatabase? = null
 
         fun getDatabase(
-            context: Context,
-            scope: CoroutineScope
+            context: Context
         ): NewsDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
@@ -31,7 +31,7 @@ abstract class NewsDatabase : RoomDatabase() {
                     NewsDatabase::class.java,
                     NEWS_DB
 
-                )
+                ).allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
                 return instance

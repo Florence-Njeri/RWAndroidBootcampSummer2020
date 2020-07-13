@@ -6,7 +6,6 @@ import androidx.room.Entity
 import kotlinx.serialization.Serializable
 
 @Serializable
-@Entity(tableName = "news_database")
 data class LatestNews(
     @Embedded
     @ColumnInfo(name = "news")
