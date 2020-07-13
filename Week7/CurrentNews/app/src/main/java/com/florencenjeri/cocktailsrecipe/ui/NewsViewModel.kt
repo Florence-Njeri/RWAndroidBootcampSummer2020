@@ -9,14 +9,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class NewsViewModel(val newsRepository: NewsRepository) : ViewModel() {
-    companion object {
-
-    }
 
     fun fetchNews(): LiveData<List<New>> {
         return newsRepository.fetchNews()
     }
-
 
     fun insertNewsToDb() = viewModelScope.launch(Dispatchers.IO) {
         newsRepository.insertNews()

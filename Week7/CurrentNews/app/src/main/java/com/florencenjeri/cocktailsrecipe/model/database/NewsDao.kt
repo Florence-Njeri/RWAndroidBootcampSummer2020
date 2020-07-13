@@ -10,7 +10,7 @@ import com.florencenjeri.cocktailsrecipe.model.New
 @Dao
 interface NewsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertNews(posts : List<New>)
+   suspend fun insertNews(posts : List<New>)
 
     @Query("SELECT * FROM news_database")
     fun fetchNews() : LiveData<List<New>>

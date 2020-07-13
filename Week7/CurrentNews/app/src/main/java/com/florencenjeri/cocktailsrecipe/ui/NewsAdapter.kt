@@ -5,14 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.florencenjeri.cocktailsrecipe.R
 import com.florencenjeri.cocktailsrecipe.model.New
+import kotlinx.android.synthetic.main.news_item.view.*
 
 class NewsAdapter(
-    private val books: List<New>
-//    private val clickListener: NewsListClickListener
+    private val news: List<New>,
+    private val clickListener: NewsListClickListener
 ) :
     RecyclerView.Adapter<NewsViewHolder>() {
     interface NewsListClickListener {
-        fun listItemClicked(books: New)
+        fun listButtonClicked(news: New)
 
     }
 
@@ -23,15 +24,15 @@ class NewsAdapter(
 
     }
 
-    override fun getItemCount() = books.size
+    override fun getItemCount() = news.size
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         //Show the right view depending on the users position in scrolling
-        val itemBook = books[position]
+        val itemBook = news[position]
         holder.setBookData(itemBook)
-//        holder.itemView.setOnClickListener {
-//            clickListener.listItemClicked(itemBook)
-//        }
+        holder.itemView.readMore.setOnClickListener {
+            clickListener.listButtonClicked(itemBook)
+        }
 
     }
 
