@@ -24,19 +24,22 @@
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
             android:layout_marginTop="@dimen/margin"
+            android:layout_marginEnd="16dp"
             android:text="book_title"
             android:textSize="16sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toTopOf="@+id/image" />
 
         <TextView
             android:id="@+id/author"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
             android:text="Author"
@@ -73,8 +76,10 @@
             android:id="@+id/readMore"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/button_height"
-            android:layout_marginEnd="@dimen/margin"
+            android:layout_marginTop="16dp"
 
+            android:layout_marginEnd="@dimen/margin"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/rounded_blue_background"
             android:paddingLeft="@dimen/margin"
             android:paddingRight="@dimen/margin"
@@ -82,8 +87,8 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/button_text"
-            app:layout_constraintBottom_toBottomOf="@+id/language"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/language" />
+            app:layout_constraintTop_toBottomOf="@+id/author" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
