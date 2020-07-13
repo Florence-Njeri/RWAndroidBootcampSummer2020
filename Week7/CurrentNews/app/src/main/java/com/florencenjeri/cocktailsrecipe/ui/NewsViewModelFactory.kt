@@ -2,7 +2,7 @@ package com.florencenjeri.cocktailsrecipe.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.florencenjeri.cocktailsrecipe.model.database.NewsRepository
+import com.florencenjeri.cocktailsrecipe.database.NewsRepository
 
 
 class NewsViewModelFactory(private val repository: NewsRepository) : ViewModelProvider.Factory {

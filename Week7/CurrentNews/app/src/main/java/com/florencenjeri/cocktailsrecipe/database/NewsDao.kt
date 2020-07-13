@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe.model.database
+package com.florencenjeri.cocktailsrecipe.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

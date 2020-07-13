@@ -2,8 +2,8 @@ package com.florencenjeri.cocktailsrecipe
 
 import android.app.Application
 import android.content.Context
-import com.florencenjeri.cocktailsrecipe.model.database.NewsDao
-import com.florencenjeri.cocktailsrecipe.model.database.NewsDatabase
+import com.florencenjeri.cocktailsrecipe.database.NewsDao
+import com.florencenjeri.cocktailsrecipe.database.NewsDatabase
 import com.florencenjeri.cocktailsrecipe.networking.RemoteApi
 import com.florencenjeri.cocktailsrecipe.networking.buildApiService
 

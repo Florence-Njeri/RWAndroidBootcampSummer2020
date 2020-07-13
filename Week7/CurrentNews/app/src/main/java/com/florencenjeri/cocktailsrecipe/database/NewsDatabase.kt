@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe.model.database
+package com.florencenjeri.cocktailsrecipe.database
 
 import android.content.Context
 import androidx.room.Database
