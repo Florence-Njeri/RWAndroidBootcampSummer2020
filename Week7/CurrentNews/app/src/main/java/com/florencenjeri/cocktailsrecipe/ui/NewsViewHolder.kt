@@ -14,7 +14,6 @@ class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         itemView.author.text = new.author
         itemView.publicationDate.text = new.published
         itemView.language.text = new.language
-//        itemView.genre.text = new.genre
         Glide.with(itemView)
             .load(new.image)
             .centerCrop()

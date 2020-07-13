@@ -9,7 +9,7 @@ import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
-val API_KEY = "v0NXqVADNbAQFe9EEfYZx0TZlUIay2bzPdIoXYLHIDYcQBAW"
+val API_KEY = "n5YlnB5zNgFR84AHAMJg-oKSGgGShCohW24yIkJW2cu3fOrQ"
 
 val  BASE_URL = "https://api.currentsapi.services/"
 fun buildClient() = OkHttpClient.Builder()

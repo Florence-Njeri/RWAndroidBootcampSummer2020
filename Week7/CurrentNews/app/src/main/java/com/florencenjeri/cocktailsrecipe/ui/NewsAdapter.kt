@@ -14,14 +14,12 @@ class NewsAdapter(
     RecyclerView.Adapter<NewsViewHolder>() {
     interface NewsListClickListener {
         fun listButtonClicked(news: New)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.news_item, parent, false)
         return NewsViewHolder(view)
-
     }
 
     override fun getItemCount() = news.size
