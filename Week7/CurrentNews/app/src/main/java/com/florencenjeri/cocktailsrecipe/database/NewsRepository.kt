@@ -9,6 +9,7 @@ class NewsRepository() {
     fun fetchNews(): LiveData<List<New>> = App.newsDao.fetchNews()
 
     suspend fun insertNews() {
+        //Refresh the database data once a user is connected to the internet
         val result = App.newsRepository.fetchNews()
         if (result is Success) {
             return App.newsDao.insertNews(result.data)
