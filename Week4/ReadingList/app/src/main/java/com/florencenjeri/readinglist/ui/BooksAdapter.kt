@@ -1,8 +1,9 @@
-package com.florencenjeri.readinglist
+package com.florencenjeri.readinglist.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.model.Books
 
 class BooksAdapter(
@@ -27,10 +28,12 @@ class BooksAdapter(
     override fun onBindViewHolder(holder: BooksViewHolder, position: Int) {
         //Show the right view depending on the users position in scrolling
         val itemBook = books[position]
-        holder.bindPhoto(itemBook)
+        holder.setBookData(itemBook)
         holder.itemView.setOnClickListener {
             clickListener.listItemClicked(itemBook)
         }
 
     }
+
+
 }

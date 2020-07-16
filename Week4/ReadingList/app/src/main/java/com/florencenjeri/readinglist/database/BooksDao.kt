@@ -1,10 +1,7 @@
-package com.florencenjeri.readinglist.model.database
+package com.florencenjeri.readinglist.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.florencenjeri.readinglist.model.Books
 
 /**
@@ -17,6 +14,11 @@ interface BooksDao {
     fun getAll(): LiveData<List<Books>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun putAll(bookList: List<Books>)
+    suspend fun putAll(bookList: List<Books>)
 
+    @Query("SELECT * FROM reading_list WHERE bookId = :id")
+    fun getBook(id: Long): LiveData<Books>
+
+    @Delete
+    suspend fun deleteBook(book: Books)
 }
