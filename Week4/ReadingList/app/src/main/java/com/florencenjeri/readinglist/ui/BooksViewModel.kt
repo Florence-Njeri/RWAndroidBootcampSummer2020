@@ -1,7 +1,6 @@
 package com.florencenjeri.readinglist.ui
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.florencenjeri.readinglist.database.BooksRepository
@@ -9,9 +8,9 @@ import com.florencenjeri.readinglist.model.Books
 import kotlinx.coroutines.launch
 
 /**Communicates between the repository and the UI*/
-class BooksViewModel(private var booksRepository: BooksRepository) : ViewModel() {
+class BooksViewModel(private val booksRepository: BooksRepository) : ViewModel() {
 
-    fun getReadBooks(): LiveData<List<Books>> {
+    suspend fun getReadBooks(): List<Books> {
         return booksRepository.getAllBooks()
     }
 
@@ -23,10 +22,9 @@ class BooksViewModel(private var booksRepository: BooksRepository) : ViewModel()
         booksRepository.deleteBook(book)
     }
 
-    fun sortData(genre: String): LiveData<List<Books>> {
-       return Transformations.map(getReadBooks()){
-            it.filter { it.genre == genre }
+    suspend fun sortData(genre: String): List<Books> {
+        return getReadBooks().filter { books ->
+            books.genre == genre
         }
     }
-
 }

@@ -11,7 +11,7 @@ import com.florencenjeri.readinglist.model.Books
 interface BooksDao {
     /*Live data will observe for changes made to the list of books*/
     @Query("SELECT * FROM reading_list")
-    fun getAll(): LiveData<List<Books>>
+    suspend fun getAll(): List<Books>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun putAll(bookList: List<Books>)

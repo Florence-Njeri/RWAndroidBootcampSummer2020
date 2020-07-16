@@ -63,7 +63,7 @@ abstract class BooksDatabase : RoomDatabase() {
 
         private suspend fun populateDatabase(booksDao: BooksDao) {
             //If db is empty insert the list of data
-            if (booksDao.getAll().value.isNullOrEmpty()) {
+            if (booksDao.getAll().isNullOrEmpty()) {
                 booksDao.putAll(
                     BooksData.booksRead.toList()
                 )
