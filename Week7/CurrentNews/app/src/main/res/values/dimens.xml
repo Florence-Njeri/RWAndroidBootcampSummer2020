@@ -1,0 +1,10 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="card_elevation">8dp</dimen>
+    <dimen name="corner_radius">4dp</dimen>
+    <dimen name="news_image_width">112dp</dimen>
+    <dimen name="news_image_height">152dp</dimen>
+    <dimen name="button_height">32dp</dimen>
+    <dimen name="button_text">12sp</dimen>
+</resources>

@@ -12,13 +12,12 @@
         tools:layout="@layout/books_details_fragment">
 
 
-        <action
-            android:id="@+id/action_BookDetailsFragment_to_BooksFragment"
-            app:destination="@id/BooksFragment"
-            app:popUpTo="@id/BooksFragment" />
         <argument
             android:name="bookId"
             app:argType="long" />
+        <action
+            android:id="@+id/action_BookDetailsFragment_to_BooksFragment"
+            app:destination="@id/BooksFragment" />
     </fragment>
     <fragment
         android:id="@+id/BooksFragment"
@@ -27,11 +26,11 @@
         tools:layout="@layout/books_fragment">
 
         <action
-            android:id="@+id/action_BooksFragment_to_BookDetailsFragment"
-            app:destination="@id/BookDetailsFragment" />
-        <action
             android:id="@+id/action_BooksFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
+        <action
+            android:id="@+id/action_BooksFragment_to_BookDetailsFragment"
+            app:destination="@id/BookDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/logInFragment"
