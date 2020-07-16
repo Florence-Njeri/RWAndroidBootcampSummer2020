@@ -3,7 +3,6 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="book_details_fragment_label">Book Details Fragment</string>
-    <string name="book_fragment_label">Book Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
