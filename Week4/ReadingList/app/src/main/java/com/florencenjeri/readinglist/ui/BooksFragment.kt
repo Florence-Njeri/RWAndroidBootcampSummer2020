@@ -8,8 +8,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.ReadingListApplication
-import com.florencenjeri.readinglist.database.BooksDatabase
-import com.florencenjeri.readinglist.database.BooksRepository
 import com.florencenjeri.readinglist.model.Books
 import kotlinx.android.synthetic.main.books_fragment.view.*
 import kotlinx.coroutines.launch
@@ -29,22 +27,12 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        val booksDao =
-            BooksDatabase.getDatabase(ReadingListApplication.getAppContext(), lifecycleScope)
-                .booksDao()
-        val booksRepository = BooksRepository(booksDao)
+
         booksViewModel =
-            ViewModelProviders.of(
-                this,
-                BooksViewModelFactory(
-                    booksRepository
-                )
-            )
-                .get(BooksViewModel::class.java)
+            ViewModelProviders.of(this).get(BooksViewModel::class.java)
         lifecycleScope.launch {
             populateRecyclerView(booksViewModel.getReadBooks())
         }
-
     }
 
     private fun populateRecyclerView(filteredList: List<Books>) {

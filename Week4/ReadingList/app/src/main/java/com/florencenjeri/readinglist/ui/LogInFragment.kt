@@ -26,9 +26,11 @@ class LogInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(false)
         //Check if the user is logged in
-        if (ReadingListApplication.prefsHelper.isUserLoggedIn()) {
-            findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
-        }
+        isUserLoggedIn()
+        logInUser()
+    }
+
+    private fun logInUser() {
         buttonLogIn.setOnClickListener {
             validateData()
 
@@ -38,6 +40,12 @@ class LogInFragment : Fragment() {
             )
             findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
 
+        }
+    }
+
+    private fun isUserLoggedIn() {
+        if (ReadingListApplication.prefsHelper.isUserLoggedIn()) {
+            findNavController().navigate(LogInFragmentDirections.actionLogInFragmentToBooksFragment())
         }
     }
 
@@ -71,9 +79,4 @@ class LogInFragment : Fragment() {
             editTextPassword.error = "Weak password. Password should contain at least 4 characters!"
         }
     }
-}
-
-interface MyListener {
-    // you can define any parameter as per your requirement
-    fun callback(view: View?, result: String?)
 }

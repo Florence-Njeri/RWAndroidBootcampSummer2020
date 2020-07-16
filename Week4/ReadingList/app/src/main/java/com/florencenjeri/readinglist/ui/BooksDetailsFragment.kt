@@ -6,11 +6,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.lifecycleScope
 import com.florencenjeri.readinglist.R
-import com.florencenjeri.readinglist.ReadingListApplication
-import com.florencenjeri.readinglist.database.BooksDatabase
-import com.florencenjeri.readinglist.database.BooksRepository
 import com.florencenjeri.readinglist.model.Books
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.book_details_content.view.*
@@ -30,18 +26,8 @@ class BooksDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        val booksDao =
-            BooksDatabase.getDatabase(ReadingListApplication.getAppContext(), lifecycleScope)
-                .booksDao()
-        val booksRepository = BooksRepository(booksDao)
-        booksViewModel =
-            ViewModelProviders.of(
-                this,
-                BooksViewModelFactory(
-                    booksRepository
-                )
-            )
-                .get(BooksViewModel::class.java)
+
+        booksViewModel = ViewModelProviders.of(this).get(BooksViewModel::class.java)
         arguments?.let {
             val safeArgs =
                 BooksDetailsFragmentArgs.fromBundle(
