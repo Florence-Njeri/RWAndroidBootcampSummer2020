@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.florencenjeri.cocktailsrecipe.model.New
+import com.florencenjeri.cocktailsrecipe.model.News
 
-@Database(entities = [(New::class)], version = 1)
+@Database(entities = [(News::class)], version = 1)
 abstract class NewsDatabase : RoomDatabase() {
     abstract fun newsDao(): NewsDao
 

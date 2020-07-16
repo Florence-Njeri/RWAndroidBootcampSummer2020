@@ -5,14 +5,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.florencenjeri.cocktailsrecipe.App
 import com.florencenjeri.cocktailsrecipe.R
-import com.florencenjeri.cocktailsrecipe.model.New
+import com.florencenjeri.cocktailsrecipe.model.News
 import kotlinx.android.synthetic.main.news_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    fun setBookData(new: New) {
+    fun setBookData(new: News) {
         val context = App.getAppContext()
         itemView.title.text = new.title
         itemView.author.text = context.getString(R.string.author, new.author)

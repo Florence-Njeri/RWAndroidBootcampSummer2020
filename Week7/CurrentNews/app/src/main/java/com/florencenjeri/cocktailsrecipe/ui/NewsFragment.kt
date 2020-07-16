@@ -11,42 +11,35 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.florencenjeri.cocktailsrecipe.R
-import com.florencenjeri.cocktailsrecipe.model.New
 import com.florencenjeri.cocktailsrecipe.database.NewsRepository
+import com.florencenjeri.cocktailsrecipe.model.News
 import kotlinx.android.synthetic.main.fragment_news.*
 
-class NewsFragment : Fragment(), NewsAdapter.NewsListClickListener {
+class NewsFragment : Fragment() {
     val newsRepository by lazy { NewsRepository() }
+    val newsAdapter by lazy { NewsAdapter(::onListButtonClicked) }
     private val viewModel by lazy {
-        ViewModelProvider(
-            this,
-            NewsViewModelFactory(
-                newsRepository
-            )
-        )
-            .get(NewsViewModel::class.java)
+        ViewModelProvider(this, NewsViewModelFactory(newsRepository)).get(NewsViewModel::class.java)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_news, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.insertNewsToDb()
-
         viewModel.fetchNews().observe(viewLifecycleOwner, Observer {
-            newsList.adapter = NewsAdapter(it, this@NewsFragment)
+            newsAdapter.setData(it)
+            newsList.adapter = newsAdapter
             Log.d("News", it.toString())
         })
-
     }
 
-    override fun listButtonClicked(news: New) {
+    private fun onListButtonClicked(news: News) {
         val uri = Uri.parse(news.url)
         val intent = Intent(Intent.ACTION_VIEW, uri)
         startActivity(intent)

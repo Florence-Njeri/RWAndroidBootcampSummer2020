@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @Entity(tableName = "news_database")
-data class New(
+data class News(
     @ColumnInfo(name = "author") val author: String,
     @ColumnInfo(name = "description") val description: String,
     @ColumnInfo(name = "id") @PrimaryKey val id: String,

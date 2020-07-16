@@ -5,13 +5,12 @@ import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
-val API_KEY = "n5YlnB5zNgFR84AHAMJg-oKSGgGShCohW24yIkJW2cu3fOrQ"
-
-val  BASE_URL = "https://api.currentsapi.services/"
+const val API_KEY = "n5YlnB5zNgFR84AHAMJg-oKSGgGShCohW24yIkJW2cu3fOrQ"
+private const val apiKey = "apiKey"
+const val BASE_URL = "https://api.currentsapi.services/"
 fun buildClient() = OkHttpClient.Builder()
     .addInterceptor(HttpLoggingInterceptor().apply {
         //Log the body of the sent and received data
@@ -19,10 +18,12 @@ fun buildClient() = OkHttpClient.Builder()
     })
     .addInterceptor(buildAuthInterceptor)
     .build()
+
+
 private val buildAuthInterceptor = Interceptor { chain ->
     val newUrl = chain.request().url
         .newBuilder()
-        .addQueryParameter("apiKey", API_KEY)
+        .addQueryParameter(apiKey, API_KEY)
         .build()
 
     val newRequest = chain.request()
