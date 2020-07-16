@@ -83,4 +83,6 @@ dependencies {
     androidTestImplementation "android.arch.core:core-testing:1.1.0"
     implementation "androidx.room:room-ktx:2.2.3"
 
+    implementation "androidx.work:work-runtime-ktx:2.3.4"
+
 }

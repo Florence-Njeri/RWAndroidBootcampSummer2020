@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.florencenjeri.cocktailsrecipe.database.NewsDao
 import com.florencenjeri.cocktailsrecipe.database.NewsDatabase
+import com.florencenjeri.cocktailsrecipe.database.NewsRepository
 import com.florencenjeri.cocktailsrecipe.networking.RemoteApi
 import com.florencenjeri.cocktailsrecipe.networking.buildApiService
 
@@ -13,8 +14,9 @@ class App : Application() {
 
         fun getAppContext(): Context = instance.applicationContext
         val apiService by lazy { buildApiService() }
-        val newsRepository by lazy { RemoteApi(apiService) }
+        val remoteApi by lazy { RemoteApi(apiService) }
        lateinit var newsDao: NewsDao
+        val newsRepository by lazy { NewsRepository() }
     }
 
     override fun onCreate() {
