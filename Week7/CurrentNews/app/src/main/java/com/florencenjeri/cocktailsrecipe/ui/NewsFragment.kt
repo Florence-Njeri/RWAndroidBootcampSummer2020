@@ -32,10 +32,10 @@ class NewsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.insertNewsToDb()
-        viewModel.fetchNews().observe(viewLifecycleOwner, Observer {
-            newsAdapter::submitList
+        viewModel.fetchNews().observe(viewLifecycleOwner, Observer() {
             newsAdapter.setData(it)
             newsList.adapter = newsAdapter
+//            newsAdapter::submitList
             Log.d("NewsList", it.toString())
         })
     }

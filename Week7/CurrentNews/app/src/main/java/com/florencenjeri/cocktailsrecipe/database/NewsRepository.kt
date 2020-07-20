@@ -1,8 +1,6 @@
 package com.florencenjeri.cocktailsrecipe.database
 
 import android.net.ConnectivityManager
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
 import com.florencenjeri.cocktailsrecipe.App
 import com.florencenjeri.cocktailsrecipe.model.Success
 import com.florencenjeri.cocktailsrecipe.network.NetworkStatusChecker
@@ -16,12 +14,7 @@ class NewsRepository() {
         NetworkStatusChecker(App.getAppContext().getSystemService(ConnectivityManager::class.java))
     }
 
-    fun fetchNews() = LivePagedListBuilder(
-        App.newsDao.fetchNews(), PagedList.Config.Builder()
-            .setPageSize(PAGE_SIZE)
-            .setEnablePlaceholders(true)
-            .build()
-    ).build()
+    fun fetchNews() = App.newsDao.fetchNews()
 
     suspend fun insertNews() {
         //Refresh the database data once a user is connected to the internet
