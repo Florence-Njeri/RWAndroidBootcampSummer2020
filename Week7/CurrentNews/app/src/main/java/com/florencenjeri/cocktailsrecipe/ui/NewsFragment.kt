@@ -10,16 +10,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.work.Constraints
-import androidx.work.NetworkType
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
 import com.florencenjeri.cocktailsrecipe.R
 import com.florencenjeri.cocktailsrecipe.database.NewsRepository
 import com.florencenjeri.cocktailsrecipe.model.News
-import com.florencenjeri.cocktailsrecipe.worker.RefreshDataWorker
 import kotlinx.android.synthetic.main.fragment_news.*
-import java.util.concurrent.TimeUnit
 
 class NewsFragment : Fragment() {
     val newsRepository by lazy { NewsRepository() }
@@ -43,16 +37,6 @@ class NewsFragment : Fragment() {
             newsList.adapter = newsAdapter
             Log.d("News", it.toString())
         })
-
-        val constraints = Constraints.Builder()
-            .setRequiresStorageNotLow(true)
-            .setRequiredNetworkType(NetworkType.CONNECTED)
-            .build()
-        val work = PeriodicWorkRequestBuilder<RefreshDataWorker>(50, TimeUnit.SECONDS)
-            .setConstraints(constraints)
-            .build()
-        val workManager = WorkManager.getInstance(requireContext())
-        workManager.enqueue(work)
 
     }
 
