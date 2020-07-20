@@ -9,13 +9,13 @@ import com.florencenjeri.cocktailsrecipe.database.NewsRepository
 import com.florencenjeri.cocktailsrecipe.network.RemoteApi
 import com.florencenjeri.cocktailsrecipe.network.buildApiService
 import com.florencenjeri.cocktailsrecipe.worker.RefreshDataWorker
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 class App : Application() {
-    val applicationScope = CoroutineScope(Dispatchers.Default)
+
 
     companion object {
         private lateinit var instance: App
@@ -30,7 +30,7 @@ class App : Application() {
         instance = this
         super.onCreate()
         newsDao = NewsDatabase.getDatabase(this).newsDao()
-        applicationScope.launch {
+        GlobalScope.launch(Dispatchers.Default) {
             hourlyDataSync()
         }
     }

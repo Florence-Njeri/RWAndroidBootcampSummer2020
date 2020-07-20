@@ -12,19 +12,19 @@ import java.util.*
 
 class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-    fun setBookData(new: News) {
+    fun setBookData(news: News?) {
         val context = App.getAppContext()
-        itemView.title.text = new.title
-        itemView.author.text = context.getString(R.string.author, new.author)
+        itemView.title.text = news?.title
+        itemView.author.text = context.getString(R.string.author, news?.author)
         val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.getDefault())
-        val date = dateFormat.parse(new.published)
+        val date = dateFormat.parse(news?.published)
         val formatter =
             SimpleDateFormat("yyyy-MM-dd") //If you need time just put specific format for time like ‘HH:mm:ss’
         val dateStr = formatter.format(date)
         itemView.publicationDate.text = context.getString(R.string.publication_date, dateStr)
-        itemView.language.text = context.getString(R.string.language, new.language)
+        itemView.language.text = context.getString(R.string.language, news?.language)
         Glide.with(itemView)
-            .load(new.image)
+            .load(news?.image)
             .centerCrop()
             .placeholder(R.drawable.ic_image_place_holder) //5
             .error(R.drawable.ic_broken_image) //6
