@@ -10,6 +10,7 @@ class NewsRepository() {
 
     suspend fun insertNews() {
         //Refresh the database data once a user is connected to the internet
+
         val result = App.remoteApi.fetchNews()
         if (result is Success) {
             return App.newsDao.insertNews(result.data)

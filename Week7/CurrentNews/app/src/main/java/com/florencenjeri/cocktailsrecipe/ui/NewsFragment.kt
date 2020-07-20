@@ -17,7 +17,7 @@ import androidx.work.WorkManager
 import com.florencenjeri.cocktailsrecipe.R
 import com.florencenjeri.cocktailsrecipe.database.NewsRepository
 import com.florencenjeri.cocktailsrecipe.model.News
-import com.florencenjeri.cocktailsrecipe.worker.PeriodicNewsSyncWorker
+import com.florencenjeri.cocktailsrecipe.worker.RefreshDataWorker
 import kotlinx.android.synthetic.main.fragment_news.*
 import java.util.concurrent.TimeUnit
 
@@ -48,7 +48,7 @@ class NewsFragment : Fragment() {
             .setRequiresStorageNotLow(true)
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
-        val work = PeriodicWorkRequestBuilder<PeriodicNewsSyncWorker>(50, TimeUnit.SECONDS)
+        val work = PeriodicWorkRequestBuilder<RefreshDataWorker>(50, TimeUnit.SECONDS)
             .setConstraints(constraints)
             .build()
         val workManager = WorkManager.getInstance(requireContext())

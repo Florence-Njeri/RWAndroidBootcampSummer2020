@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe.networking
+package com.florencenjeri.cocktailsrecipe.network
 
 import com.florencenjeri.cocktailsrecipe.model.Failure
 import com.florencenjeri.cocktailsrecipe.model.News

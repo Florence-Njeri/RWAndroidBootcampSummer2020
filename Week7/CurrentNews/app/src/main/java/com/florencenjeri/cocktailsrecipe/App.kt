@@ -5,8 +5,8 @@ import android.content.Context
 import com.florencenjeri.cocktailsrecipe.database.NewsDao
 import com.florencenjeri.cocktailsrecipe.database.NewsDatabase
 import com.florencenjeri.cocktailsrecipe.database.NewsRepository
-import com.florencenjeri.cocktailsrecipe.networking.RemoteApi
-import com.florencenjeri.cocktailsrecipe.networking.buildApiService
+import com.florencenjeri.cocktailsrecipe.network.RemoteApi
+import com.florencenjeri.cocktailsrecipe.network.buildApiService
 
 class App : Application() {
     companion object {

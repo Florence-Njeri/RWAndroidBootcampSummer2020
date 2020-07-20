@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe.networking
+package com.florencenjeri.cocktailsrecipe.network
 
 import com.florencenjeri.cocktailsrecipe.model.LatestNews
 import retrofit2.http.GET

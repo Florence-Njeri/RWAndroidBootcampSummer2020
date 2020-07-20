@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe.networking
+package com.florencenjeri.cocktailsrecipe.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
