@@ -2,14 +2,14 @@ package com.florencenjeri.cocktailsrecipe.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.florencenjeri.cocktailsrecipe.R
 import com.florencenjeri.cocktailsrecipe.model.News
 import kotlinx.android.synthetic.main.news_item.view.*
 
 class NewsAdapter(private val onListButtonClicked: (News?) -> Unit) :
-    PagingDataAdapter<News, NewsViewHolder>(diffUtil) {
+    PagedListAdapter<News, NewsViewHolder>(diffUtil) {
     private val data: MutableList<News> = mutableListOf()
 
     companion object {

@@ -6,6 +6,7 @@ import com.florencenjeri.cocktailsrecipe.model.Result
 import com.florencenjeri.cocktailsrecipe.model.Success
 
 class RemoteApi(val apiService: ApiService) {
+
     suspend fun fetchNews(): Result<List<News>> = try {
         val body = apiService.latestNews()
         Success(body.news)

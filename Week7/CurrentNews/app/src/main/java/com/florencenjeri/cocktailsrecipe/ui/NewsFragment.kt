@@ -33,15 +33,15 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.insertNewsToDb()
         viewModel.fetchNews().observe(viewLifecycleOwner, Observer {
+            newsAdapter::submitList
             newsAdapter.setData(it)
             newsList.adapter = newsAdapter
-            Log.d("News", it.toString())
+            Log.d("NewsList", it.toString())
         })
-
     }
 
-    private fun onListButtonClicked(news: News) {
-        val uri = Uri.parse(news.url)
+    private fun onListButtonClicked(news: News?) {
+        val uri = Uri.parse(news?.url)
         val intent = Intent(Intent.ACTION_VIEW, uri)
         startActivity(intent)
     }
