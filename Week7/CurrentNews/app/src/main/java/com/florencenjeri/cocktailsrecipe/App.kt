@@ -43,7 +43,7 @@ class App : Application() {
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
         val hourlyDataSyncRequest =
-            PeriodicWorkRequestBuilder<RefreshDataWorker>(2, TimeUnit.MINUTES)
+            PeriodicWorkRequestBuilder<RefreshDataWorker>(1, TimeUnit.HOURS)
                 .setConstraints(constraints)
                 .build()
         val workManager = WorkManager.getInstance(this)
