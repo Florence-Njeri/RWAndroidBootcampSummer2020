@@ -20,7 +20,5 @@
 <!--    Notifications-->
     <string name="refresh_data_channel_id" translatable="false">news_channel</string>
     <string name="refresh_data_channel_name" translatable="true">News</string>
-    <string name="breakfast_notification_channel_id" translatable="false">fcm_default_channel</string>
-    <string name="breakfast_notification_channel_name" translatable="true">Breakfast</string>
     <string name="refresh_data_channel_description">News Update Reminder</string>
 </resources>
