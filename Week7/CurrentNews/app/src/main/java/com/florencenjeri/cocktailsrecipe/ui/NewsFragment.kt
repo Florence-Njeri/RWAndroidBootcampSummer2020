@@ -10,10 +10,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.florencenjeri.cocktailsrecipe.App
 import com.florencenjeri.cocktailsrecipe.R
 import com.florencenjeri.cocktailsrecipe.database.NewsRepository
 import com.florencenjeri.cocktailsrecipe.model.News
 import kotlinx.android.synthetic.main.fragment_news.*
+
 
 class NewsFragment : Fragment() {
     val newsRepository by lazy { NewsRepository() }
@@ -35,9 +39,27 @@ class NewsFragment : Fragment() {
         viewModel.fetchNews().observe(viewLifecycleOwner, Observer() {
             newsAdapter.setData(it)
             newsList.adapter = newsAdapter
-//            newsAdapter::submitList
             Log.d("NewsList", it.toString())
         })
+        val linearLayoutManager = LinearLayoutManager(App.getAppContext())
+
+        // Retain an instance so that you can call `resetState()` for fresh searches
+        // Retain an instance so that you can call `resetState()` for fresh searches
+        val scrollListener = object : EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
+                // Triggered only when new data needs to be appended to the list
+                // Add whatever code is needed to append new items to the bottom of the list
+                loadNextDataFromDatabase(page)
+            }
+        }
+        // Adds the scroll listener to RecyclerView
+        // Adds the scroll listener to RecyclerView
+        newsList.addOnScrollListener(scrollListener)
+
+    }
+
+    private fun loadNextDataFromDatabase(page: Int) {
+
     }
 
     private fun onListButtonClicked(news: News?) {
