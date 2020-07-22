@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe.worker
+package com.florencenjeri.currentnews.worker
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -8,8 +8,8 @@ import android.os.Build
 import androidx.core.content.ContextCompat
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.florencenjeri.cocktailsrecipe.App
-import com.florencenjeri.cocktailsrecipe.R
+import com.florencenjeri.currentnews.App
+import com.florencenjeri.currentnews.R
 
 class RefreshDataWorker(context: Context, workerParameters: WorkerParameters) :
     CoroutineWorker(context, workerParameters) {

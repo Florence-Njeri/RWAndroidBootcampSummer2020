@@ -1,11 +1,11 @@
-package com.florencenjeri.cocktailsrecipe.database
+package com.florencenjeri.currentnews.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.florencenjeri.cocktailsrecipe.model.News
+import com.florencenjeri.currentnews.model.News
 
 @Dao
 interface NewsDao {

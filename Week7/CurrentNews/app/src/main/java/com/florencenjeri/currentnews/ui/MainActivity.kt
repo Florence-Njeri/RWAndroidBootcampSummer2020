@@ -1,8 +1,8 @@
-package com.florencenjeri.cocktailsrecipe.ui
+package com.florencenjeri.currentnews.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.florencenjeri.cocktailsrecipe.R
+import com.florencenjeri.currentnews.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,12 +1,12 @@
-package com.florencenjeri.cocktailsrecipe.worker
+package com.florencenjeri.currentnews.worker
 
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
-import com.florencenjeri.cocktailsrecipe.R
-import com.florencenjeri.cocktailsrecipe.ui.MainActivity
+import com.florencenjeri.currentnews.R
+import com.florencenjeri.currentnews.ui.MainActivity
 
 private val NOTIFICATION_ID = 0
 fun NotificationManager.sendNotification(messageBody: String, applicationContext: Context) {

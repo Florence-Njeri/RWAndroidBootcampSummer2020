@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe.model
+package com.florencenjeri.currentnews.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

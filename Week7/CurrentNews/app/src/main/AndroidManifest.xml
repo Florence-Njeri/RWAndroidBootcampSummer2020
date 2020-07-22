@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.florencenjeri.cocktailsrecipe">
+    package="com.florencenjeri.currentnews">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <!--  Check if network connection is a mobile or a WIFI connection-->

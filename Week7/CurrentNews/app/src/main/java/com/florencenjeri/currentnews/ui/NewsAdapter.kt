@@ -1,10 +1,10 @@
-package com.florencenjeri.cocktailsrecipe.ui
+package com.florencenjeri.currentnews.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.florencenjeri.cocktailsrecipe.R
-import com.florencenjeri.cocktailsrecipe.model.News
+import com.florencenjeri.currentnews.R
+import com.florencenjeri.currentnews.model.News
 import kotlinx.android.synthetic.main.news_item.view.*
 
 class NewsAdapter(private val onListButtonClicked: (News) -> Unit) :

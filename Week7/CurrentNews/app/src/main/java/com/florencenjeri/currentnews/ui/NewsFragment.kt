@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe.ui
+package com.florencenjeri.currentnews.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -12,10 +12,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.florencenjeri.cocktailsrecipe.App
-import com.florencenjeri.cocktailsrecipe.R
-import com.florencenjeri.cocktailsrecipe.database.NewsRepository
-import com.florencenjeri.cocktailsrecipe.model.News
+import com.florencenjeri.currentnews.App
+import com.florencenjeri.currentnews.R
+import com.florencenjeri.currentnews.database.NewsRepository
+import com.florencenjeri.currentnews.model.News
 import kotlinx.android.synthetic.main.fragment_news.*
 
 

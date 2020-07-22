@@ -1,9 +1,9 @@
-package com.florencenjeri.cocktailsrecipe.database
+package com.florencenjeri.currentnews.database
 
 import android.net.ConnectivityManager
-import com.florencenjeri.cocktailsrecipe.App
-import com.florencenjeri.cocktailsrecipe.model.Success
-import com.florencenjeri.cocktailsrecipe.network.NetworkStatusChecker
+import com.florencenjeri.currentnews.App
+import com.florencenjeri.currentnews.model.Success
+import com.florencenjeri.currentnews.network.NetworkStatusChecker
 
 class NewsRepository() {
     companion object {

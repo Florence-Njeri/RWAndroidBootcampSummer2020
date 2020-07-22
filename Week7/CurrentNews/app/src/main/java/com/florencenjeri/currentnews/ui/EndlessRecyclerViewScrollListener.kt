@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe.ui
+package com.florencenjeri.currentnews.ui
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager

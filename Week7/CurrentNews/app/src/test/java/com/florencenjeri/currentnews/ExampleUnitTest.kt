@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe
+package com.florencenjeri.currentnews
 
 import org.junit.Test
 

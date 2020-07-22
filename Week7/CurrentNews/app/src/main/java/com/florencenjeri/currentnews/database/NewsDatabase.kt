@@ -1,10 +1,10 @@
-package com.florencenjeri.cocktailsrecipe.database
+package com.florencenjeri.currentnews.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.florencenjeri.cocktailsrecipe.model.News
+import com.florencenjeri.currentnews.model.News
 
 @Database(entities = [(News::class)], version = 1)
 abstract class NewsDatabase : RoomDatabase() {

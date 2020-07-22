@@ -1,14 +1,14 @@
-package com.florencenjeri.cocktailsrecipe
+package com.florencenjeri.currentnews
 
 import android.app.Application
 import android.content.Context
 import androidx.work.*
-import com.florencenjeri.cocktailsrecipe.database.NewsDao
-import com.florencenjeri.cocktailsrecipe.database.NewsDatabase
-import com.florencenjeri.cocktailsrecipe.database.NewsRepository
-import com.florencenjeri.cocktailsrecipe.network.RemoteApi
-import com.florencenjeri.cocktailsrecipe.network.buildApiService
-import com.florencenjeri.cocktailsrecipe.worker.RefreshDataWorker
+import com.florencenjeri.currentnews.database.NewsDao
+import com.florencenjeri.currentnews.database.NewsDatabase
+import com.florencenjeri.currentnews.database.NewsRepository
+import com.florencenjeri.currentnews.network.RemoteApi
+import com.florencenjeri.currentnews.network.buildApiService
+import com.florencenjeri.currentnews.worker.RefreshDataWorker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

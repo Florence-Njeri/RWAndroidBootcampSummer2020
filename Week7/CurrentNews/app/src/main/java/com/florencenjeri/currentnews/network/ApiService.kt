@@ -1,6 +1,6 @@
-package com.florencenjeri.cocktailsrecipe.network
+package com.florencenjeri.currentnews.network
 
-import com.florencenjeri.cocktailsrecipe.model.LatestNews
+import com.florencenjeri.currentnews.model.LatestNews
 import retrofit2.http.GET
 
 interface ApiService {

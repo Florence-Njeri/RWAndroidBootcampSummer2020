@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe.model
+package com.florencenjeri.currentnews.model
 
 sealed class Result<out T : Any>
 

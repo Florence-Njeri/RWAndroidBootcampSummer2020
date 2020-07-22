@@ -1,4 +1,4 @@
-package com.florencenjeri.cocktailsrecipe.network
+package com.florencenjeri.currentnews.network
 
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities

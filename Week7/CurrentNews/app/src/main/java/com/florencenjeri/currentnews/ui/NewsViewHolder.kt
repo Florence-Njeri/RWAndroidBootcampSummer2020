@@ -1,11 +1,11 @@
-package com.florencenjeri.cocktailsrecipe.ui
+package com.florencenjeri.currentnews.ui
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.florencenjeri.cocktailsrecipe.App
-import com.florencenjeri.cocktailsrecipe.R
-import com.florencenjeri.cocktailsrecipe.model.News
+import com.florencenjeri.currentnews.App
+import com.florencenjeri.currentnews.R
+import com.florencenjeri.currentnews.model.News
 import kotlinx.android.synthetic.main.news_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
