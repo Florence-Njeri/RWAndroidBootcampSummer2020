@@ -9,9 +9,6 @@ import com.florencenjeri.currentnews.database.NewsRepository
 import com.florencenjeri.currentnews.network.RemoteApi
 import com.florencenjeri.currentnews.network.buildApiService
 import com.florencenjeri.currentnews.worker.RefreshDataWorker
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
 class App : Application() {
@@ -30,9 +27,7 @@ class App : Application() {
         instance = this
         super.onCreate()
         newsDao = NewsDatabase.getDatabase(this).newsDao()
-        GlobalScope.launch(Dispatchers.Default) {
-            hourlyDataSync()
-        }
+        hourlyDataSync()
     }
 
     //Background work should not delay app start
