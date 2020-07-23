@@ -3,7 +3,6 @@ package com.florencenjeri.currentnews
 import android.app.Application
 import android.content.Context
 import androidx.work.*
-import com.florencenjeri.currentnews.database.NewsDao
 import com.florencenjeri.currentnews.database.NewsDatabase
 import com.florencenjeri.currentnews.database.NewsRepository
 import com.florencenjeri.currentnews.network.RemoteApi
@@ -19,14 +18,13 @@ class App : Application() {
         fun getAppContext(): Context = instance.applicationContext
         val apiService by lazy { buildApiService() }
         val remoteApi by lazy { RemoteApi(apiService) }
-        lateinit var newsDao: NewsDao
-        val newsRepository by lazy { NewsRepository() }
+        val newsDao by lazy { NewsDatabase.getDatabase(getAppContext()).newsDao() }
+        val newsRepository by lazy { NewsRepository(newsDao) }
     }
 
     override fun onCreate() {
         instance = this
         super.onCreate()
-        newsDao = NewsDatabase.getDatabase(this).newsDao()
         hourlyDataSync()
     }
 

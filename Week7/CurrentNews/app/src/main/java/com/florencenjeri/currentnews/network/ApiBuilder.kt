@@ -9,7 +9,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 
 const val API_KEY = "n5YlnB5zNgFR84AHAMJg-oKSGgGShCohW24yIkJW2cu3fOrQ"
-private const val apiKey = "apiKey"
+private const val KEY_API = "apiKey"
 const val BASE_URL = "https://api.currentsapi.services/"
 fun buildClient() = OkHttpClient.Builder()
     .addInterceptor(HttpLoggingInterceptor().apply {
@@ -23,7 +23,7 @@ fun buildClient() = OkHttpClient.Builder()
 private val buildAuthInterceptor = Interceptor { chain ->
     val newUrl = chain.request().url
         .newBuilder()
-        .addQueryParameter(apiKey, API_KEY)
+        .addQueryParameter(KEY_API, API_KEY)
         .build()
 
     val newRequest = chain.request()

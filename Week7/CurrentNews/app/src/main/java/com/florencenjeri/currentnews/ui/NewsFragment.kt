@@ -20,10 +20,13 @@ import kotlinx.android.synthetic.main.fragment_news.*
 
 
 class NewsFragment : Fragment() {
-    val newsRepository by lazy { NewsRepository() }
-    val newsAdapter by lazy { NewsAdapter(::onListButtonClicked) }
+    val newsRepository by lazy { NewsRepository(App.newsDao) }
+    val newsAdapter by lazy { com.florencenjeri.currentnews.ui.NewsAdapter(::onListButtonClicked) }
     private val viewModel by lazy {
-        ViewModelProvider(this, NewsViewModelFactory(newsRepository)).get(NewsViewModel::class.java)
+        ViewModelProvider(
+            this,
+            com.florencenjeri.currentnews.ui.NewsViewModelFactory(newsRepository)
+        ).get(NewsViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -35,7 +38,7 @@ class NewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.insertNewsToDb()
+        viewModel.refreshNewsInDb()
         viewModel.fetchNews().observe(viewLifecycleOwner, Observer() {
             newsAdapter.setData(it)
             newsList.adapter = newsAdapter
@@ -44,18 +47,16 @@ class NewsFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(App.getAppContext())
 
         // Retain an instance so that you can call `resetState()` for fresh searches
-        // Retain an instance so that you can call `resetState()` for fresh searches
         val scrollListener = object : EndlessRecyclerViewScrollListener(linearLayoutManager) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
                 // Triggered only when new data needs to be appended to the list
                 // Add whatever code is needed to append new items to the bottom of the list
+
                 loadNextDataFromDatabase(page)
             }
         }
         // Adds the scroll listener to RecyclerView
-        // Adds the scroll listener to RecyclerView
         newsList.addOnScrollListener(scrollListener)
-
     }
 
     private fun loadNextDataFromDatabase(page: Int) {

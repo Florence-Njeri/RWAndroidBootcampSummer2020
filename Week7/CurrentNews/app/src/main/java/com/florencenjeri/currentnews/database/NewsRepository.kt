@@ -1,29 +1,27 @@
 package com.florencenjeri.currentnews.database
 
 import android.net.ConnectivityManager
+import androidx.lifecycle.LiveData
 import com.florencenjeri.currentnews.App
+import com.florencenjeri.currentnews.model.News
 import com.florencenjeri.currentnews.model.Success
 import com.florencenjeri.currentnews.network.NetworkStatusChecker
 
-class NewsRepository() {
-    companion object {
-        private const val PAGE_SIZE = 30
-    }
+class NewsRepository(val dao:NewsDao) {
 
     private val networkStatusChecker by lazy {
         NetworkStatusChecker(App.getAppContext().getSystemService(ConnectivityManager::class.java))
     }
 
-    fun fetchNews() = App.newsDao.fetchNews()
+    fun fetchNews() : LiveData<List<News>> = dao.fetchNews()
 
-    suspend fun insertNews() {
+    suspend fun refreshNews() {
         //Refresh the database data once a user is connected to the internet
         networkStatusChecker.performIfConnectedToInternet {
             val result = App.remoteApi.fetchNews()
             if (result is Success) {
-                return App.newsDao.insertNews(result.data)
+                return dao.insertNews(result.data)
             }
         }
-
     }
 }

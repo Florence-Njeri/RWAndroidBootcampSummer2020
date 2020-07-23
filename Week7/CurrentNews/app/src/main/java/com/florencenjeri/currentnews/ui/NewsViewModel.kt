@@ -11,7 +11,7 @@ class NewsViewModel(val newsRepository: NewsRepository) : ViewModel() {
     fun fetchNews() = newsRepository.fetchNews()
 
 
-    fun insertNewsToDb() = viewModelScope.launch(Dispatchers.IO) {
-        newsRepository.insertNews()
+    fun refreshNewsInDb() = viewModelScope.launch(Dispatchers.IO) {
+        newsRepository.refreshNews()
     }
 }

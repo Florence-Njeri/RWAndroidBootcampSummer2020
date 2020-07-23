@@ -21,22 +21,27 @@ class RefreshDataWorker(context: Context, workerParameters: WorkerParameters) :
     override suspend fun doWork(): Result {
         //Sync data to the database
         return try {
-            App.newsRepository.insertNews()
-            val notificationManager = ContextCompat.getSystemService(
-                app,
-                NotificationManager::class.java
-            ) as NotificationManager
-            notificationManager.sendNotification(app.getString(R.string.data_uptodate), app)
-            createChannel(
-                app.getString(R.string.refresh_data_channel_id),
-                app.getString(R.string.refresh_data_channel_name)
-            )
+            App.newsRepository.refreshNews()
+            createNotification()
             Result.success()
         } catch (error: Throwable) {
             Result.failure()
         }
 
     }
+
+    private fun createNotification() {
+        val notificationManager = ContextCompat.getSystemService(
+            app,
+            NotificationManager::class.java
+        ) as NotificationManager
+        notificationManager.sendNotification(app.getString(R.string.data_uptodate), app)
+        createChannel(
+            app.getString(R.string.refresh_data_channel_id),
+            app.getString(R.string.refresh_data_channel_name)
+        )
+    }
+
     private fun createChannel(channelId: String, channelName: String) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val notificationChannel = NotificationChannel(
@@ -56,8 +61,6 @@ class RefreshDataWorker(context: Context, workerParameters: WorkerParameters) :
                 NotificationManager::class.java
             )
             notificationManager.createNotificationChannel(notificationChannel)
-
         }
     }
-
 }
