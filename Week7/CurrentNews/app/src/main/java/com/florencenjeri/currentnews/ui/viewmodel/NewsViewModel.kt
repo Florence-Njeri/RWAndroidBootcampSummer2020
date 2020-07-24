@@ -1,4 +1,4 @@
-package com.florencenjeri.currentnews.ui
+package com.florencenjeri.currentnews.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

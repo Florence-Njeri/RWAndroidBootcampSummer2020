@@ -28,7 +28,6 @@ abstract class NewsDatabase : RoomDatabase() {
                     context.applicationContext,
                     NewsDatabase::class.java,
                     NEWS_DB
-
                 )
                     .build()
                 INSTANCE = instance

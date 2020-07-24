@@ -1,4 +1,4 @@
-package com.florencenjeri.currentnews.ui
+package com.florencenjeri.currentnews.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

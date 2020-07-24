@@ -1,4 +1,4 @@
-package com.florencenjeri.currentnews.ui
+package com.florencenjeri.currentnews.ui.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
