@@ -34,19 +34,27 @@ class BooksViewModel(val repository: BooksRepository) : ViewModel() {
     fun sortData(filteringType: FilterType): List<Books> {
         val booksToDisplay = ArrayList<Books>()
         when (filteringType) {
-            FilterType.FICTION -> booksToDisplay.addAll(filterBooks(books.value, "Fiction"))
-            FilterType.SELF_HELP -> booksToDisplay.addAll(filterBooks(books.value, "SelfHelp"))
+            FilterType.FICTION -> filterBooks(books.value, "Fiction")?.let {
+                booksToDisplay.addAll(
+                    it
+                )
+            }
+            FilterType.SELF_HELP -> filterBooks(books.value, "SelfHelp")?.let {
+                booksToDisplay.addAll(
+                    it
+                )
+            }
             else -> books.value?.let { booksToDisplay.addAll(it) }
         }
         return booksToDisplay
     }
 
-    private fun filterBooks(books: List<Books>?, genre: String): List<Books> {
-        if (books != null) {
-            _books.value = books.filter { booksRead ->
+    private fun filterBooks(bookList: List<Books>?, genre: String): List<Books>? {
+        if (bookList != null) {
+            _books.value = bookList.filter { booksRead ->
                 booksRead.genre == genre
             }
-            return books
+            return books.value
         }
         return emptyList()
     }
