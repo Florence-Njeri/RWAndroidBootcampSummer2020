@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.florencenjeri.cocktailsrecipe"
+        applicationId "com.florencenjeri.currentnews"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
@@ -83,4 +83,8 @@ dependencies {
     androidTestImplementation "android.arch.core:core-testing:1.1.0"
     implementation "androidx.room:room-ktx:2.2.3"
 
+    implementation "androidx.work:work-runtime-ktx:2.3.4"
+
+    //Paging Library
+    implementation "android.arch.paging:runtime:$pagingVersion"
 }

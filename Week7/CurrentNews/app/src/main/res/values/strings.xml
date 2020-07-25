@@ -13,4 +13,12 @@
     <string name="author">Author: %1$s</string>
     <string name="language">Language: %1$s</string>
     <string name="publication_date">Published on : %1$s</string>
+    <string name="data_sysnced">Data Synced!!!</string>
+    <string name="notification_title">News Refreshed!!</string>
+    <string name="data_uptodate">News Available!!</string>
+
+<!--    Notifications-->
+    <string name="refresh_data_channel_id" translatable="false">news_channel</string>
+    <string name="refresh_data_channel_name" translatable="true">News</string>
+    <string name="refresh_data_channel_description">News Update Reminder</string>
 </resources>
