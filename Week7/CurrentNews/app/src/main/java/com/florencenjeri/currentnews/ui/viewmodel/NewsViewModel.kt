@@ -10,8 +10,8 @@ class NewsViewModel(val newsRepository: NewsRepository) : ViewModel() {
 
     fun fetchNews() = newsRepository.fetchNews()
 
-
     fun refreshNewsInDb() = viewModelScope.launch(Dispatchers.IO) {
         newsRepository.refreshNews()
     }
+
 }

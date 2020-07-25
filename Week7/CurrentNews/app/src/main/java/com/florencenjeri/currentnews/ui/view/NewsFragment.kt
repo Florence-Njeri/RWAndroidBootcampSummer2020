@@ -3,7 +3,6 @@ package com.florencenjeri.currentnews.ui.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +51,6 @@ class NewsFragment : Fragment() {
         viewModel.fetchNews().observe(viewLifecycleOwner, Observer() {
             newsAdapter.setData(it)
             newsList.adapter = newsAdapter
-            Log.d("NewsList", it.toString())
         })
         val linearLayoutManager = LinearLayoutManager(App.getAppContext())
 
@@ -72,6 +70,7 @@ class NewsFragment : Fragment() {
     private fun loadNextDataFromDatabase(page: Int) {
 
     }
+
     private fun readMoreOnBrowser(news: News?) {
         val uri = Uri.parse(news?.url)
         val intent = Intent(Intent.ACTION_VIEW, uri)
