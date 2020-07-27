@@ -33,7 +33,7 @@ android {
         jvmTarget = '1.8'
     }
 
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 }
@@ -49,10 +49,28 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
     implementation 'androidx.room:room-runtime:2.2.5'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    //    Testing
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
+
+    // AndroidX Test - JVM testing
+    testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
+    testImplementation "org.robolectric:robolectric:$robolectricVersion"
+    testImplementation "androidx.test.ext:junit-ktx:$androidXTestExtKotlinRunnerVersion"
+    testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+
+    //Add InstantTaskExecutor
+    testImplementation "androidx.arch.core:core-testing:$archTestingVersion"
+
+    //Mockito
+    // For local unit tests on your development machine
+    testImplementation "org.mockito:mockito-core:2.28.2"
+    testImplementation 'org.mockito:mockito-inline:2.28.2'
+    // For instrumentation tests on Android devices and emulators
+    androidTestImplementation "org.mockito:mockito-android:2.28.2"
 
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.retrofit2:retrofit:2.7.2'
