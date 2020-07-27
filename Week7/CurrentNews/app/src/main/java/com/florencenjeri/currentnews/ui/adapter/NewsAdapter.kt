@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.florencenjeri.currentnews.R
+import com.florencenjeri.currentnews.databinding.NewsItemBinding
 import com.florencenjeri.currentnews.model.News
 import kotlinx.android.synthetic.main.news_item.view.*
 
@@ -12,9 +12,9 @@ class NewsAdapter(private val onListButtonClicked: (News) -> Unit) :
     ListAdapter<News, NewsViewHolder>(NewsDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.news_item, parent, false)
-        return NewsViewHolder(view)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = NewsItemBinding.inflate(layoutInflater,parent,false)
+        return NewsViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
