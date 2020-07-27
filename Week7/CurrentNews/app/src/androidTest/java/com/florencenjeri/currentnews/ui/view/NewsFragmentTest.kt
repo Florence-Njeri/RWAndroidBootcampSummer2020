@@ -29,7 +29,7 @@ class NewsFragmentTest {
         ActivityScenario.launch(MainActivity::class.java)
 
         // When a view with id newsList is found
-        onView(withId(R.id.newsList))
+        onView(withId(R.id.contentMain))
             // Then check if it is being displayed on the screen
             .check(matches(isDisplayed()))
     }
