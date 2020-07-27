@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
 import com.florencenjeri.currentnews.R
-import com.florencenjeri.currentnews.ui.MainActivity
+import com.florencenjeri.currentnews.ui.view.MainActivity
 
 private val NOTIFICATION_ID = 0
 fun NotificationManager.sendNotification(messageBody: String, applicationContext: Context) {

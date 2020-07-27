@@ -51,12 +51,10 @@ class RefreshDataWorker(context: Context, workerParameters: WorkerParameters) :
                 .apply {
                     setShowBadge(false)
                 }
-
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.RED
             notificationChannel.enableVibration(true)
             notificationChannel.description = app.getString(R.string.refresh_data_channel_description)
-
             val notificationManager = App.getAppContext().getSystemService(
                 NotificationManager::class.java
             )

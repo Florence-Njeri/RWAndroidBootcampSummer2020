@@ -136,7 +136,7 @@ object BooksData {
             "What is the lesson in abuse, neglect, abandonment, rejection? What is the lesson when you lose someone you really love? Just what are the lessons of life's hard times?\n" +
                     "\n" +
                     "Bestselling author Iyanla Vanzant has had an amazing and difficult life -- one of great challenges that unmasked her wonderful gifts and led to wisdom gained. In this simple book, she uses her own personal experiences to show how life's hardships can be re-languaged and revisioned to become lessons that teach us as we grow, heal, and learn to love. The pain of the past does not have to be today's reality. Iyanla Vanzant is an example of how yesterday's tears become the seeds of today's hope, renewal, and strength. ",
-            "SelfHelp / Spirituality"
+            "SelfHelp"
         )
     )
 

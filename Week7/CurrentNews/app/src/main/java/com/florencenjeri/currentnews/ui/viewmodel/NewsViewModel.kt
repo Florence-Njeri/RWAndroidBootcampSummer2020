@@ -1,4 +1,4 @@
-package com.florencenjeri.currentnews.ui
+package com.florencenjeri.currentnews.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -10,8 +10,8 @@ class NewsViewModel(val newsRepository: NewsRepository) : ViewModel() {
 
     fun fetchNews() = newsRepository.fetchNews()
 
-
     fun refreshNewsInDb() = viewModelScope.launch(Dispatchers.IO) {
         newsRepository.refreshNews()
     }
+
 }

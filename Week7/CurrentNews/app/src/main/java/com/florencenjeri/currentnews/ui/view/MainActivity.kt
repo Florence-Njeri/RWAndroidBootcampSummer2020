@@ -1,4 +1,4 @@
-package com.florencenjeri.currentnews.ui
+package com.florencenjeri.currentnews.ui.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

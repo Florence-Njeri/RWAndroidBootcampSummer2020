@@ -21,6 +21,9 @@
                 <item
                     android:id="@+id/action_self_help"
                     android:title="@string/self_help" />
+                <item
+                    android:id="@+id/action_all_books"
+                    android:title="@string/all" />
             </group>
         </menu>
     </item>
