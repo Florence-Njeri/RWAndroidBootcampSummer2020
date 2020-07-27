@@ -50,7 +50,7 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel.refreshNewsInDb()
         viewModel.fetchNews().observe(viewLifecycleOwner, Observer() {
-            newsAdapter.setData(it)
+            newsAdapter.submitList(it)
             newsList.adapter = newsAdapter
             Log.d("NewsList", it.toString())
         })
