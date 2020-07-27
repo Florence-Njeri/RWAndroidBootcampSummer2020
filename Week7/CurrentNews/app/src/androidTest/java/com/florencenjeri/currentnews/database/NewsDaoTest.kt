@@ -1,12 +1,11 @@
-package com.florencenjeri.currentnews
+package com.florencenjeri.currentnews.database
 
 import android.content.Context
 import android.util.Log
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.florencenjeri.currentnews.database.NewsDao
-import com.florencenjeri.currentnews.database.NewsDatabase
+import com.florencenjeri.currentnews.App
 import com.florencenjeri.currentnews.model.News
 import kotlinx.coroutines.runBlocking
 import org.junit.*
@@ -23,7 +22,8 @@ class NewsDaoTest {
 
     @Before
     fun setup() {
-        val context: Context = App.getAppContext()
+        val context: Context =
+            App.getAppContext()
         try {
             //Use in memory db so its created in the system emory once your app is destroyed it does not persist
             database = Room.inMemoryDatabaseBuilder(context, NewsDatabase::class.java)
