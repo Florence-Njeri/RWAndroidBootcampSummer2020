@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.florencenjeri.currentnews.database.NewsRepository
 import com.florencenjeri.currentnews.model.News
 import com.florencenjeri.currentnews.ui.viewmodel.NewsViewModel
+import com.nhaarman.mockito_kotlin.verify
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
@@ -19,7 +20,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
-@Config(manifest=Config.NONE)
+@Config(manifest = Config.NONE)
 class NewsViewModelTest {
 
     private lateinit var viewModel: NewsViewModel
@@ -69,11 +70,12 @@ class NewsViewModelTest {
         newsLiveData.value = newsList
 
         //When
-         viewModel.fetchNews().observeForever {news->
+        viewModel.fetchNews().observeForever { news ->
             //Then
             assertThat(news.size, CoreMatchers.`is`(2))
         }
-
+        //Verify that data is fetched from the local database
+        verify(repository).fetchNews()
     }
 
 }
