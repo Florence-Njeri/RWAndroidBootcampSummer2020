@@ -1,8 +1,6 @@
 package com.florencenjeri.currentnews.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import com.florencenjeri.currentnews.App
-import com.florencenjeri.currentnews.database.NewsDatabase
 import com.florencenjeri.currentnews.database.NewsRepository
 import com.florencenjeri.currentnews.model.News
 import com.florencenjeri.currentnews.ui.viewmodel.NewsViewModel
@@ -23,10 +21,7 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest=Config.NONE)
 class NewsViewModelTest {
-    val newsDao by lazy { NewsDatabase.getDatabase(App.getAppContext()).newsDao() }
 
-    //    val repository by lazy { NewsRepository(newsDao) }
-//    val viewModel by lazy { NewsViewModel(repository) }
     private lateinit var viewModel: NewsViewModel
     private val newsList = listOf(
         News(
