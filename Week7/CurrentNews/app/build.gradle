@@ -110,5 +110,5 @@ dependencies {
     implementation "android.arch.paging:runtime:$pagingVersion"
 
     //Testing fragments
-    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
+    debugImplementation "androidx.fragment:fragment-testing:1.2.5"
 }
