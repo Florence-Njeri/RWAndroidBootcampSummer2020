@@ -1,5 +1,6 @@
 package com.florencenjeri.currentnews.ui.view
 
+import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -17,20 +18,21 @@ class NewsFragmentTest {
     @get:Rule
     val activityRule = ActivityTestRule(MainActivity::class.java, false, false)
 
+    //Test the NewsFragment
+    @Test
+    fun testNewsFragment() {
+        //Launch the NewsFragment
+        launchFragmentInContainer<NewsFragment>()
+        // When a view with id newsList is found
+        onView(withId(R.id.newsList))
+            // Then check if it is being displayed on the screen
+            .check(matches(isDisplayed()))
+    }
+
     //Check that your app can be launched withut crashing
     @Test
     fun appLaunchesSuccessfully() {
         ActivityScenario.launch(MainActivity::class.java)
     }
 
-    @Test
-    fun onLaunchCheckRecyclerViewDataIsDisplayed() {
-        //Given the main activity has launched
-        ActivityScenario.launch(MainActivity::class.java)
-
-        // When a view with id newsList is found
-        onView(withId(R.id.contentMain))
-            // Then check if it is being displayed on the screen
-            .check(matches(isDisplayed()))
-    }
 }
