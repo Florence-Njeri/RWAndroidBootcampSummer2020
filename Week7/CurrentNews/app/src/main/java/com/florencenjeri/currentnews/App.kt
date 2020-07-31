@@ -3,11 +3,11 @@ package com.florencenjeri.currentnews
 import android.app.Application
 import android.content.Context
 import androidx.work.*
-import com.florencenjeri.currentnews.database.NewsDatabase
-import com.florencenjeri.currentnews.database.NewsRepository
-import com.florencenjeri.currentnews.network.RemoteApi
-import com.florencenjeri.currentnews.network.buildApiService
+import com.florencenjeri.currentnews.di.newsModule
 import com.florencenjeri.currentnews.worker.RefreshDataWorker
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 import java.util.concurrent.TimeUnit
 
 class App : Application() {
@@ -16,15 +16,16 @@ class App : Application() {
     companion object {
         private lateinit var instance: App
         fun getAppContext(): Context = instance.applicationContext
-        val apiService by lazy { buildApiService() }
-        val remoteApi by lazy { RemoteApi(apiService) }
-        val newsDao by lazy { NewsDatabase.getDatabase(getAppContext()).newsDao() }
-        val newsRepository by lazy { NewsRepository(newsDao) }
     }
 
     override fun onCreate() {
         instance = this
         super.onCreate()
+        startKoin {
+            androidLogger()
+            androidContext(this@App)
+            modules(listOf(newsModule))
+        }
         hourlyDataSync()
     }
 
