@@ -22,10 +22,9 @@ class NewsDaoTest {
 
     @Before
     fun setup() {
-        val context: Context =
-            App.getAppContext()
+        val context: Context = App.getAppContext()
         try {
-            //Use in memory db so its created in the system emory once your app is destroyed it does not persist
+            //Use in memory db so its created in the system memory once your app is destroyed it does not persist
             database = Room.inMemoryDatabaseBuilder(context, NewsDatabase::class.java)
                 .allowMainThreadQueries().build()
         } catch (e: Exception) {
