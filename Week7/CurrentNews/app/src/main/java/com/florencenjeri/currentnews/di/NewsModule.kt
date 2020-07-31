@@ -20,7 +20,7 @@ val newsModule = module {
 
     single { buildApiService() }
     single { RemoteApi(get()) }
-    single { NewsRepository(get()) }
     single { NewsDatabase.getDatabase(get()).newsDao() }
-    single { NewsViewModel(get()) }
+    single { NewsRepository() }
+    single { NewsViewModel() }
 }

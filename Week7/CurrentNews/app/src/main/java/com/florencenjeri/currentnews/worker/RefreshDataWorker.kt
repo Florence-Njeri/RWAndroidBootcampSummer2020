@@ -10,9 +10,13 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.florencenjeri.currentnews.App
 import com.florencenjeri.currentnews.R
+import com.florencenjeri.currentnews.database.NewsRepository
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 class RefreshDataWorker(context: Context, workerParameters: WorkerParameters) :
-    CoroutineWorker(context, workerParameters) {
+    CoroutineWorker(context, workerParameters),KoinComponent {
+    val newsRepository:NewsRepository by inject()
     companion object {
         const val WORK_NAME = "RefreshDataWorker"
         val app = App.getAppContext()
@@ -21,7 +25,7 @@ class RefreshDataWorker(context: Context, workerParameters: WorkerParameters) :
     override suspend fun doWork(): Result {
         //Sync data to the database
         return try {
-            App.newsRepository.refreshNews()
+            newsRepository.refreshNews()
             createNotification()
             Result.success()
         } catch (error: Throwable) {

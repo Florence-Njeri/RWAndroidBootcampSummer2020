@@ -19,12 +19,13 @@ import com.florencenjeri.currentnews.model.News
 import com.florencenjeri.currentnews.ui.adapter.EndlessRecyclerViewScrollListener
 import com.florencenjeri.currentnews.ui.adapter.NewsAdapter
 import com.florencenjeri.currentnews.ui.viewmodel.NewsViewModel
-import com.florencenjeri.currentnews.ui.viewmodel.NewsViewModelFactory
 import kotlinx.android.synthetic.main.fragment_news.*
+import org.koin.android.ext.android.inject
 
 
 class NewsFragment : Fragment() {
-    val newsRepository by lazy { NewsRepository(App.newsDao) }
+    val newsRepository: NewsRepository by inject()
+
     val newsAdapter by lazy {
         NewsAdapter(
             ::readMoreOnBrowser
@@ -32,10 +33,7 @@ class NewsFragment : Fragment() {
     }
     private val viewModel by lazy {
         ViewModelProvider(
-            this,
-            NewsViewModelFactory(
-                newsRepository
-            )
+            this
         ).get(NewsViewModel::class.java)
     }
 
@@ -72,6 +70,7 @@ class NewsFragment : Fragment() {
     private fun loadNextDataFromDatabase(page: Int) {
 
     }
+
     private fun readMoreOnBrowser(news: News?) {
         val uri = Uri.parse(news?.url)
         val intent = Intent(Intent.ACTION_VIEW, uri)

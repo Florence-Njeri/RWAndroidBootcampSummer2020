@@ -21,6 +21,7 @@ class App : Application() {
     override fun onCreate() {
         instance = this
         super.onCreate()
+        //Initialize Koin
         startKoin {
             androidLogger()
             androidContext(this@App)
