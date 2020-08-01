@@ -24,8 +24,11 @@ class App : Application() {
         super.onCreate()
         //Initialize Koin
         startKoin {
+            //For logging Koin related errors
             androidLogger()
+            //Declare my app context
             androidContext(this@App)
+            //Declare all my D.I modules
             modules(listOf(newsModule, networkModule))
         }
         hourlyDataSync()

@@ -11,6 +11,9 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
+/**
+ * Build the ApiService object here so as it is inject in the RemoteApi for fetching data from the remote data source
+ */
 val networkModule = module {
     single(named("API_KEY")) { "n5YlnB5zNgFR84AHAMJg-oKSGgGShCohW24yIkJW2cu3fOrQ" }
     single(named("KEY_API")) { "apiKey" }

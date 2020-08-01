@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.florencenjeri.currentnews.App
@@ -31,11 +30,8 @@ class NewsFragment : Fragment() {
             ::readMoreOnBrowser
         )
     }
-    private val viewModel by lazy {
-        ViewModelProvider(
-            this
-        ).get(NewsViewModel::class.java)
-    }
+    //Fetch the ViewModel Instance using Koin
+    private val viewModel: NewsViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
