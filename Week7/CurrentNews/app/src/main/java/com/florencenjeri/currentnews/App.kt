@@ -3,6 +3,7 @@ package com.florencenjeri.currentnews
 import android.app.Application
 import android.content.Context
 import androidx.work.*
+import com.florencenjeri.currentnews.di.networkModule
 import com.florencenjeri.currentnews.di.newsModule
 import com.florencenjeri.currentnews.worker.RefreshDataWorker
 import org.koin.android.ext.koin.androidContext
@@ -25,7 +26,7 @@ class App : Application() {
         startKoin {
             androidLogger()
             androidContext(this@App)
-            modules(listOf(newsModule))
+            modules(listOf(newsModule, networkModule))
         }
         hourlyDataSync()
     }
