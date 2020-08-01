@@ -1,20 +1,22 @@
 package com.florencenjeri.currentnews.database
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.test.core.app.ApplicationProvider
 import com.florencenjeri.currentnews.di.networkModule
 import com.florencenjeri.currentnews.di.newsModule
 import com.florencenjeri.currentnews.model.News
 import junit.framework.Assert.assertNotNull
-import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
-import org.mockito.Mockito
 import org.mockito.Spy
 import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoRule
@@ -24,6 +26,7 @@ import org.robolectric.annotation.Config
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest = Config.NONE)
 class NewsRepositoryTest : KoinTest {
+    val appContext = ApplicationProvider.getApplicationContext<Context>()
     private lateinit var newsRepository: NewsRepository
     private val dao: NewsDao by inject()
 
@@ -60,10 +63,13 @@ class NewsRepositoryTest : KoinTest {
     @Before
     fun setUp() {
         startKoin {
-
+            //For logging Koin related errors
+            androidLogger()
+            //Declare my app context
+            androidContext(appContext)
             modules(listOf(newsModule, networkModule))
         }
-        Mockito.`when`(dao.fetchNews()).thenReturn(newsLiveData)
+        dao.fetchNews()
         newsRepository = NewsRepository()
     }
 
@@ -81,8 +87,4 @@ class NewsRepositoryTest : KoinTest {
 
     }
 
-    @After
-    fun stopKoin() {
-        stopKoin()
-    }
 }
