@@ -8,6 +8,7 @@ import com.florencenjeri.currentnews.di.networkModule
 import com.florencenjeri.currentnews.di.newsModule
 import com.florencenjeri.currentnews.model.News
 import junit.framework.Assert.assertNotNull
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -15,6 +16,7 @@ import org.junit.runner.RunWith
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
 import org.mockito.Spy
@@ -71,6 +73,11 @@ class NewsRepositoryTest : KoinTest {
         }
         dao.fetchNews()
         newsRepository = NewsRepository()
+    }
+
+    @After
+    fun after() {
+        stopKoin()
     }
 
     @Test

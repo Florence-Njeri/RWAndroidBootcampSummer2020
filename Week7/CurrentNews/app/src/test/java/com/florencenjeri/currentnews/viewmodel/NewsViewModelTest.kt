@@ -19,6 +19,9 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.test.KoinTest
 import org.koin.test.inject
+import org.koin.test.mock.MockProviderRule
+import org.koin.test.mock.declareMock
+import org.mockito.Mockito
 import org.mockito.Spy
 import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoRule
@@ -63,6 +66,10 @@ class NewsViewModelTest : KoinTest{
     @JvmField
     val mockitoRule: MockitoRule = MockitoJUnit.rule()
 
+    @get:Rule
+    val mockProvider = MockProviderRule.create { clazz ->
+        Mockito.mock(clazz.java)
+    }
     @Before
     fun setUp() {
         startKoin {
@@ -72,7 +79,8 @@ class NewsViewModelTest : KoinTest{
             androidContext(appContext)
             modules(listOf(newsModule, networkModule))
         }
-        repository.fetchNews()
+        declareMock<NewsRepository>()
+        Mockito.`when`(repository.fetchNews()).thenReturn(newsLiveData)
         viewModel = NewsViewModel()
     }
 
@@ -87,6 +95,7 @@ class NewsViewModelTest : KoinTest{
             assertThat(news.size, CoreMatchers.`is`(2))
         }
         //Verify that data is fetched from the local database
-        repository.fetchNews()
+        Mockito.verify(repository).fetchNews()
     }
+
 }

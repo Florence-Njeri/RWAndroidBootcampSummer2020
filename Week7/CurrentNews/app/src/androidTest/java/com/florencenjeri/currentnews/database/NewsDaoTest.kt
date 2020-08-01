@@ -60,7 +60,6 @@ class NewsDaoTest {
             val lastBookItem = it.last()
             Assert.assertEquals("en", lastBookItem.language)
         }
-
     }
 
     @After
