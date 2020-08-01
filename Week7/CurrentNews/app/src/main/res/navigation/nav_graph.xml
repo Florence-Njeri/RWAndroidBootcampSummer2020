@@ -9,5 +9,5 @@
         android:id="@+id/FirstFragment"
         android:name="com.florencenjeri.currentnews.ui.view.NewsFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_news"/>
+        tools:layout="@layout/fragment_news" />
 </navigation>

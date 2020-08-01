@@ -13,7 +13,7 @@ class NewsAdapter(private val onListButtonClicked: (News) -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = NewsItemBinding.inflate(layoutInflater,parent,false)
+        val binding = NewsItemBinding.inflate(layoutInflater, parent, false)
         return NewsViewHolder(binding)
     }
 

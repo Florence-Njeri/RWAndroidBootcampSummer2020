@@ -7,7 +7,7 @@ import com.florencenjeri.currentnews.model.Success
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class RemoteApi: KoinComponent {
+class RemoteApi : KoinComponent {
     val apiService: ApiService by inject()
     suspend fun fetchNews(): Result<List<News>> = try {
         val body = apiService.latestNews()

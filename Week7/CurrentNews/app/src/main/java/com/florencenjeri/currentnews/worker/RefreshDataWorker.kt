@@ -15,8 +15,9 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 
 class RefreshDataWorker(context: Context, workerParameters: WorkerParameters) :
-    CoroutineWorker(context, workerParameters),KoinComponent {
-    val newsRepository:NewsRepository by inject()
+    CoroutineWorker(context, workerParameters), KoinComponent {
+    val newsRepository: NewsRepository by inject()
+
     companion object {
         const val WORK_NAME = "RefreshDataWorker"
         val app = App.getAppContext()
@@ -51,14 +52,16 @@ class RefreshDataWorker(context: Context, workerParameters: WorkerParameters) :
             val notificationChannel = NotificationChannel(
                 channelId,
                 channelName,
-                NotificationManager.IMPORTANCE_HIGH)
+                NotificationManager.IMPORTANCE_HIGH
+            )
                 .apply {
                     setShowBadge(false)
                 }
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.RED
             notificationChannel.enableVibration(true)
-            notificationChannel.description = app.getString(R.string.refresh_data_channel_description)
+            notificationChannel.description =
+                app.getString(R.string.refresh_data_channel_description)
             val notificationManager = App.getAppContext().getSystemService(
                 NotificationManager::class.java
             )

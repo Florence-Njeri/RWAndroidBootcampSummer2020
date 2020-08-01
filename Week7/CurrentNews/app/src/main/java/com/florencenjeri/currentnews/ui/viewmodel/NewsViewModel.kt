@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 
-class NewsViewModel : ViewModel() ,KoinComponent{
+class NewsViewModel : ViewModel(), KoinComponent {
     val newsRepository: NewsRepository by inject()
     fun fetchNews() = newsRepository.fetchNews()
 
