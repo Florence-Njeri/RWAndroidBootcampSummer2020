@@ -11,10 +11,15 @@ import androidx.navigation.fragment.findNavController
 import com.florencenjeri.currentnews.R
 import com.florencenjeri.readinglist.prefs.UserPrefs
 import kotlinx.android.synthetic.main.fragment_log_in.*
-import org.koin.android.ext.android.inject
+import org.koin.core.qualifier.named
+import org.koin.core.scope.Scope
+import org.koin.java.KoinJavaComponent.getKoin
 
 class LogInFragment : Fragment() {
-    private val prefs: UserPrefs by inject()
+    //Create a scope instance of the Shared Prefs
+    private val scope: Scope = getKoin().createScope("prefs", named("UserPrefs"))
+    private val prefs:UserPrefs = scope.get()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +45,8 @@ class LogInFragment : Fragment() {
                 editTextPassword.text.toString()
             )
             findNavController().navigate(R.id.action_logInFragment_to_FirstFragment)
-
+            //Now that the user is logged in, we no longer need the SharedPrefs object so we close its scope
+            scope.close()
         }
     }
 

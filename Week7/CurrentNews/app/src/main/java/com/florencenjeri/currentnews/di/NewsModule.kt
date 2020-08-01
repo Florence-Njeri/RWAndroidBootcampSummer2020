@@ -6,6 +6,7 @@ import com.florencenjeri.currentnews.network.RemoteApi
 import com.florencenjeri.currentnews.ui.viewmodel.NewsViewModel
 import com.florencenjeri.readinglist.prefs.UserPrefs
 import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val newsModule = module {
@@ -18,5 +19,12 @@ val newsModule = module {
     single { NewsDatabase.getDatabase(get()).newsDao() }
     single { NewsRepository() }
     viewModel { NewsViewModel() }
-    single { UserPrefs() }
+    /**
+     * I only need UserPrefs to be created if the user is logged out else, don't instantiate it as we don't need it
+     */
+    scope(named("UserPrefs")) {
+        scoped {
+            UserPrefs()
+        }
+    }
 }
