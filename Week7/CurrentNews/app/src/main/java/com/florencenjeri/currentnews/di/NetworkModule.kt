@@ -1,7 +1,6 @@
 package com.florencenjeri.currentnews.di
 
 import com.florencenjeri.currentnews.network.ApiService
-import com.florencenjeri.currentnews.network.buildClient
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.json.Json
 import okhttp3.Interceptor
@@ -44,7 +43,7 @@ val networkModule = module {
         //Build the content type for your Kotlin parser
         val contentType = "application/json".toMediaType()
         Retrofit.Builder()
-            .client(buildClient())
+            .client(get())
             .baseUrl(get<String>(named("BASE_URL")))
             .addConverterFactory(Json.nonstrict.asConverterFactory(contentType))
             .build()
