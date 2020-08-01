@@ -2,13 +2,18 @@ package com.florencenjeri.currentnews.database
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.florencenjeri.currentnews.di.networkModule
+import com.florencenjeri.currentnews.di.newsModule
 import com.florencenjeri.currentnews.model.News
 import junit.framework.Assert.assertNotNull
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
+import org.koin.core.context.startKoin
+import org.koin.test.KoinTest
+import org.koin.test.inject
 import org.mockito.Mockito
 import org.mockito.Spy
 import org.mockito.junit.MockitoJUnit
@@ -18,8 +23,10 @@ import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest = Config.NONE)
-class NewsRepositoryTest {
+class NewsRepositoryTest : KoinTest {
     private lateinit var newsRepository: NewsRepository
+    private val dao: NewsDao by inject()
+
     private val newsList = listOf(
         News(
             "PR Newswire",
@@ -46,17 +53,18 @@ class NewsRepositoryTest {
     @Spy
     val newsLiveData: MutableLiveData<List<News>> = MutableLiveData()
 
-    @Mock
-    private lateinit var dao: NewsDao
-
     @Rule
     @JvmField
     val mockitoRule: MockitoRule = MockitoJUnit.rule()
 
     @Before
     fun setUp() {
+        startKoin {
+
+            modules(listOf(newsModule, networkModule))
+        }
         Mockito.`when`(dao.fetchNews()).thenReturn(newsLiveData)
-        newsRepository = NewsRepository(dao)
+        newsRepository = NewsRepository()
     }
 
     @Test
@@ -71,5 +79,10 @@ class NewsRepositoryTest {
             assertNotNull(news.size)
         }
 
+    }
+
+    @After
+    fun stopKoin() {
+        stopKoin()
     }
 }

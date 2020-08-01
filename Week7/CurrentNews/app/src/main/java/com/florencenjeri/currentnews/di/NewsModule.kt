@@ -5,6 +5,7 @@ import com.florencenjeri.currentnews.database.NewsRepository
 import com.florencenjeri.currentnews.network.RemoteApi
 import com.florencenjeri.currentnews.prefs.UserPrefs
 import com.florencenjeri.currentnews.ui.viewmodel.NewsViewModel
+import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
@@ -16,7 +17,7 @@ val newsModule = module {
      */
     //News Related objects that should be created / injected into other classes
     single { RemoteApi() }
-    single { NewsDatabase.getDatabase(get()).newsDao() }
+    single { NewsDatabase.getDatabase(androidContext()).newsDao() }
     single { NewsRepository() }
     viewModel { NewsViewModel() }
     /**

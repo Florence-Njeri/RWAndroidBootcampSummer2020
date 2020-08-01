@@ -2,6 +2,8 @@ package com.florencenjeri.currentnews.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.florencenjeri.currentnews.database.NewsRepository
+import com.florencenjeri.currentnews.di.networkModule
+import com.florencenjeri.currentnews.di.newsModule
 import com.florencenjeri.currentnews.model.News
 import com.florencenjeri.currentnews.ui.viewmodel.NewsViewModel
 import com.nhaarman.mockito_kotlin.verify
@@ -11,7 +13,9 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
+import org.koin.core.context.startKoin
+import org.koin.test.KoinTest
+import org.koin.test.inject
 import org.mockito.Mockito
 import org.mockito.Spy
 import org.mockito.junit.MockitoJUnit
@@ -21,9 +25,12 @@ import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest = Config.NONE)
-class NewsViewModelTest {
+class NewsViewModelTest : KoinTest{
 
     private lateinit var viewModel: NewsViewModel
+    //We need to mock the repository dependency
+
+    private val repository: NewsRepository by inject()
     private val newsList = listOf(
         News(
             "PR Newswire",
@@ -50,18 +57,18 @@ class NewsViewModelTest {
     @Spy
     val newsLiveData: MutableLiveData<List<News>> = MutableLiveData()
 
-    //We need to mock the repository dependency
-    @Mock
-    private lateinit var repository: NewsRepository
-
     @Rule
     @JvmField
     val mockitoRule: MockitoRule = MockitoJUnit.rule()
 
     @Before
     fun setUp() {
+        startKoin {
+
+            modules(listOf(newsModule, networkModule))
+        }
         Mockito.`when`(repository.fetchNews()).thenReturn(newsLiveData)
-        viewModel = NewsViewModel(repository)
+        viewModel = NewsViewModel()
     }
 
     @Test

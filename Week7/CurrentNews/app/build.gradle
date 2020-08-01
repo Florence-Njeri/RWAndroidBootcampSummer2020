@@ -111,9 +111,9 @@ dependencies {
     implementation "android.arch.paging:runtime:$pagingVersion"
 
     //Koin
-    implementation "org.koin:koin-android:2.1.5"
-    implementation "org.koin:koin-android-viewmodel:2.1.5"
-    implementation "org.koin:koin-androidx-scope:2.1.5"
-    testImplementation "org.koin:koin-test:2.0.0"
+    implementation "org.koin:koin-android:2.1.6"
+    implementation "org.koin:koin-android-viewmodel:2.1.6"
+    implementation "org.koin:koin-androidx-scope:2.1.6"
+    testImplementation "org.koin:koin-test:2.1.6"
 
 }
