@@ -4,6 +4,7 @@ import com.florencenjeri.currentnews.database.NewsDatabase
 import com.florencenjeri.currentnews.database.NewsRepository
 import com.florencenjeri.currentnews.network.RemoteApi
 import com.florencenjeri.currentnews.ui.viewmodel.NewsViewModel
+import com.florencenjeri.readinglist.prefs.UserPrefs
 import org.koin.dsl.module
 
 val newsModule = module {
@@ -16,4 +17,5 @@ val newsModule = module {
     single { NewsDatabase.getDatabase(get()).newsDao() }
     single { NewsRepository() }
     single { NewsViewModel() }
+    single { UserPrefs() }
 }
