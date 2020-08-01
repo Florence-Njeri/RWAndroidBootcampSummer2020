@@ -11,6 +11,7 @@ import retrofit2.Retrofit
 const val API_KEY = "n5YlnB5zNgFR84AHAMJg-oKSGgGShCohW24yIkJW2cu3fOrQ"
 private const val KEY_API = "apiKey"
 const val BASE_URL = "https://api.currentsapi.services/"
+
 fun buildClient() = OkHttpClient.Builder()
     .addInterceptor(HttpLoggingInterceptor().apply {
         //Log the body of the sent and received data
