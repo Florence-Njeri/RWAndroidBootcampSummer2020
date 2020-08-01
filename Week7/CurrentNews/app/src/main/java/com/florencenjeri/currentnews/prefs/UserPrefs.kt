@@ -1,4 +1,4 @@
-package com.florencenjeri.readinglist.prefs
+package com.florencenjeri.currentnews.prefs
 
 import android.content.Context
 import com.florencenjeri.currentnews.App
@@ -27,9 +27,4 @@ class UserPrefs : SharedPrefsHelper {
         isLoggedIn = !email.isNullOrBlank() && !password.isNullOrBlank()
         return isLoggedIn
     }
-
-    override fun logOut() {
-        sharedPrefs().edit().clear().apply()
-    }
-
 }

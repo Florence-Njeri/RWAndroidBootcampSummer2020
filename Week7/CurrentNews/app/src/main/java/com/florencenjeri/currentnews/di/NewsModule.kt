@@ -3,8 +3,8 @@ package com.florencenjeri.currentnews.di
 import com.florencenjeri.currentnews.database.NewsDatabase
 import com.florencenjeri.currentnews.database.NewsRepository
 import com.florencenjeri.currentnews.network.RemoteApi
+import com.florencenjeri.currentnews.prefs.UserPrefs
 import com.florencenjeri.currentnews.ui.viewmodel.NewsViewModel
-import com.florencenjeri.readinglist.prefs.UserPrefs
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module

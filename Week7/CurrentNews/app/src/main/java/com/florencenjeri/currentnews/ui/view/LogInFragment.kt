@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.currentnews.R
-import com.florencenjeri.readinglist.prefs.UserPrefs
+import com.florencenjeri.currentnews.prefs.UserPrefs
 import kotlinx.android.synthetic.main.fragment_log_in.*
 import org.koin.core.qualifier.named
 import org.koin.core.scope.Scope
@@ -18,7 +18,7 @@ import org.koin.java.KoinJavaComponent.getKoin
 class LogInFragment : Fragment() {
     //Create a scope instance of the Shared Prefs
     private val scope: Scope = getKoin().createScope("prefs", named("UserPrefs"))
-    private val prefs:UserPrefs = scope.get()
+    private val prefs: UserPrefs = scope.get()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
