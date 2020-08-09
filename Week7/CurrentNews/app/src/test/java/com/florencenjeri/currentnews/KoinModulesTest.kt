@@ -2,8 +2,7 @@ package com.florencenjeri.currentnews
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import com.florencenjeri.currentnews.di.networkModule
-import com.florencenjeri.currentnews.di.newsModule
+import com.florencenjeri.currentnews.di.*
 import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -27,7 +26,10 @@ class KoinModulesTest : KoinTest {
             androidLogger()
             //Declare my app context
             androidContext(appContext)
-            modules(listOf(newsModule, networkModule))
+            modules(listOf(
+                appModule, networkModule, databaseModule, presentationModule,
+                repositoryModule
+            ))
         }.checkModules()
     }
 

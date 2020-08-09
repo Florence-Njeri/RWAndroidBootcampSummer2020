@@ -13,17 +13,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.florencenjeri.currentnews.App
 import com.florencenjeri.currentnews.R
-import com.florencenjeri.currentnews.database.NewsRepository
 import com.florencenjeri.currentnews.model.News
 import com.florencenjeri.currentnews.ui.adapter.EndlessRecyclerViewScrollListener
 import com.florencenjeri.currentnews.ui.adapter.NewsAdapter
 import com.florencenjeri.currentnews.ui.viewmodel.NewsViewModel
 import kotlinx.android.synthetic.main.fragment_news.*
-import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class NewsFragment : Fragment() {
-    val newsRepository: NewsRepository by inject()
 
     val newsAdapter by lazy {
         NewsAdapter(
@@ -31,7 +29,7 @@ class NewsFragment : Fragment() {
         )
     }
     //Fetch the ViewModel Instance using Koin
-    private val viewModel: NewsViewModel by inject()
+    private val newsViewModel: NewsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,8 +40,8 @@ class NewsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.refreshNewsInDb()
-        viewModel.fetchNews().observe(viewLifecycleOwner, Observer() {
+        newsViewModel.refreshNewsInDb()
+        newsViewModel.fetchNews().observe(viewLifecycleOwner, Observer() {
             newsAdapter.submitList(it)
             newsList.adapter = newsAdapter
             Log.d("NewsList", it.toString())
