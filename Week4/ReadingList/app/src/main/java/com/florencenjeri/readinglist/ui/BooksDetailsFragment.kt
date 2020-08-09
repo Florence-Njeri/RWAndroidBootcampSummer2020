@@ -80,5 +80,8 @@ class BooksDetailsFragment : Fragment() {
     private fun setSharedElementTransitionOnEnter() {
         sharedElementEnterTransition = TransitionInflater.from(context)
             .inflateTransition(R.transition.card_shared_element_transition)
+        sharedElementReturnTransition =
+            TransitionInflater.from(this.context)
+                .inflateTransition(R.transition.card_shared_element_transition)
     }
 }

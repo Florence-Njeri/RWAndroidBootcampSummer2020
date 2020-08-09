@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/margin"
@@ -20,7 +21,7 @@
             android:transitionName="@string/transition_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/girl_wash_your_face" />
+            tools:src="@drawable/girl_wash_your_face" />
 
         <TextView
             android:id="@+id/bookTitle"
@@ -29,13 +30,13 @@
             android:layout_marginStart="@dimen/margin"
             android:layout_marginTop="@dimen/margin"
             android:fontFamily="@font/open_sans_bold"
-            android:text="@string/book_title"
             android:textColor="@color/primary_text"
             android:textSize="16sp"
             android:textStyle="bold"
             android:transitionName="@string/transition_title"
             app:layout_constraintStart_toEndOf="@+id/cover"
-            app:layout_constraintTop_toTopOf="@+id/cover" />
+            app:layout_constraintTop_toTopOf="@+id/cover"
+            tools:text="@string/book_title" />
 
         <TextView
             android:id="@+id/author"
@@ -43,12 +44,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
             android:fontFamily="@font/avenir_next_pro"
-            android:text="@string/text_author"
             android:textColor="@color/secondary_text"
             app:layout_constraintEnd_toEndOf="@+id/bookTitle"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/bookTitle"
-            app:layout_constraintTop_toBottomOf="@+id/bookTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/bookTitle"
+            tools:text="@string/text_author" />
 
         <TextView
             android:id="@+id/numPages"
@@ -56,12 +57,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
             android:fontFamily="@font/avenir_next_pro"
-            android:text="@string/text_pages"
             android:textColor="@color/secondary_text"
             app:layout_constraintEnd_toEndOf="@+id/author"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/publicationDate"
-            app:layout_constraintTop_toBottomOf="@+id/publicationDate" />
+            app:layout_constraintTop_toBottomOf="@+id/publicationDate"
+            tools:text="@string/text_pages" />
 
         <TextView
             android:id="@+id/publicationDate"
@@ -69,12 +70,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin"
             android:fontFamily="@font/avenir_next_pro"
-            android:text="@string/text_pub_date"
             android:textColor="@color/secondary_text"
             app:layout_constraintEnd_toEndOf="@+id/author"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/author"
-            app:layout_constraintTop_toBottomOf="@+id/author" />
+            app:layout_constraintTop_toBottomOf="@+id/author"
+            tools:text="@string/text_pub_date" />
 
         <Button
             android:id="@+id/genre"
@@ -85,13 +86,13 @@
             android:fontFamily="@font/avenir_next_pro"
             android:paddingLeft="@dimen/margin"
             android:paddingRight="@dimen/margin"
-            android:text="@string/text_genre"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/button_text"
             android:transitionName="@string/transition_genre"
             app:layout_constraintBottom_toBottomOf="@+id/numPages"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/numPages" />
+            app:layout_constraintTop_toTopOf="@+id/numPages"
+            tools:text="@string/text_genre" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

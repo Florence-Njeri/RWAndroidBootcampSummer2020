@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,9 +22,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/girl_wash_your_face"
                 android:transitionName="@string/transition_image"
-                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed" />
+                app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+                tools:src="@drawable/girl_wash_your_face" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolBar"
@@ -44,9 +45,9 @@
         android:id="@+id/bookCover"
         android:layout_width="@dimen/small_image_width"
         android:layout_height="@dimen/small_image_height"
-        android:src="@drawable/girl_wash_your_face"
         app:layout_anchor="@+id/appBar"
-        app:layout_anchorGravity="bottom|left" />
+        app:layout_anchorGravity="bottom|left"
+        tools:src="@drawable/girl_wash_your_face" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

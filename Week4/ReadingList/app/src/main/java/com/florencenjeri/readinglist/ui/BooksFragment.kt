@@ -5,8 +5,6 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavDirections
-import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.R
@@ -43,9 +41,7 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         view?.booksList?.adapter = BooksAdapter(filteredList, this)
         (view?.booksList?.adapter as BooksAdapter).notifyDataSetChanged()
         postponeEnterTransition()
-
-        viewTreeObserver.addOnPreDrawListener {
-
+        view?.viewTreeObserver?.addOnPreDrawListener {
             startPostponedEnterTransition()
             true
         }
@@ -55,27 +51,18 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         //Navigate using shared element animations on item click
 
         //Make the fragment transitions
-        val imagePair = Pair(cover as View, getString(R.string.transition_image))
-        val titlePair = Pair(cover as View, getString(R.string.transition_title))
-        val genrePair = Pair(cover as View, getString(R.string.transition_genre))
-        val extraInfoForSharedElement = FragmentNavigatorExtras(
+        val imagePair = cover to getString(R.string.transition_image)
+        val titlePair = bookTitle to getString(R.string.transition_title)
+        val genrePair = genre to getString(R.string.transition_genre)
+        val extraInfoForSharedElements = FragmentNavigatorExtras(
             imagePair, titlePair, genrePair
         )
         val action =
             BooksFragmentDirections.actionBooksFragmentToBookDetailsFragment(
                 books.bookId
             )
-        navigate(action, extraInfoForSharedElement)
+        findNavController().navigate(action, extraInfoForSharedElements)
     }
-
-    private fun navigate(destination: NavDirections, extraInfo: FragmentNavigator.Extras) =
-        with(findNavController()) {
-
-            currentDestination?.getAction(destination.actionId)
-                ?.let {
-                    navigate(destination, extraInfo)
-                }
-        }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

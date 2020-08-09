@@ -41,6 +41,10 @@
             android:id="@+id/action_logInFragment_to_BooksFragment"
             app:destination="@id/BooksFragment"
             app:popUpTo="@id/logInFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>
