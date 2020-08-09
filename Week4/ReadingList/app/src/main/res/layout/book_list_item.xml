@@ -18,6 +18,7 @@
         android:id="@+id/cover"
         android:layout_width="@dimen/book_cover_width"
         android:layout_height="@dimen/book_cover_height"
+        android:transitionName="tImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/girl_wash_your_face" />

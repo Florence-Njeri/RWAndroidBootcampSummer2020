@@ -44,7 +44,7 @@ class BooksDetailsFragment : Fragment() {
     }
 
     private fun displayBookDetails(book: Books) {
-        itemImageView.setImageResource(book.image)
+        bookCoverImageView.setImageResource(book.image)
         bookCover.setImageResource(book.image)
         bookDetailsContent.bookTitle.text = book.title
         bookDetailsContent.publicationDate.text = book.publicationDate

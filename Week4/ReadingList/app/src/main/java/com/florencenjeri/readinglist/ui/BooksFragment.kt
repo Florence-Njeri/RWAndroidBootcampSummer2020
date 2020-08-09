@@ -5,10 +5,14 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.FragmentNavigator
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.ReadingListApplication
 import com.florencenjeri.readinglist.model.Books
+import kotlinx.android.synthetic.main.book_list_item.*
 import kotlinx.android.synthetic.main.books_fragment.view.*
 import kotlinx.coroutines.launch
 
@@ -41,12 +45,28 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     }
 
     override fun listItemClicked(books: Books) {
+        //Navigate using shared element animations on item click
+
+        //Make the fragment transitions
+        val imagePair = kotlin.Pair(cover as View, "tImage")
+        val extraInfoForSharedElement = FragmentNavigatorExtras(
+            imagePair
+        )
         val action =
             BooksFragmentDirections.actionBooksFragmentToBookDetailsFragment(
                 books.bookId
             )
-        findNavController().navigate(action)
+        navigate(action, extraInfoForSharedElement)
     }
+
+    private fun navigate(destination: NavDirections, extraInfo: FragmentNavigator.Extras) =
+        with(findNavController()) {
+
+            currentDestination?.getAction(destination.actionId)
+                ?.let {
+                    navigate(destination, extraInfo)
+                }
+        }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

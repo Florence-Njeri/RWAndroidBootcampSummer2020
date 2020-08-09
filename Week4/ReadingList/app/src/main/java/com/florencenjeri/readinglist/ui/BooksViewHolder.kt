@@ -9,7 +9,6 @@ import kotlinx.android.synthetic.main.book_list_item.view.*
 class BooksViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun setBookData(books: Books) {
-
         itemView.bookTitle.text = books.title
         itemView.author.text = books.author.name
         itemView.publicationDate.text = books.publicationDate
@@ -19,5 +18,8 @@ class BooksViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             .load(books.image)
             .centerCrop()
             .into(itemView.cover)
+        with(itemView.cover) {
+            transitionName = itemView.cover.transitionName
+        }
     }
 }

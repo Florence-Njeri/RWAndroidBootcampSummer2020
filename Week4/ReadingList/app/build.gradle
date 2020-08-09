@@ -64,5 +64,5 @@ dependencies {
     implementation "androidx.room:room-ktx:2.2.3"
 
     implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0"
-
+    implementation "com.google.android.material:material:1.2.0"
 }

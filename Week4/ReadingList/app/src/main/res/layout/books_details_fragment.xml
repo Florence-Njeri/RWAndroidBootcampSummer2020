@@ -17,11 +17,12 @@
             app:layout_scrollFlags="scroll|enterAlways">
 
             <ImageView
-                android:id="@+id/itemImageView"
+                android:id="@+id/bookCoverImageView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/girl_wash_your_face"
+                android:transitionName="tImage"
                 app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed" />
 
             <androidx.appcompat.widget.Toolbar
