@@ -1,17 +1,26 @@
 package com.florencenjeri.currentnews.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import androidx.test.core.app.ApplicationProvider
 import com.florencenjeri.currentnews.database.NewsRepository
+import com.florencenjeri.currentnews.di.networkModule
+import com.florencenjeri.currentnews.di.newsModule
 import com.florencenjeri.currentnews.model.News
 import com.florencenjeri.currentnews.ui.viewmodel.NewsViewModel
-import com.nhaarman.mockito_kotlin.verify
 import org.hamcrest.CoreMatchers
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
+import org.koin.test.KoinTest
+import org.koin.test.inject
+import org.koin.test.mock.MockProviderRule
+import org.koin.test.mock.declareMock
 import org.mockito.Mockito
 import org.mockito.Spy
 import org.mockito.junit.MockitoJUnit
@@ -21,9 +30,12 @@ import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest = Config.NONE)
-class NewsViewModelTest {
+class NewsViewModelTest : KoinTest{
 
     private lateinit var viewModel: NewsViewModel
+    //We need to mock the repository dependency
+    val appContext = ApplicationProvider.getApplicationContext<Context>()
+    private val repository: NewsRepository by inject()
     private val newsList = listOf(
         News(
             "PR Newswire",
@@ -50,18 +62,26 @@ class NewsViewModelTest {
     @Spy
     val newsLiveData: MutableLiveData<List<News>> = MutableLiveData()
 
-    //We need to mock the repository dependency
-    @Mock
-    private lateinit var repository: NewsRepository
-
     @Rule
     @JvmField
     val mockitoRule: MockitoRule = MockitoJUnit.rule()
 
+    @get:Rule
+    val mockProvider = MockProviderRule.create { clazz ->
+        Mockito.mock(clazz.java)
+    }
     @Before
     fun setUp() {
+        startKoin {
+            //For logging Koin related errors
+            androidLogger()
+            //Declare my app context
+            androidContext(appContext)
+            modules(listOf(newsModule, networkModule))
+        }
+        declareMock<NewsRepository>()
         Mockito.`when`(repository.fetchNews()).thenReturn(newsLiveData)
-        viewModel = NewsViewModel(repository)
+        viewModel = NewsViewModel()
     }
 
     @Test
@@ -75,7 +95,7 @@ class NewsViewModelTest {
             assertThat(news.size, CoreMatchers.`is`(2))
         }
         //Verify that data is fetched from the local database
-        verify(repository).fetchNews()
+        Mockito.verify(repository).fetchNews()
     }
 
 }

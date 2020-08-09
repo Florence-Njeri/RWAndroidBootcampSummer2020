@@ -10,9 +10,10 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.florencenjeri.currentnews.App
 import com.florencenjeri.currentnews.R
+import com.florencenjeri.currentnews.database.NewsRepository
 
-class RefreshDataWorker(context: Context, workerParameters: WorkerParameters) :
-    CoroutineWorker(context, workerParameters) {
+class RefreshDataWorker(context: Context, workerParameters: WorkerParameters,val newsRepository: NewsRepository ) :
+    CoroutineWorker(context, workerParameters){
     companion object {
         const val WORK_NAME = "RefreshDataWorker"
         val app = App.getAppContext()
@@ -21,7 +22,7 @@ class RefreshDataWorker(context: Context, workerParameters: WorkerParameters) :
     override suspend fun doWork(): Result {
         //Sync data to the database
         return try {
-            App.newsRepository.refreshNews()
+            newsRepository.refreshNews()
             createNotification()
             Result.success()
         } catch (error: Throwable) {
@@ -47,14 +48,16 @@ class RefreshDataWorker(context: Context, workerParameters: WorkerParameters) :
             val notificationChannel = NotificationChannel(
                 channelId,
                 channelName,
-                NotificationManager.IMPORTANCE_HIGH)
+                NotificationManager.IMPORTANCE_HIGH
+            )
                 .apply {
                     setShowBadge(false)
                 }
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.RED
             notificationChannel.enableVibration(true)
-            notificationChannel.description = app.getString(R.string.refresh_data_channel_description)
+            notificationChannel.description =
+                app.getString(R.string.refresh_data_channel_description)
             val notificationManager = App.getAppContext().getSystemService(
                 NotificationManager::class.java
             )

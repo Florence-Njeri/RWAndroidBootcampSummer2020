@@ -32,7 +32,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    dataBinding{
+    dataBinding {
         enabled = true
     }
 }
@@ -110,5 +110,11 @@ dependencies {
 
     //Paging Library
     implementation "android.arch.paging:runtime:$pagingVersion"
+
+    //Koin
+    implementation "org.koin:koin-android:2.1.6"
+    implementation "org.koin:koin-android-viewmodel:2.1.6"
+    implementation "org.koin:koin-androidx-scope:2.1.6"
+    testImplementation "org.koin:koin-test:2.1.6"
 
 }

@@ -9,12 +9,12 @@ import com.florencenjeri.currentnews.model.News
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NewsViewHolder(val binding:  NewsItemBinding) : RecyclerView.ViewHolder(binding.root) {
+class NewsViewHolder(val binding: NewsItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun setBookData(news: News?) {
         val context = App.getAppContext()
         binding.title.text = news?.title
-       binding.author.text = context.getString(R.string.author, news?.author)
+        binding.author.text = context.getString(R.string.author, news?.author)
         val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.getDefault())
         val date = dateFormat.parse(news?.published)
         val formatter =
