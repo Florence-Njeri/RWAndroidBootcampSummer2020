@@ -35,13 +35,20 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         booksViewModel =
             ViewModelProviders.of(this).get(BooksViewModel::class.java)
         lifecycleScope.launch {
-            populateRecyclerView(booksViewModel.getReadBooks())
+            setUpRecyclerView(booksViewModel.getReadBooks())
         }
     }
 
-    private fun populateRecyclerView(filteredList: List<Books>) {
+    private fun setUpRecyclerView(filteredList: List<Books>) {
         view?.booksList?.adapter = BooksAdapter(filteredList, this)
         (view?.booksList?.adapter as BooksAdapter).notifyDataSetChanged()
+        postponeEnterTransition()
+
+        viewTreeObserver.addOnPreDrawListener {
+
+            startPostponedEnterTransition()
+            true
+        }
     }
 
     override fun listItemClicked(books: Books) {
@@ -95,13 +102,13 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
             R.id.action_fiction -> {
                 lifecycleScope.launch {
                     val newList = booksViewModel.sortData("Fiction")
-                    populateRecyclerView(newList)
+                    setUpRecyclerView(newList)
                 }
             }
             else -> {
                 lifecycleScope.launch {
                     val newList = booksViewModel.sortData("Self Help")
-                    populateRecyclerView(newList)
+                    setUpRecyclerView(newList)
                 }
             }
         }
