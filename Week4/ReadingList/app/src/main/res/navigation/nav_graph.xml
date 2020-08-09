@@ -17,11 +17,7 @@
             app:argType="long" />
         <action
             android:id="@+id/action_BookDetailsFragment_to_BooksFragment"
-            app:destination="@id/BooksFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_fade_exit"
-            app:popEnterAnim="@anim/fragment_fade_enter"
-            app:popExitAnim="@anim/fragment_fade_exit" />
+            app:destination="@id/BooksFragment" />
     </fragment>
     <fragment
         android:id="@+id/BooksFragment"
@@ -34,11 +30,7 @@
             app:destination="@id/logInFragment" />
         <action
             android:id="@+id/action_BooksFragment_to_BookDetailsFragment"
-            app:destination="@id/BookDetailsFragment"
-            app:enterAnim="@anim/fragment_fade_enter"
-            app:exitAnim="@anim/fragment_fade_exit"
-            app:popEnterAnim="@anim/fragment_fade_enter"
-            app:popExitAnim="@anim/fragment_fade_exit" />
+            app:destination="@id/BookDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/logInFragment"

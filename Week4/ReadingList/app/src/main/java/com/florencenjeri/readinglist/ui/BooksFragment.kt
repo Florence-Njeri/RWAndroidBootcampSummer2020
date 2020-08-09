@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.ReadingListApplication
 import com.florencenjeri.readinglist.model.Books
+import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialElevationScale
 import kotlinx.android.synthetic.main.book_list_item.*
 import kotlinx.android.synthetic.main.books_fragment.view.*
@@ -30,14 +31,18 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        //Scale down when exiting
-        exitTransition = MaterialElevationScale(/* growing= */ false)
-        reenterTransition = MaterialElevationScale(/* growing= */ true)
         booksViewModel =
             ViewModelProviders.of(this).get(BooksViewModel::class.java)
         lifecycleScope.launch {
             setUpRecyclerView(booksViewModel.getReadBooks())
         }
+        //Scale down when exiting
+        exitTransition = MaterialElevationScale(/* growing= */ false)
+        reenterTransition = MaterialElevationScale(/* growing= */ true)
+        /**BooksFragment exitTransition can be set any time before BooksFragment is
+        replaced with BooksDetailsFragment. Ensure Hold's duration is set to the same
+        duration as your MaterialContainerTransform.*/
+        exitTransition = Hold()
     }
 
     private fun setUpRecyclerView(filteredList: List<Books>) {

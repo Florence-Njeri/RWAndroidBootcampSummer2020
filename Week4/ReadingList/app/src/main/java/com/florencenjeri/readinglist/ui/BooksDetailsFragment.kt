@@ -28,7 +28,6 @@ class BooksDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         setSharedElementTransitionOnEnter()
-//        postponeEnterTransition()
         booksViewModel = ViewModelProviders.of(this).get(BooksViewModel::class.java)
         arguments?.let {
             val safeArgs =
