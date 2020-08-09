@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
     android:transitionOrdering="sequential">
-
+    <slide />
     <!--    Animate changes of target views on screen-->
     <changeBounds />
     <!--    Animates the changes of book cover getting scaled between the views-->

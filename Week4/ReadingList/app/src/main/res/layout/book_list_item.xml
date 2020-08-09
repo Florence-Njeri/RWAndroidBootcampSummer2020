@@ -2,12 +2,15 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/margin"
     android:layout_marginTop="@dimen/margin"
     android:layout_marginRight="@dimen/margin"
     android:elevation="@dimen/card_elevation"
+    android:transitionGroup="true"
+    android:transitionName="@string/transition_card"
     app:cardCornerRadius="@dimen/corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +21,6 @@
             android:id="@+id/cover"
             android:layout_width="@dimen/book_cover_width"
             android:layout_height="@dimen/book_cover_height"
-            android:transitionName="@string/transition_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/girl_wash_your_face" />
@@ -33,7 +35,6 @@
             android:textColor="@color/primary_text"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:transitionName="@string/transition_title"
             app:layout_constraintStart_toEndOf="@+id/cover"
             app:layout_constraintTop_toTopOf="@+id/cover"
             tools:text="@string/book_title" />
@@ -89,7 +90,6 @@
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/button_text"
-            android:transitionName="@string/transition_genre"
             app:layout_constraintBottom_toBottomOf="@+id/numPages"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/numPages"

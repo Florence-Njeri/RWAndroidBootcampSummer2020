@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:transitionGroup="true"
+    android:transitionName="@string/transition_card">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -22,7 +24,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:transitionName="@string/transition_image"
                 app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
                 tools:src="@drawable/girl_wash_your_face" />
 

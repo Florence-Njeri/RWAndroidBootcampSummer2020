@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.ReadingListApplication
 import com.florencenjeri.readinglist.model.Books
+import com.google.android.material.transition.MaterialElevationScale
 import kotlinx.android.synthetic.main.book_list_item.*
 import kotlinx.android.synthetic.main.books_fragment.view.*
 import kotlinx.coroutines.launch
@@ -29,7 +30,9 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-
+        //Scale down when exiting
+        exitTransition = MaterialElevationScale(/* growing= */ false)
+        reenterTransition = MaterialElevationScale(/* growing= */ true)
         booksViewModel =
             ViewModelProviders.of(this).get(BooksViewModel::class.java)
         lifecycleScope.launch {
@@ -50,11 +53,9 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     override fun listItemClicked(books: Books) {
         //Navigate using shared element animations on item click
         //Make the fragment transitions
-        val imagePair = cover to getString(R.string.transition_image)
-        val titlePair = bookTitle to getString(R.string.transition_title)
-        val genrePair = genre to getString(R.string.transition_genre)
+        val cardPair = card to getString(R.string.transition_card)
         val extraInfoForSharedElements = FragmentNavigatorExtras(
-            imagePair, titlePair, genrePair
+            cardPair
         )
         val action =
             BooksFragmentDirections.actionBooksFragmentToBookDetailsFragment(
