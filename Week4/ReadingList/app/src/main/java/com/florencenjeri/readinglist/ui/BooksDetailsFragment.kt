@@ -6,6 +6,7 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.transition.TransitionInflater
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.model.Books
 import kotlinx.android.synthetic.main.activity_main.*
@@ -26,7 +27,7 @@ class BooksDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-
+        setSharedElementTransitionOnEnter()
         booksViewModel = ViewModelProviders.of(this).get(BooksViewModel::class.java)
         arguments?.let {
             val safeArgs =
@@ -40,7 +41,6 @@ class BooksDetailsFragment : Fragment() {
 
             })
         }
-
     }
 
     private fun displayBookDetails(book: Books) {
@@ -74,5 +74,11 @@ class BooksDetailsFragment : Fragment() {
     private fun deleteBook() {
         Log.d("Books", book.toString())
         booksViewModel.deleteBook(book)
+    }
+
+    //Animation transition
+    private fun setSharedElementTransitionOnEnter() {
+        sharedElementEnterTransition = TransitionInflater.from(context)
+            .inflateTransition(R.transition.card_shared_element_transition)
     }
 }
