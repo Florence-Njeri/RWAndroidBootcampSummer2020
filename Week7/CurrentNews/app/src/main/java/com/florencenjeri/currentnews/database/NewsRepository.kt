@@ -7,12 +7,8 @@ import com.florencenjeri.currentnews.model.News
 import com.florencenjeri.currentnews.model.Success
 import com.florencenjeri.currentnews.network.NetworkStatusChecker
 import com.florencenjeri.currentnews.network.RemoteApi
-import org.koin.core.KoinComponent
-import org.koin.core.inject
 
-class NewsRepository : KoinComponent {
-    private val remoteApi: RemoteApi by inject()
-    private val dao: NewsDao by inject()
+class NewsRepository(val remoteApi: RemoteApi, val dao: NewsDao) {
 
     private val networkStatusChecker by lazy {
         NetworkStatusChecker(App.getAppContext().getSystemService(ConnectivityManager::class.java))
