@@ -49,7 +49,6 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
     override fun listItemClicked(books: Books) {
         //Navigate using shared element animations on item click
-
         //Make the fragment transitions
         val imagePair = cover to getString(R.string.transition_image)
         val titlePair = bookTitle to getString(R.string.transition_title)
