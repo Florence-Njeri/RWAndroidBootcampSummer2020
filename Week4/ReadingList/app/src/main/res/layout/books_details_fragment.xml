@@ -22,7 +22,7 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:src="@drawable/girl_wash_your_face"
-                android:transitionName="tImage"
+                android:transitionName="@string/transition_image"
                 app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed" />
 
             <androidx.appcompat.widget.Toolbar

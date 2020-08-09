@@ -1,96 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/margin"
     android:layout_marginLeft="@dimen/margin"
+    android:layout_marginTop="@dimen/margin"
     android:layout_marginRight="@dimen/margin"
     android:elevation="@dimen/card_elevation"
-    app:cardCornerRadius="@dimen/corner_radius"
-    >
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    app:cardCornerRadius="@dimen/corner_radius">
 
-    <ImageView
-        android:id="@+id/cover"
-        android:layout_width="@dimen/book_cover_width"
-        android:layout_height="@dimen/book_cover_height"
-        android:transitionName="tImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/girl_wash_your_face" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/bookTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin"
-        android:layout_marginTop="@dimen/margin"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="@string/book_title"
-        android:textColor="@color/primary_text"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/cover"
-        app:layout_constraintTop_toTopOf="@+id/cover" />
+        <ImageView
+            android:id="@+id/cover"
+            android:layout_width="@dimen/book_cover_width"
+            android:layout_height="@dimen/book_cover_height"
+            android:transitionName="@string/transition_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/girl_wash_your_face" />
 
-    <TextView
-        android:id="@+id/author"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
-        android:fontFamily="@font/avenir_next_pro"
-        android:text="@string/text_author"
-        android:textColor="@color/secondary_text"
-        app:layout_constraintEnd_toEndOf="@+id/bookTitle"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/bookTitle"
-        app:layout_constraintTop_toBottomOf="@+id/bookTitle" />
+        <TextView
+            android:id="@+id/bookTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin"
+            android:fontFamily="@font/open_sans_bold"
+            android:text="@string/book_title"
+            android:textColor="@color/primary_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:transitionName="@string/transition_title"
+            app:layout_constraintStart_toEndOf="@+id/cover"
+            app:layout_constraintTop_toTopOf="@+id/cover" />
 
-    <TextView
-        android:id="@+id/numPages"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
-        android:fontFamily="@font/avenir_next_pro"
-        android:text="@string/text_pages"
-        android:textColor="@color/secondary_text"
-        app:layout_constraintEnd_toEndOf="@+id/author"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/publicationDate"
-        app:layout_constraintTop_toBottomOf="@+id/publicationDate" />
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:fontFamily="@font/avenir_next_pro"
+            android:text="@string/text_author"
+            android:textColor="@color/secondary_text"
+            app:layout_constraintEnd_toEndOf="@+id/bookTitle"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/bookTitle"
+            app:layout_constraintTop_toBottomOf="@+id/bookTitle" />
 
-    <TextView
-        android:id="@+id/publicationDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin"
-        android:fontFamily="@font/avenir_next_pro"
-        android:text="@string/text_pub_date"
-        android:textColor="@color/secondary_text"
-        app:layout_constraintEnd_toEndOf="@+id/author"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/author"
-        app:layout_constraintTop_toBottomOf="@+id/author" />
+        <TextView
+            android:id="@+id/numPages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:fontFamily="@font/avenir_next_pro"
+            android:text="@string/text_pages"
+            android:textColor="@color/secondary_text"
+            app:layout_constraintEnd_toEndOf="@+id/author"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/publicationDate"
+            app:layout_constraintTop_toBottomOf="@+id/publicationDate" />
 
-    <Button
-        android:id="@+id/genre"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/button_height"
-        android:layout_marginEnd="@dimen/margin"
-        android:background="@drawable/rounded_blue_background"
-        android:fontFamily="@font/avenir_next_pro"
-        android:text="@string/text_genre"
-        android:paddingRight="@dimen/margin"
-        android:paddingLeft="@dimen/margin"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="@dimen/button_text"
-        app:layout_constraintBottom_toBottomOf="@+id/numPages"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/numPages" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/publicationDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            android:fontFamily="@font/avenir_next_pro"
+            android:text="@string/text_pub_date"
+            android:textColor="@color/secondary_text"
+            app:layout_constraintEnd_toEndOf="@+id/author"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/author"
+            app:layout_constraintTop_toBottomOf="@+id/author" />
+
+        <Button
+            android:id="@+id/genre"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginEnd="@dimen/margin"
+            android:background="@drawable/rounded_blue_background"
+            android:fontFamily="@font/avenir_next_pro"
+            android:paddingLeft="@dimen/margin"
+            android:paddingRight="@dimen/margin"
+            android:text="@string/text_genre"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/button_text"
+            android:transitionName="@string/transition_genre"
+            app:layout_constraintBottom_toBottomOf="@+id/numPages"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/numPages" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

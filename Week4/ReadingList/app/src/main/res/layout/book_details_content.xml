@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,6 +30,7 @@
             android:fontFamily="@font/open_sans_bold"
             android:text="@string/book_title"
             android:textColor="@color/primary_text"
+            android:transitionName="@string/transition_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.4"
             app:layout_constraintStart_toStartOf="parent"
@@ -159,14 +159,15 @@
             android:layout_marginTop="@dimen/margin"
             android:layout_marginEnd="@dimen/margin"
             android:layout_marginBottom="@dimen/margin"
-            android:paddingRight="@dimen/margin"
-            android:paddingLeft="@dimen/margin"
             android:background="@drawable/rounded_blue_background"
             android:fontFamily="@font/avenir_next_pro"
+            android:paddingLeft="@dimen/margin"
+            android:paddingRight="@dimen/margin"
             android:text="@string/text_genre"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/button_text"
+            android:transitionName="@string/transition_genre"
             app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

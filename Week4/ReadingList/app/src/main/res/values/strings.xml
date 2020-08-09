@@ -29,4 +29,7 @@
     <string name="email_icon">Email Icon</string>
     <string name="log_out">Log Out</string>
     <string name="delete">Delete</string>
+    <string name="transition_genre">tGenre</string>
+    <string name="transition_title">tTitle</string>
+    <string name="transition_image">tImage</string>
 </resources>

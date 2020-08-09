@@ -48,9 +48,11 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         //Navigate using shared element animations on item click
 
         //Make the fragment transitions
-        val imagePair = kotlin.Pair(cover as View, "tImage")
+        val imagePair = Pair(cover as View, getString(R.string.transition_image))
+        val titlePair = Pair(cover as View, getString(R.string.transition_title))
+        val genrePair = Pair(cover as View, getString(R.string.transition_genre))
         val extraInfoForSharedElement = FragmentNavigatorExtras(
-            imagePair
+            imagePair, titlePair, genrePair
         )
         val action =
             BooksFragmentDirections.actionBooksFragmentToBookDetailsFragment(

@@ -5,6 +5,14 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowSharedElementEnterTransition">
+            @transition/card_shared_element_transition
+        </item>
+        <item name="android:windowSharedElementExitTransition">
+            @transition/card_shared_element_transition
+        </item>
     </style>
 
     <style name="AppTheme.NoActionBar">
