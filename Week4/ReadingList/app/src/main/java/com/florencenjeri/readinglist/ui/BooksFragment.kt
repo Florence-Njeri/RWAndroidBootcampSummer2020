@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.ReadingListApplication
 import com.florencenjeri.readinglist.model.Books
+import com.google.android.material.transition.MaterialSharedAxis
 import kotlinx.android.synthetic.main.book_list_item.*
 import kotlinx.android.synthetic.main.books_fragment.view.*
 import kotlinx.coroutines.launch
@@ -17,6 +18,15 @@ import kotlinx.coroutines.launch
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
     private lateinit var booksViewModel: BooksViewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //From Login to Books Fragment
+        val forward = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+        enterTransition = forward
+        //Back to the LogIn Fragment
+        val backward = MaterialSharedAxis(MaterialSharedAxis.Z, false)
+        returnTransition = backward
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
