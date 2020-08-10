@@ -22,15 +22,17 @@ class BooksDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.books_details_fragment, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedElementEnterTransition = buildContainerTransform()
+        sharedElementReturnTransition = buildContainerTransform()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sharedElementEnterTransition = buildContainerTransform()
-        sharedElementReturnTransition = buildContainerTransform()
-
         setHasOptionsMenu(true)
         booksViewModel = ViewModelProviders.of(this).get(BooksViewModel::class.java)
         arguments?.let {
@@ -83,7 +85,7 @@ class BooksDetailsFragment : Fragment() {
     private fun buildContainerTransform() =
         MaterialContainerTransform().apply {
             drawingViewId = R.id.nav_host_fragment
-            duration = 300
+            duration = 30000000
             interpolator = FastOutSlowInInterpolator()
             fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
         }
