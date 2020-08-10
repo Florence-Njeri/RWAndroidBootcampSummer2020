@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.transition.TransitionInflater
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.model.Books
+import com.google.android.material.transition.MaterialContainerTransform
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.book_details_content.view.*
 import kotlinx.android.synthetic.main.books_details_fragment.*
@@ -21,13 +22,16 @@ class BooksDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.books_details_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedElementEnterTransition = buildContainerTransform()
+        sharedElementReturnTransition = buildContainerTransform()
+
         setHasOptionsMenu(true)
-        setSharedElementTransitionOnEnter()
         booksViewModel = ViewModelProviders.of(this).get(BooksViewModel::class.java)
         arguments?.let {
             val safeArgs =
@@ -75,12 +79,12 @@ class BooksDetailsFragment : Fragment() {
         booksViewModel.deleteBook(book)
     }
 
-    //Animation transition
-    private fun setSharedElementTransitionOnEnter() {
-        sharedElementEnterTransition = TransitionInflater.from(context)
-            .inflateTransition(R.transition.card_shared_element_transition)
-        sharedElementReturnTransition =
-            TransitionInflater.from(this.context)
-                .inflateTransition(R.transition.card_shared_element_transition)
-    }
+    //Animation Container Transform
+    private fun buildContainerTransform() =
+        MaterialContainerTransform().apply {
+            drawingViewId = R.id.nav_host_fragment
+            duration = 300
+            interpolator = FastOutSlowInInterpolator()
+            fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
+        }
 }
