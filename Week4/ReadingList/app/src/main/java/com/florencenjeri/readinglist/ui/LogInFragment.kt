@@ -16,6 +16,10 @@ import kotlinx.android.synthetic.main.fragment_log_in.*
 class LogInFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        zTransitionToBooksFragment()
+    }
+
+    private fun zTransitionToBooksFragment() {
         //BooksFragment to LogIn Fragment Navigation
         val backward = MaterialSharedAxis(MaterialSharedAxis.Z, false)
         reenterTransition = backward

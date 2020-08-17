@@ -20,6 +20,10 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     private lateinit var booksViewModel: BooksViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        zTransitionFromLogInFragment()
+    }
+
+    private fun zTransitionFromLogInFragment() {
         //From Login to Books Fragment
         val forward = MaterialSharedAxis(MaterialSharedAxis.Z, true)
         enterTransition = forward
