@@ -12,4 +12,5 @@ class NewsViewModel(val newsRepository: NewsRepository) : ViewModel() {
     fun refreshNewsInDb() = viewModelScope.launch(Dispatchers.IO) {
         newsRepository.refreshNews()
     }
+
 }

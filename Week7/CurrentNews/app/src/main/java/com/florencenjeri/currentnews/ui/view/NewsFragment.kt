@@ -3,7 +3,6 @@ package com.florencenjeri.currentnews.ui.view
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,7 +43,6 @@ class NewsFragment : Fragment() {
         newsViewModel.fetchNews().observe(viewLifecycleOwner, Observer() {
             newsAdapter.submitList(it)
             newsList.adapter = newsAdapter
-            Log.d("NewsList", it.toString())
         })
         val linearLayoutManager = LinearLayoutManager(App.getAppContext())
 

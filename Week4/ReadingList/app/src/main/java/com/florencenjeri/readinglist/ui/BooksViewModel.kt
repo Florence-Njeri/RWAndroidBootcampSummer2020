@@ -1,6 +1,7 @@
 package com.florencenjeri.readinglist.ui
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.florencenjeri.readinglist.database.BooksRepository
@@ -9,7 +10,7 @@ import kotlinx.coroutines.launch
 
 /**Communicates between the repository and the UI*/
 class BooksViewModel(val repository: BooksRepository) : ViewModel() {
-
+  
     suspend fun getReadBooks(): List<Books> {
         return repository.getAllBooks()
     }

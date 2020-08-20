@@ -3,6 +3,7 @@ package com.florencenjeri.readinglist.ui
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.FragmentNavigatorExtras
@@ -13,11 +14,10 @@ import com.florencenjeri.readinglist.model.Books
 import com.google.android.material.transition.MaterialSharedAxis
 import kotlinx.android.synthetic.main.book_list_item.*
 import kotlinx.android.synthetic.main.books_fragment.view.*
-import kotlinx.coroutines.launch
 
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
-    private lateinit var booksViewModel: BooksViewModel
+     private lateinit var booksViewModel: BooksViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         zTransitionFromLogInFragment()
@@ -30,6 +30,7 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         //Back to the LogIn Fragment
         val backward = MaterialSharedAxis(MaterialSharedAxis.Z, false)
         returnTransition = backward
+
     }
 
     override fun onCreateView(
@@ -43,7 +44,7 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        booksViewModel =
+       booksViewModel =
             ViewModelProviders.of(this).get(BooksViewModel::class.java)
         lifecycleScope.launch {
             setUpRecyclerView(booksViewModel.getReadBooks())
@@ -79,7 +80,13 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         //Sort the list
         if (item.groupId == R.id.menu_sort_group) {
-            sortBooksById(item.itemId)
+            booksViewModel.sortData(
+                when (item.itemId) {
+                    R.id.action_fiction -> FilterType.FICTION
+                    R.id.action_self_help -> FilterType.SELF_HELP
+                    else -> FilterType.ALL_BOOKS
+                }
+            )
             item.isChecked = true
         } else if (item.itemId == R.id.action_logout) {
             //Log out and navigate to LogInFragment
@@ -90,7 +97,6 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
         }
         return super.onOptionsItemSelected(item)
     }
-
     private fun sortBooksById(itemId: Int) {
         when (itemId) {
             R.id.action_fiction -> {
@@ -107,5 +113,4 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
             }
         }
     }
-
 }
