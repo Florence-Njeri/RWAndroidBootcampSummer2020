@@ -5,17 +5,32 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.ReadingListApplication
 import com.florencenjeri.readinglist.model.Books
+import com.google.android.material.transition.MaterialSharedAxis
+import kotlinx.android.synthetic.main.book_list_item.*
 import kotlinx.android.synthetic.main.books_fragment.view.*
 
 class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
 
-    val booksViewModelFactory by lazy { BooksViewModelFactory(ReadingListApplication.repository) }
-    val booksViewModel by lazy {
-        ViewModelProviders.of(this, booksViewModelFactory).get(BooksViewModel::class.java)
+     private lateinit var booksViewModel: BooksViewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        zTransitionFromLogInFragment()
+    }
+
+    private fun zTransitionFromLogInFragment() {
+        //From Login to Books Fragment
+        val forward = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+        enterTransition = forward
+        //Back to the LogIn Fragment
+        val backward = MaterialSharedAxis(MaterialSharedAxis.Z, false)
+        returnTransition = backward
+
     }
 
     override fun onCreateView(
@@ -29,22 +44,32 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        booksViewModel.getReadBooks().observe(viewLifecycleOwner, Observer {
-            populateRecyclerView(it)
-        })
+       booksViewModel =
+            ViewModelProviders.of(this).get(BooksViewModel::class.java)
+        lifecycleScope.launch {
+            setUpRecyclerView(booksViewModel.getReadBooks())
+        }
+
     }
 
-    private fun populateRecyclerView(bookList: List<Books>) {
-        view?.booksList?.adapter = BooksAdapter(bookList, this)
+    private fun setUpRecyclerView(filteredList: List<Books>) {
+        view?.booksList?.adapter = BooksAdapter(filteredList, this)
         (view?.booksList?.adapter as BooksAdapter).notifyDataSetChanged()
+
     }
 
     override fun listItemClicked(books: Books) {
+        //Navigate using shared element animations on item click
+        //Make the fragment transitions
+        val cardPair = card to getString(R.string.transition_card)
+        val extraInfoForSharedElements = FragmentNavigatorExtras(
+            cardPair
+        )
         val action =
             BooksFragmentDirections.actionBooksFragmentToBookDetailsFragment(
                 books.bookId
             )
-        findNavController().navigate(action)
+        findNavController().navigate(action, extraInfoForSharedElements)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -71,5 +96,21 @@ class BooksFragment : Fragment(), BooksAdapter.BooksListClickListener {
             findNavController().navigate(action)
         }
         return super.onOptionsItemSelected(item)
+    }
+    private fun sortBooksById(itemId: Int) {
+        when (itemId) {
+            R.id.action_fiction -> {
+                lifecycleScope.launch {
+                    val newList = booksViewModel.sortData("Fiction")
+                    setUpRecyclerView(newList)
+                }
+            }
+            else -> {
+                lifecycleScope.launch {
+                    val newList = booksViewModel.sortData("Self Help")
+                    setUpRecyclerView(newList)
+                }
+            }
+        }
     }
 }

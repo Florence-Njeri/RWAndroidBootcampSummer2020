@@ -10,9 +10,23 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.ReadingListApplication
+import com.google.android.material.transition.MaterialSharedAxis
 import kotlinx.android.synthetic.main.fragment_log_in.*
 
 class LogInFragment : Fragment() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        zTransitionToBooksFragment()
+    }
+
+    private fun zTransitionToBooksFragment() {
+        //BooksFragment to LogIn Fragment Navigation
+        val backward = MaterialSharedAxis(MaterialSharedAxis.Z, false)
+        reenterTransition = backward
+        //LogIn to BooksFragment navigation
+        val forward = MaterialSharedAxis(MaterialSharedAxis.Z, true)
+        exitTransition = forward
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,7 +38,9 @@ class LogInFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(false)
+        val forward = true
+        enterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, forward)
+        setHasOptionsMenu(true)
         //Check if the user is logged in
         isUserLoggedIn()
         logInUser()

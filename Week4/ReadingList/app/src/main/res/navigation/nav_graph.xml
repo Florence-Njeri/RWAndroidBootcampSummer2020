@@ -30,7 +30,11 @@
             app:destination="@id/logInFragment" />
         <action
             android:id="@+id/action_BooksFragment_to_BookDetailsFragment"
-            app:destination="@id/BookDetailsFragment" />
+            app:destination="@id/BookDetailsFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/logInFragment"
@@ -40,7 +44,11 @@
         <action
             android:id="@+id/action_logInFragment_to_BooksFragment"
             app:destination="@id/BooksFragment"
-            app:popUpTo="@id/logInFragment"
+            app:popUpTo="@id/nav_graph"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/fragment_fade_enter"
+            app:popExitAnim="@anim/fragment_fade_exit"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

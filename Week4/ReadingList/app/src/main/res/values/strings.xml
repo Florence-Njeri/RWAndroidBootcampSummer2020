@@ -29,5 +29,6 @@
     <string name="email_icon">Email Icon</string>
     <string name="log_out">Log Out</string>
     <string name="delete">Delete</string>
+    <string name="transition_card">tCard</string>
     <string name="all">All</string>
 </resources>
