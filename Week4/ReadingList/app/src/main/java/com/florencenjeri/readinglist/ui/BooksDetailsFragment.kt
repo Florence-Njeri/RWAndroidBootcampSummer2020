@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.florencenjeri.readinglist.R
 import com.florencenjeri.readinglist.model.Books
+import com.florencenjeri.readinglist.utils.Constants.TRANSFORMATION_DURATION
 import com.google.android.material.transition.MaterialContainerTransform
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.book_details_content.view.*
@@ -85,7 +86,7 @@ class BooksDetailsFragment : Fragment() {
     private fun buildContainerTransform() =
         MaterialContainerTransform().apply {
             drawingViewId = R.id.nav_host_fragment
-            duration = 30000000
+            duration = TRANSFORMATION_DURATION
             interpolator = FastOutSlowInInterpolator()
             fadeMode = MaterialContainerTransform.FADE_MODE_THROUGH
         }
